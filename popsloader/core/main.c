@@ -93,6 +93,8 @@ static inline const char *get_module_prefix(void)
 
 	if(pops_fw_version == FW_635) {
 		sprintf(buf, "%s%s/", MODULE_PATH, "635");
+	} else if(pops_fw_version == FW_620) {
+		sprintf(buf, "%s%s/", MODULE_PATH, "620");
 	} else {
 		printk("%s: Unknown version: 0x%08X\n", __func__, pops_fw_version);
 		asm("break");
@@ -109,6 +111,14 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 	if(is_pops(path)) {
 		if(pops_fw_version == FW_635) {
 			sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
+			path = newpath;
+		} else if(pops_fw_version == FW_620) {
+			if(psp_model == 3) {
+				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
+			} else {
+				sprintf(newpath, "%spops.prx", get_module_prefix());
+			}
+
 			path = newpath;
 		} else {
 			asm("break");
@@ -156,14 +166,20 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 	}
 
 	mod = (SceModule2*) sceKernelFindModuleByUID(modid);
-	resolve_nid((SceModule*)mod);
+	fix_nid((SceModule*)mod);
 	modid = sceKernelStartModule(modid, argsize, argp, modstatus, opt);
 
 	if(0 == strcmp(mod->modname, "scePops_Manager")) {
-		u32 load_module_nid;
+		u32 load_module_nid = -1;
 
-		if(pops_fw_version == FW_635) {
+		// use host nid, because fix_nid already fixed the load_module_nid into host one
+		if(psp_fw_version == FW_635) {
 			load_module_nid = 0xFFB9B760;
+		} else if(pops_fw_version == FW_620) {
+			load_module_nid = 0xE3CCC6EA;
+		} else {
+			printk("%s: unknown fw 0x%08X\n", __func__, psp_fw_version);
+			asm("break");
 		}
 
 		hook_import_bynid((SceModule*)mod, "ModuleMgrForKernel", load_module_nid, _sceKernelLoadModule, 0);
@@ -193,6 +209,27 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 		return ret;
 	}
 
+	sprintf(modpath, "%slibpspvmc.prx", get_module_prefix());
+	ret = replace_module(modid, argsize, argp, modstatus, opt, "pspvmc_Library", modpath);
+
+	if(ret >= 0) {
+		return ret;
+	}
+
+	sprintf(modpath, "%spafmini.prx", get_module_prefix());
+	ret = replace_module(modid, argsize, argp, modstatus, opt, "scePaf_Module", modpath);
+
+	if(ret >= 0) {
+		return ret;
+	}
+
+	sprintf(modpath, "%scommon_util.prx", get_module_prefix());
+	ret = replace_module(modid, argsize, argp, modstatus, opt, "sceVshCommonUtil_Module", modpath);
+
+	if(ret >= 0) {
+		return ret;
+	}
+
 	return -1;
 }
 
@@ -212,15 +249,41 @@ void* sceGeEdramGetAddr(void)
 	return (void*)0x44000000;
 }
 
+int test_thread(SceSize args, void *argp)
+{
+	int ret;
+	SceModule* mod;
+
+	ret = sceKernelLoadModule("host0:/test.prx", 0, NULL);
+	mod = sceKernelFindModuleByUID(ret);
+	fix_nid(mod);
+	ret = sceKernelStartModule(ret, 0, 0, 0, 0);
+
+	return 0;
+}
+
 int module_start(SceSize args, void* argp)
 {
-	pops_fw_version = FW_635;
+	int thid;
+
+	pops_fw_version = FW_620;
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
 	pspDebugScreenInit();
 	mount_memory_stick();
+	setup_nid_resolver();
 	sctrlSetCustomStartModule(&custom_start_module);
 	g_previous = sctrlHENSetStartModuleHandler(&popsloader_patch_chain);
 
+	(void)thid;
+
+#if 0
+	thid = sceKernelCreateThread("test", test_thread, 0x1A, 0xF00, 0, NULL);
+
+	if(thid>=0) {
+		sceKernelStartThread(thid, args, argp);
+	}
+#endif
+	
 	return 0;
 }

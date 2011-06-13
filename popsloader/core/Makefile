@@ -1,6 +1,10 @@
 TARGET = popscore
 OBJS = main.o resolve_nid.o ../common/utils.o ../common/libs.o ../common/vsnprintf.o
 
+OBJS += nid_635_to_620.o \
+		nid_635_to_639.o \
+		nid_620_to_635.o
+
 #PRO_HOME = d:/PSP/635PRO
 
 CFLAGS = -Os -G0 -Wall -I../common -I$(PRO_HOME)/include -I$(PRO_HOME)/Common

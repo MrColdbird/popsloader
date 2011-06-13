@@ -24,10 +24,33 @@
 #define BASE_PATH "ms0:/seplugins/popsloader/"
 #define MODULE_PATH BASE_PATH "modules/"
 
+#define UNKNOWNNID 0xDEADBEEF
+#define NID_ENTRY(libname) \
+	{ #libname, NELEMS(libname##_nid), libname##_nid, }
+
+typedef struct _nid_entry {
+	u32 old;
+	u32 new;
+} nid_entry;
+
+typedef struct _resolver_config {
+	char *name;
+	u32 nidcount;
+	nid_entry *nidtable;
+} resolver_config;
+
+extern resolver_config nid_fix_635_to_620[];
+extern u32 nid_fix_635_to_620_size;
+extern resolver_config nid_fix_635_to_639[];
+extern u32 nid_fix_635_to_639_size;
+extern resolver_config nid_fix_620_to_635[];
+extern u32 nid_fix_620_to_635_size;
+
+void fix_nid(SceModule* mod);
+void setup_nid_resolver(void);
+
 extern u32 psp_fw_version;
 extern u32 psp_model;
 extern u32 pops_fw_version;
-
-void resolve_nid(SceModule* mod);
 
 #endif
