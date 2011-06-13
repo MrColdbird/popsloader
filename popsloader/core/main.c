@@ -82,6 +82,20 @@ static inline int is_pops(const char *path)
 	return 0;
 }
 
+static inline const char *get_module_prefix(void)
+{
+	static char buf[80];
+
+	if(pops_fw_version == FW_635) {
+		sprintf(buf, "%s%s/", MODULE_PATH, "635");
+	} else {
+		printk("%s: Unknown version: 0x%08X\n", __func__, pops_fw_version);
+		asm("break");
+	}
+
+	return buf;
+}
+
 static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOption *option)
 {
 	SceUID modid;
@@ -89,7 +103,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 	
 	if(is_pops(path)) {
 		if(pops_fw_version == FW_635) {
-			sprintf(newpath, MODULE_PATH "635/" "pops_%02dg.prx", (int)(psp_model + 1));
+			sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			path = newpath;
 		} else {
 			asm("break");
@@ -158,14 +172,17 @@ static int check_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, SceKernelSMOption *opt)
 {
 	int ret;
+	char modpath[128];
 
-	ret = check_module(modid, argsize, argp, modstatus, opt, "scePops_Manager", MODULE_PATH "635/" "popsman.prx");
+	sprintf(modpath, "%spopsman.prx", get_module_prefix());
+	ret = check_module(modid, argsize, argp, modstatus, opt, "scePops_Manager", modpath);
 
 	if(ret >= 0) {
 		return ret;
 	}
 
-	ret = check_module(modid, argsize, argp, modstatus, opt, "PROPopcornManager", MODULE_PATH "635/" "popcorn.prx");
+	sprintf(modpath, "%spopcorn.prx", get_module_prefix());
+	ret = check_module(modid, argsize, argp, modstatus, opt, "PROPopcornManager", modpath);
 
 	if(ret >= 0) {
 		return ret;
