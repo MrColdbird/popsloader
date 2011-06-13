@@ -120,7 +120,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 	return modid;
 }
 
-static int check_module(int modid, SceSize argsize, void *argp, int *modstatus, SceKernelSMOption *opt, char *modname, char *redir_path)
+static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus, SceKernelSMOption *opt, char *modname, char *redir_path)
 {
 	SceModule2 *mod;
 	int ret;
@@ -180,14 +180,14 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 	char modpath[128];
 
 	sprintf(modpath, "%spopsman.prx", get_module_prefix());
-	ret = check_module(modid, argsize, argp, modstatus, opt, "scePops_Manager", modpath);
+	ret = replace_module(modid, argsize, argp, modstatus, opt, "scePops_Manager", modpath);
 
 	if(ret >= 0) {
 		return ret;
 	}
 
 	sprintf(modpath, "%spopcorn.prx", get_module_prefix());
-	ret = check_module(modid, argsize, argp, modstatus, opt, "PROPopcornManager", modpath);
+	ret = replace_module(modid, argsize, argp, modstatus, opt, "PROPopcornManager", modpath);
 
 	if(ret >= 0) {
 		return ret;
