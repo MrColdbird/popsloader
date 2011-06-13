@@ -41,6 +41,11 @@ static STMOD_HANDLER g_previous = NULL;
 void mount_memory_stick(void)
 {
 	int dfd;
+	char *devname = "ms0:/";
+
+	if(psp_model == PSP_GO && sctrlKernelBootFrom() == 0x50) {
+		devname = "ef0:/";
+	}
 
 	do {
 		dfd = sceIoDopen("ms0:/");
