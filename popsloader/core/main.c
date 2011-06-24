@@ -177,9 +177,9 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 		u32 load_module_nid = -1;
 
 		// use host nid, because fix_nid already fixed the load_module_nid into host one
-		if(psp_fw_version == FW_635) {
+		if(psp_fw_version == FW_635 || psp_fw_version == FW_639) {
 			load_module_nid = 0xFFB9B760;
-		} else if(pops_fw_version == FW_620) {
+		} else if(psp_fw_version == FW_620) {
 			load_module_nid = 0xE3CCC6EA;
 		} else {
 			printk("%s: unknown fw 0x%08X\n", __func__, psp_fw_version);
@@ -253,7 +253,7 @@ int module_start(SceSize args, void* argp)
 {
 	int thid;
 
-	pops_fw_version = FW_620;
+	pops_fw_version = FW_635;
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
 	pspDebugScreenInit();
