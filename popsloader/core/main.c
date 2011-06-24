@@ -100,6 +100,8 @@ static inline const char *get_module_prefix(void)
 		sprintf(buf, "%s%s/", MODULE_PATH, "635");
 	} else if(pops_fw_version == FW_620) {
 		sprintf(buf, "%s%s/", MODULE_PATH, "620");
+	} else if(pops_fw_version == FW_500) {
+		sprintf(buf, "%s%s/", MODULE_PATH, "500");
 	} else {
 		printk("%s: Unknown version: 0x%08X\n", __func__, pops_fw_version);
 		asm("break");
@@ -124,6 +126,9 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 				sprintf(newpath, "%spops.prx", get_module_prefix());
 			}
 
+			path = newpath;
+		} else if(pops_fw_version == FW_500) {
+			sprintf(newpath, "%spops.prx", get_module_prefix());
 			path = newpath;
 		} else {
 			asm("break");
@@ -246,7 +251,7 @@ int test_thread(SceSize args, void *argp)
 	int ret;
 	SceModule* mod;
 
-	ret = sceKernelLoadModule("ms0:/seplugins/popsloader/modules/620/popsman.prx", 0, NULL);
+	ret = sceKernelLoadModule("ms0:/seplugins/popsloader/modules/500/popsman.prx", 0, NULL);
 	mod = sceKernelFindModuleByUID(ret);
 	fix_nid(mod);
 	ret = sceKernelStartModule(ret, 0, 0, 0, 0);
@@ -258,7 +263,7 @@ int module_start(SceSize args, void* argp)
 {
 	int thid;
 
-	pops_fw_version = FW_620;
+	pops_fw_version = FW_500;
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
 	pspDebugScreenInit();
@@ -269,7 +274,7 @@ int module_start(SceSize args, void* argp)
 
 	(void)thid;
 
-#if 0
+#if 1
 	thid = sceKernelCreateThread("test", test_thread, 0x1A, 0xF00, 0, NULL);
 
 	if(thid>=0) {

@@ -622,18 +622,27 @@ static void patch_scePops_Manager(void)
 		hook_import_bynid((SceModule*)mod, "IoFileMgrForKernel", g_io_hooks[i].nid, g_io_hooks[i].fp, 0);
 	}
 
-	_get_rif_path = (void*)(text_addr + g_offs->popsman_patch.get_rif_path);
-	_sw(MAKE_CALL(&get_rif_path), text_addr + g_offs->popsman_patch.get_rif_path_call1);
-	_sw(MAKE_CALL(&get_rif_path), text_addr + g_offs->popsman_patch.get_rif_path_call2);
+	if(g_offs->popsman_patch.get_rif_path != 0xDEADBEEF) {
+		_get_rif_path = (void*)(text_addr + g_offs->popsman_patch.get_rif_path);
+		_sw(MAKE_CALL(&get_rif_path), text_addr + g_offs->popsman_patch.get_rif_path_call1);
+		_sw(MAKE_CALL(&get_rif_path), text_addr + g_offs->popsman_patch.get_rif_path_call2);
+	}
 
 	sceNpDrmGetVersionKey = (void*)sctrlHENFindFunction("scePspNpDrm_Driver", "scePspNpDrm_driver", 0x0F9547E6);
 	scePspNpDrm_driver_9A34AC9F = (void*)sctrlHENFindFunction("scePspNpDrm_Driver", "scePspNpDrm_driver", 0x9A34AC9F);
 
-	_sw(MAKE_CALL(_sceNpDrmGetVersionKey), text_addr + g_offs->popsman_patch.sceNpDrmGetVersionKeyCall);
-	_sw(MAKE_CALL(_scePspNpDrm_driver_9A34AC9F), text_addr + g_offs->popsman_patch.scePspNpDrm_driver_9A34AC9F_Call);
+	if(g_offs->popsman_patch.sceNpDrmGetVersionKeyCall != 0xDEADBEEF) {
+		_sw(MAKE_CALL(_sceNpDrmGetVersionKey), text_addr + g_offs->popsman_patch.sceNpDrmGetVersionKeyCall);
+	}
+
+	if(g_offs->popsman_patch.scePspNpDrm_driver_9A34AC9F_Call != 0xDEADBEEF) {
+		_sw(MAKE_CALL(_scePspNpDrm_driver_9A34AC9F), text_addr + g_offs->popsman_patch.scePspNpDrm_driver_9A34AC9F_Call);
+	}
 
 	// remove the check in scePopsManLoadModule that only allows loading module below the FW 3.XX
-	_sw(NOP, text_addr + g_offs->popsman_patch.scePopsManLoadModuleCheck);
+	if(g_offs->popsman_patch.scePopsManLoadModuleCheck != 0xDEADBEEF) {
+		_sw(NOP, text_addr + g_offs->popsman_patch.scePopsManLoadModuleCheck);
+	}
 
 	if (g_is_custom_ps1) {
 		for(i=0; i<NELEMS(g_amctrl_hooks); ++i) {
