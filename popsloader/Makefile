@@ -10,6 +10,7 @@ all:
 	@cp -rf modules dist
 	@cp -f popcorn/popcorn.prx dist/modules/620/
 	@cp -f popcorn/popcorn.prx dist/modules/635/
+	@cp -f popcorn/popcorn.prx dist/modules/639/
 
 clean:
 	make clean -C popcorn

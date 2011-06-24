@@ -96,7 +96,9 @@ static inline const char *get_module_prefix(void)
 {
 	static char buf[80];
 
-	if(pops_fw_version == FW_635) {
+	if(pops_fw_version == FW_639) {
+		sprintf(buf, "%s%s/", MODULE_PATH, "639");
+	} else if(pops_fw_version == FW_635) {
 		sprintf(buf, "%s%s/", MODULE_PATH, "635");
 	} else if(pops_fw_version == FW_620) {
 		sprintf(buf, "%s%s/", MODULE_PATH, "620");
@@ -263,7 +265,7 @@ int module_start(SceSize args, void* argp)
 {
 	int thid;
 
-	pops_fw_version = FW_635;
+	pops_fw_version = FW_639;
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
 	printk_init();

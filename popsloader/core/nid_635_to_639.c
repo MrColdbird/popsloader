@@ -30,12 +30,7 @@
 #include "systemctrl.h"
 #include "main.h"
 
-static nid_entry testLibrary_nid[] = {
-	{ 0x11111111, 0x22222222, },
-};
-
 resolver_config nid_fix_635_to_639[] = {
-	NID_ENTRY(testLibrary),
 };
 
 u32 nid_fix_635_to_639_size = NELEMS(nid_fix_635_to_639);
