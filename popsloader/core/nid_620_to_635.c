@@ -41,7 +41,7 @@ static nid_entry SysMemForKernel_nid[] = {
 
 static nid_entry ModuleMgrForKernel_nid[] = {
 	{ 0xDF8FFFAB, 0xE6BF3960, },
-	{ 0xFEB5C72B, 0xFFB9B760, },
+	{ 0xE3CCC6EA, 0xFFB9B760, },
 };
 
 static nid_entry LoadExecForKernel_nid[] = {
@@ -121,6 +121,10 @@ static nid_entry scePadSvc_driver_nid[] = {
 	{ 0x79B60777, UNKNOWNNID, },
 };
 
+static nid_entry InitForKernel_nid[] = {
+	{ 0x977A0F90, 0xEE67E450, },
+};
+
 resolver_config nid_fix_620_to_635[] = {
 	NID_ENTRY(SysMemForKernel),
 	NID_ENTRY(ModuleMgrForKernel),
@@ -137,6 +141,7 @@ resolver_config nid_fix_620_to_635[] = {
 	NID_ENTRY(sceCodec_driver),
 	NID_ENTRY(sceCtrl_driver),
 	NID_ENTRY(scePadSvc_driver),
+	NID_ENTRY(InitForKernel),
 };
 
 u32 nid_fix_620_to_635_size = NELEMS(nid_fix_620_to_635);
