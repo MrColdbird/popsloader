@@ -73,7 +73,7 @@ u32 resolve_nid(resolver_config *resolver, u32 nid)
 		new = resolver->nidtable[i].new;
 
 		if(new != UNKNOWNNID && nid == resolver->nidtable[i].old) {
-			printk("%s: %s_%08X->%s_%08X\n", __func__, resolver->name, nid, resolver->name, new);
+//			printk("%s: %s_%08X->%s_%08X\n", __func__, resolver->name, nid, resolver->name, new);
 
 			return new;
 		}

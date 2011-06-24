@@ -171,7 +171,12 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 
 	mod = (SceModule2*) sceKernelFindModuleByUID(modid);
 	fix_nid((SceModule*)mod);
-	modid = sceKernelStartModule(modid, argsize, argp, modstatus, opt);
+
+	if(0 == strcmp(mod->modname, "PROPopcornManager")) {
+		modid = sceKernelStartModule(modid, 4, &pops_fw_version, modstatus, opt);
+	} else {
+		modid = sceKernelStartModule(modid, argsize, argp, modstatus, opt);
+	}
 
 	if(0 == strcmp(mod->modname, "scePops_Manager")) {
 		u32 load_module_nid = -1;
