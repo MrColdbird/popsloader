@@ -22,8 +22,11 @@
 #include <systemctrl.h>
 #include <systemctrl_se.h>
 #include <pspsysmem_kernel.h>
+#include <pspthreadman_kernel.h>
+#include <pspctrl.h>
 #include <pspiofilemgr_kernel.h>
 #include <psprtc.h>
+#include "popsloader.h"
 #include "utils.h"
 #include "libs.h"
 #include "strsafe.h"
@@ -36,6 +39,7 @@ u32 psp_fw_version;
 u32 psp_model;
 void *module_buffer = NULL;
 u32 module_size = 0;
+STMOD_HANDLER g_previous = NULL;
 
 void mount_memory_stick(void)
 {
@@ -129,11 +133,11 @@ int launch_pops(char *path)
 	struct SceKernelLoadExecVSHParam param;
 	int apitype;
 	const char *mode;
-	
+
 	// TODO get PSPgo apitype (maybe 0x153)
 	apitype = 0x144;
 	mode = "pops";
-	
+
 	memset(&param, 0, sizeof(param));
 	param.size = sizeof(param);
 	param.args = strlen(path) + 1;
@@ -143,29 +147,129 @@ int launch_pops(char *path)
 	return sctrlKernelLoadExecVSHWithApitype(apitype, path, &param);
 }
 
+static char g_initfile[256];
+
+static void get_target(int *type)
+{
+	SceCtrlData ctrl_data;
+	int line;
+
+	line = 33 / 2 - 3;
+	pspDebugScreenInit();
+	pspDebugScreenSetXY(68/2 - sizeof("Select Mode:") / 2, line++);
+	pspDebugScreenPrintf("Select Mode:\n\n");
+	line++;
+	pspDebugScreenSetXY(68/2, line++);
+	pspDebugScreenPrintf("X: 6.20\n");
+	pspDebugScreenSetXY(68/2, line++);
+	pspDebugScreenPrintf("O: 6.35\n");
+	pspDebugScreenSetXY(68/2, line++);
+	pspDebugScreenPrintf("Tri: 6.39\n");
+	pspDebugScreenSetXY(68/2, line++);
+	pspDebugScreenPrintf("Sqa: Original\n");
+	pspDebugScreenSetXY(68/2, line++);
+
+	*type = TARGET_ORIG;
+
+	while(1) {
+		sceCtrlReadBufferPositive(&ctrl_data, 1);
+
+		if(ctrl_data.Buttons & PSP_CTRL_CROSS) {
+			*type = TARGET_620;
+			break;
+		}
+
+		if(ctrl_data.Buttons & PSP_CTRL_CIRCLE) {
+			*type = TARGET_635;
+			break;
+		}
+
+		if(ctrl_data.Buttons & PSP_CTRL_TRIANGLE) {
+			*type = TARGET_639;
+			break;
+		}
+
+		if(ctrl_data.Buttons & PSP_CTRL_SQUARE) {
+			*type = TARGET_ORIG;
+			break;
+		}
+	}
+}
+
+int save_config(int type)
+{
+	SceUID fd;
+
+	fd = sceIoOpen(CFG_PATH, PSP_O_WRONLY | PSP_O_CREAT | PSP_O_TRUNC, 0777);
+
+	if(fd < 0) {
+		return fd;
+	}
+
+	sceIoWrite(fd, &type, sizeof(type));
+	sceIoClose(fd);
+
+	return 0;
+}
+
 int loadexec_thread(SceSize args, void *argp)
 {
 	int ret, status;
-	char *init_file;
+	int type;
 
-	init_file = sceKernelInitFileName();
-	printk("init_file = %s\n", init_file);
-	ret = launch_pops(init_file);
+	printk("%s: started\n", __func__);
+
+	type = TARGET_ORIG;
+
+	get_target(&type);
+	ret = load_popsloader();
+
+	if(ret < 0) {
+		reboot_vsh_with_error(ret);
+	}
+
+	save_config(type);
+	printk("init_file = %s\n", g_initfile);
+	ret = launch_pops(g_initfile);
 	printk("launch_pops -> 0x%08X\n", ret);
-
 	ret = sceKernelStopUnloadSelfModule(0, NULL, &status, NULL);
 
 	return 0;
 }
 
+int popsloader_patch_chain(SceModule2 *mod)
+{
+	int thid;
+
+	printk("%s: %s\n", __func__, mod->modname);
+
+	if(0 == strcmp(mod->modname, "pops")) {
+		MAKE_DUMMY_FUNCTION_RETURN_1(mod->entry_addr);
+		sync_cache();
+		thid = sceKernelCreateThread("loadexec_thread", loadexec_thread, 0x1A, 0xF00, 0, NULL);
+
+		if(thid>=0) {
+			sceKernelStartThread(thid, 0, NULL);
+		}
+	}
+
+	if(g_previous)
+		return g_previous(mod);
+	
+	return 0;
+}
+
 int module_start(SceSize args, void* argp)
 {
-	int ret;
-	int thid;
+	SceCtrlData ctrl_data;
+	char *init_file;
+
+	init_file = sceKernelInitFileName();
+	strcpy(g_initfile, init_file);
 
 	// popscore loaded, no need to reboot
 	if(sceKernelFindModuleByName("popscore") != NULL) {
-		return 0;
+		return 1;
 	}
 	
 	psp_fw_version = sceKernelDevkitVersion();
@@ -173,16 +277,10 @@ int module_start(SceSize args, void* argp)
 	printk_init();
 	mount_memory_stick();
 
-	ret = load_popsloader();
+	sceCtrlReadBufferPositive(&ctrl_data, 1);
 
-	if(ret < 0) {
-		reboot_vsh_with_error(ret);
-	}
-
-	thid = sceKernelCreateThread("loadexec_thread", loadexec_thread, 0x1A, 0xF00, 0, NULL);
-
-	if(thid>=0) {
-		sceKernelStartThread(thid, args, argp);
+	if(ctrl_data.Buttons & PSP_CTRL_RTRIGGER) {
+		g_previous = sctrlHENSetStartModuleHandler(&popsloader_patch_chain);
 	}
 	
 	return 0;

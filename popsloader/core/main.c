@@ -24,6 +24,7 @@
 #include <pspsysmem_kernel.h>
 #include <pspiofilemgr_kernel.h>
 #include <psprtc.h>
+#include "popsloader.h"
 #include "utils.h"
 #include "libs.h"
 #include "strsafe.h"
@@ -261,6 +262,38 @@ int test_thread(SceSize args, void *argp)
 	return 0;
 }
 
+int load_config(void)
+{
+	SceUID fd;
+	int type;
+
+	fd = sceIoOpen(CFG_PATH, PSP_O_RDONLY, 0777);
+
+	if(fd < 0) {
+		return fd;
+	}
+
+	sceIoRead(fd, &type, 4);
+	sceIoClose(fd);
+
+	switch(type) {
+		case TARGET_620:
+			pops_fw_version = FW_620;
+			break;
+		case TARGET_635:
+			pops_fw_version = FW_635;
+			break;
+		case TARGET_639:
+			pops_fw_version = FW_639;
+			break;
+		case TARGET_ORIG:
+			return -1;
+			break;
+	}
+
+	return 0;
+}
+
 int module_start(SceSize args, void* argp)
 {
 	int thid;
@@ -270,6 +303,11 @@ int module_start(SceSize args, void* argp)
 	psp_model = sceKernelGetModel();
 	printk_init();
 	mount_memory_stick();
+
+	if(-1 == load_config()) {
+		return 1;
+	}
+
 	setup_nid_resolver();
 	sctrlSetCustomStartModule(&custom_start_module);
 	g_previous = sctrlHENSetStartModuleHandler(&popsloader_patch_chain);

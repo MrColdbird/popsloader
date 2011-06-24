@@ -26,9 +26,6 @@
 #define printk_init(...)
 #endif
 
-#define BASE_PATH "ms0:/seplugins/popsloader/"
-#define MODULE_PATH BASE_PATH "modules/"
-
 extern u32 psp_fw_version;
 extern u32 psp_model;
 extern u32 pops_fw_version;
