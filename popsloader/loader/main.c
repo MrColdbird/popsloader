@@ -170,7 +170,7 @@ int module_start(SceSize args, void* argp)
 	
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
-	pspDebugScreenInit();
+	printk_init();
 	mount_memory_stick();
 
 	ret = load_popsloader();

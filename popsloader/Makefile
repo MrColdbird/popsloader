@@ -1,7 +1,7 @@
 EXTRA_OPTIONS = -j4
 
 all:
-	make $(EXTRA_OPTIONS) -C popcorn CONFIG_620=1 CONFIG_639=1 CONFIG_635=1 CONFIG_500=1 DEBUG=1
+	make $(EXTRA_OPTIONS) -C popcorn CONFIG_620=1 CONFIG_639=1 CONFIG_635=1 CONFIG_500=1 #DEBUG=1
 	make $(EXTRA_OPTIONS) -C loader 
 	make $(EXTRA_OPTIONS) -C core
 	@mkdir dist || true

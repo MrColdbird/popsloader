@@ -266,7 +266,7 @@ int module_start(SceSize args, void* argp)
 	pops_fw_version = FW_635;
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
-	pspDebugScreenInit();
+	printk_init();
 	mount_memory_stick();
 	setup_nid_resolver();
 	sctrlSetCustomStartModule(&custom_start_module);

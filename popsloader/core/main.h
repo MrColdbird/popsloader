@@ -18,8 +18,13 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#ifdef DEBUG
 #define printk pspDebugScreenPrintf
 #define printk_init pspDebugScreenInit
+#else
+#define printk(...)
+#define printk_init(...)
+#endif
 
 #define BASE_PATH "ms0:/seplugins/popsloader/"
 #define MODULE_PATH BASE_PATH "modules/"
