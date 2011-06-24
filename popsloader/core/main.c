@@ -251,7 +251,7 @@ int test_thread(SceSize args, void *argp)
 	int ret;
 	SceModule* mod;
 
-	ret = sceKernelLoadModule("ms0:/seplugins/popsloader/modules/500/popsman.prx", 0, NULL);
+	ret = sceKernelLoadModule("ms0:/seplugins/popsloader/modules/635/popsman.prx", 0, NULL);
 	mod = sceKernelFindModuleByUID(ret);
 	fix_nid(mod);
 	ret = sceKernelStartModule(ret, 0, 0, 0, 0);
@@ -263,7 +263,7 @@ int module_start(SceSize args, void* argp)
 {
 	int thid;
 
-	pops_fw_version = FW_500;
+	pops_fw_version = FW_635;
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
 	pspDebugScreenInit();
@@ -274,7 +274,7 @@ int module_start(SceSize args, void* argp)
 
 	(void)thid;
 
-#if 1
+#if 0
 	thid = sceKernelCreateThread("test", test_thread, 0x1A, 0xF00, 0, NULL);
 
 	if(thid>=0) {
