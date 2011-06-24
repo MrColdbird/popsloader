@@ -30,6 +30,11 @@
 #include "systemctrl.h"
 #include "main.h"
 
+struct ModuleList {
+	char *path;
+	char *mod_name;
+};
+
 PSP_MODULE_INFO("popscore", 0x1007, 1, 0);
 
 u32 psp_fw_version;
@@ -109,7 +114,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 	char newpath[128];
 	
 	if(is_pops(path)) {
-		if(pops_fw_version == FW_635) {
+		if(pops_fw_version == FW_635 || pops_fw_version == FW_639) {
 			sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			path = newpath;
 		} else if(pops_fw_version == FW_620) {
@@ -149,7 +154,6 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 
 	if(ret < 0) {
 		printk("%s: unload %s -> 0x%08X\n", __func__, modname, ret);
-		sceKernelDelayThread(1000000);
 		return ret;
 	}
 
@@ -190,44 +194,27 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 	return modid;
 }
 
+static struct ModuleList g_list[] = {
+	{ "popsman.prx",		"scePops_Manager" },
+	{ "popcorn.prx",		"PROPopcornManager" },
+	{ "libpspvmc.prx",		"pspvmc_Library" },
+	{ "pafmini.prx",		"scePaf_Module" },
+	{ "common_util.prx",	"sceVshCommonUtil_Module" },
+};
+
 int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, SceKernelSMOption *opt)
 {
-	int ret;
+	int ret, i;
 	char modpath[128];
 
-	sprintf(modpath, "%spopsman.prx", get_module_prefix());
-	ret = replace_module(modid, argsize, argp, modstatus, opt, "scePops_Manager", modpath);
+	for(i=0; i<NELEMS(g_list); ++i) {
+		sprintf(modpath, "%s%s", get_module_prefix(), g_list[i].path);
 
-	if(ret >= 0) {
-		return ret;
-	}
+		ret = replace_module(modid, argsize, argp, modstatus, opt, g_list[i].mod_name, modpath);
 
-	sprintf(modpath, "%spopcorn.prx", get_module_prefix());
-	ret = replace_module(modid, argsize, argp, modstatus, opt, "PROPopcornManager", modpath);
-
-	if(ret >= 0) {
-		return ret;
-	}
-
-	sprintf(modpath, "%slibpspvmc.prx", get_module_prefix());
-	ret = replace_module(modid, argsize, argp, modstatus, opt, "pspvmc_Library", modpath);
-
-	if(ret >= 0) {
-		return ret;
-	}
-
-	sprintf(modpath, "%spafmini.prx", get_module_prefix());
-	ret = replace_module(modid, argsize, argp, modstatus, opt, "scePaf_Module", modpath);
-
-	if(ret >= 0) {
-		return ret;
-	}
-
-	sprintf(modpath, "%scommon_util.prx", get_module_prefix());
-	ret = replace_module(modid, argsize, argp, modstatus, opt, "sceVshCommonUtil_Module", modpath);
-
-	if(ret >= 0) {
-		return ret;
+		if(ret >= 0) {
+			return ret;
+		}
 	}
 
 	return -1;
