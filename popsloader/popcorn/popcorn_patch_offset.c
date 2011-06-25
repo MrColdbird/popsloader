@@ -239,7 +239,7 @@ PatchOffset g_600_offsets = {
 			{ 0x000CC82C, 0x0000D6B8 }, // 02G
 			{ 0x000CC82C, 0x0000D6B8 }, // 03G
 			{ 0x000CC87C, 0x0000D6FC }, // 04G
-			{ 0x000CE4E8, 0x0000DE08 }, // 05G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // 05G TODO
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
@@ -250,7 +250,7 @@ PatchOffset g_600_offsets = {
 			0x0002E440, // 02G
 			0x0002E440, // 03G
 			0x0002E488, // 04G
-			0x0002FF50, // 05G
+			0xDEADBEEF, // 05G TODO
 			0xDEADBEEF, // unused
 			0xDEADBEEF, // unused
 			0xDEADBEEF, // unused
@@ -261,7 +261,7 @@ PatchOffset g_600_offsets = {
 			0x0001C404, // 02G
 			0x0001C404, // 03G
 			0x0001C44C, // 04G
-			0x0001CCC4, // 05G
+			0xDEADBEEF, // 05G TODO
 			0xDEADBEEF, // unused
 			0xDEADBEEF, // unused
 			0xDEADBEEF, // unused
