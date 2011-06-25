@@ -59,7 +59,6 @@ int save_config(void)
 static int _load_config(void)
 {
 	SceUID fd;
-	int type;
 	char path[256];
 
 	sprintf(path, "%s%s", is_ef0() ? "ef" : "ms", CFG_PATH);
@@ -90,5 +89,5 @@ int load_config(void)
 
 void def_config(struct popsloader_config *conf)
 {
-	conf->target_type = TARGET_ORIG;
+	conf->pops_fw_version = psp_fw_version;
 }

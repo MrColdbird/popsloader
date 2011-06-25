@@ -158,7 +158,7 @@ int launch_pops(char *path)
 
 static char g_initfile[256];
 
-static void get_target(int *type)
+static void get_pops_fw_version(int *fw_version)
 {
 	SceCtrlData ctrl_data;
 	int line;
@@ -178,49 +178,43 @@ static void get_target(int *type)
 	pspDebugScreenPrintf("Sqa: Original\n");
 	pspDebugScreenSetXY(68/2, line++);
 
-	*type = TARGET_ORIG;
+	*fw_version = psp_fw_version;
 
 	while(1) {
 		sceCtrlReadBufferPositive(&ctrl_data, 1);
 
 		if(ctrl_data.Buttons & PSP_CTRL_CROSS) {
-			*type = TARGET_620;
+			*fw_version = FW_620;
 			break;
 		}
 
 		if(ctrl_data.Buttons & PSP_CTRL_CIRCLE) {
-			*type = TARGET_635;
+			*fw_version = FW_635;
 			break;
 		}
 
 		if(ctrl_data.Buttons & PSP_CTRL_TRIANGLE) {
-			*type = TARGET_639;
+			*fw_version = FW_639;
 			break;
 		}
 
 		if(ctrl_data.Buttons & PSP_CTRL_SQUARE) {
-			*type = TARGET_ORIG;
+			*fw_version = psp_fw_version;
 			break;
 		}
 	}
 }
 
-int loadexec_thread(SceSize args, void *argp)
+static void loadexec_pops(void)
 {
 	int ret, status;
 
-	printk("%s: started\n", __func__);
-
-	g_conf.target_type = TARGET_ORIG;
-
-	get_target(&g_conf.target_type);
 	ret = load_popsloader();
 
 	if(ret < 0) {
 		reboot_vsh_with_error(ret);
 	}
 
-	save_config();
 	printk("init_file = %s\n", g_initfile);
 	ret = launch_pops(g_initfile);
 	printk("launch_pops -> 0x%08X\n", ret);
@@ -230,24 +224,61 @@ int loadexec_thread(SceSize args, void *argp)
 	}
 
 	ret = sceKernelStopUnloadSelfModule(0, NULL, &status, NULL);
+}
+
+int launch_thread(SceSize args, void *argp)
+{
+	printk("%s: started\n", __func__);
+	loadexec_pops();
 
 	return 0;
 }
 
+int ui_thread(SceSize args, void *argp)
+{
+	printk("%s: started\n", __func__);
+	g_conf.pops_fw_version = psp_fw_version;
+	get_pops_fw_version(&g_conf.pops_fw_version);
+	save_config();
+	loadexec_pops();
+
+	return 0;
+}
+
+static SceUID create_launch_thread(void)
+{
+	SceUID thid;
+
+	thid = sceKernelCreateThread("launch_thread", &launch_thread, 0x1A, 0xF00, 0, NULL);
+
+	if(thid >= 0) {
+		sceKernelStartThread(thid, 0, NULL);
+	}
+
+	return thid;
+}
+
+static SceUID create_ui_thread(void)
+{
+	SceUID thid;
+
+	thid = sceKernelCreateThread("ui_thread", &ui_thread, 0x1A, 0xF00, 0, NULL);
+
+	if(thid >= 0) {
+		sceKernelStartThread(thid, 0, NULL);
+	}
+
+	return thid;
+}
+
 int popsloader_patch_chain(SceModule2 *mod)
 {
-	int thid;
-
 	printk("%s: %s\n", __func__, mod->modname);
 
 	if(0 == strcmp(mod->modname, "pops")) {
 		MAKE_DUMMY_FUNCTION_RETURN_1(mod->entry_addr);
 		sync_cache();
-		thid = sceKernelCreateThread("loadexec_thread", loadexec_thread, 0x1A, 0xF00, 0, NULL);
-
-		if(thid>=0) {
-			sceKernelStartThread(thid, 0, NULL);
-		}
+		create_ui_thread();
 	}
 
 	if(g_previous)
@@ -273,11 +304,14 @@ int module_start(SceSize args, void* argp)
 	psp_model = sceKernelGetModel();
 	printk_init();
 	mount_memory_stick();
+	load_config();
 
 	sceCtrlReadBufferPositive(&ctrl_data, 1);
 
 	if(ctrl_data.Buttons & PSP_CTRL_RTRIGGER) {
 		g_previous = sctrlHENSetStartModuleHandler(&popsloader_patch_chain);
+	} else if(g_conf.pops_fw_version != psp_fw_version) {
+		create_launch_thread();
 	}
 	
 	return 0;

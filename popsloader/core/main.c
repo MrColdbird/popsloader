@@ -277,10 +277,11 @@ int module_start(SceSize args, void* argp)
 	printk_init();
 	mount_memory_stick();
 
-	if(-1 == load_config()) {
+	if(-1 == load_config() || g_conf.pops_fw_version == psp_fw_version) {
 		return 1;
 	}
 
+	pops_fw_version = g_conf.pops_fw_version;
 	setup_nid_resolver();
 	sctrlSetCustomStartModule(&custom_start_module);
 	g_previous = sctrlHENSetStartModuleHandler(&popsloader_patch_chain);
