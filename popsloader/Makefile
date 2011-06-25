@@ -12,6 +12,12 @@ all:
 	@cp -f core/popscore.prx dist
 	@cp -rf modules dist
 	make $(EXTRA_OPTIONS) clean -C popcorn
+	make $(EXTRA_OPTIONS) CONFIG_600=1 -C popcorn
+	@cp -f popcorn/popcorn.prx dist/modules/600/
+	make $(EXTRA_OPTIONS) clean -C popcorn
+	make $(EXTRA_OPTIONS) CONFIG_610=1 -C popcorn
+	@cp -f popcorn/popcorn.prx dist/modules/610/
+	make $(EXTRA_OPTIONS) clean -C popcorn
 	make $(EXTRA_OPTIONS) CONFIG_620=1 -C popcorn
 	@cp -f popcorn/popcorn.prx dist/modules/620/
 	make $(EXTRA_OPTIONS) clean -C popcorn

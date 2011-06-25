@@ -108,6 +108,10 @@ static inline const char *get_module_prefix(void)
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "635");
 	} else if(pops_fw_version == FW_620) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "620");
+	} else if(pops_fw_version == FW_610) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "610");
+	} else if(pops_fw_version == FW_600) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "600");
 	} else if(pops_fw_version == FW_500) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "500");
 	} else {
@@ -127,7 +131,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 		if(pops_fw_version == FW_635 || pops_fw_version == FW_639) {
 			sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			path = newpath;
-		} else if(pops_fw_version == FW_620) {
+		} else if(pops_fw_version == FW_620 || pops_fw_version == FW_610 || pops_fw_version == FW_600) {
 			if(psp_model == PSP_GO || psp_model == PSP_4000) {
 				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			} else {

@@ -18,8 +18,8 @@
 #include <pspsdk.h>
 #include "popcorn_patch_offset.h"
 
-#if !defined(CONFIG_635) && !defined(CONFIG_620) && !defined(CONFIG_639) && !defined(CONFIG_500)
-#error You have to define CONFIG_620 or CONFIG_635 or CONFIG_639 or CONFIG_500
+#if !defined(CONFIG_635) && !defined(CONFIG_620) && !defined(CONFIG_639) && !defined(CONFIG_610) && !defined(CONFIG_600) && !defined(CONFIG_500)
+#error You have to define one of CONFIG_FW_VERSION
 #endif
 
 #ifdef CONFIG_639
@@ -172,6 +172,106 @@ PatchOffset g_620_offsets = {
 };
 #endif
 
+#ifdef CONFIG_610
+PatchOffset g_610_offsets = {
+	.fw_version = FW_610,
+	.popsman_patch = {
+		.get_rif_path = 0x00000190,
+		.get_rif_path_call1 = 0x0000239C,
+		.get_rif_path_call2 = 0x0000291C,
+		.sceNpDrmGetVersionKeyCall = 0x000025C8,
+		.scePspNpDrm_driver_9A34AC9F_Call = 0x00002A88,
+		.scePopsManLoadModuleCheck = 0x00001A48,
+	},
+	.pops_patch = {
+		.decomp = {
+			{ 0x000CC83C, 0x0000D6B8 }, // 01G
+			{ 0x000CC83C, 0x0000D6B8 }, // 02G
+			{ 0x000CC83C, 0x0000D6B8 }, // 03G
+			{ 0x000CC88C, 0x0000D6FC }, // 04G
+			{ 0x000CE4E8, 0x0000DE08 }, // 05G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+		},
+		.ICON0SizeOffset = {
+			0x0002E454, // 01G
+			0x0002E454, // 02G
+			0x0002E454, // 03G
+			0x0002E49C, // 04G
+			0x0002FF50, // 05G
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+		},
+		.manualNameCheck = {
+			0x0001C418, // 01G
+			0x0001C418, // 02G
+			0x0001C418, // 03G
+			0x0001C460, // 04G
+			0x0001CCC4, // 05G
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+		},
+		.sceMeAudio_67CD7972_NID = 0xF43E573A,
+	},
+};
+#endif
+
+#ifdef CONFIG_600
+PatchOffset g_600_offsets = {
+	.fw_version = FW_600,
+	.popsman_patch = {
+		.get_rif_path = 0x00000190,
+		.get_rif_path_call1 = 0x0000239C,
+		.get_rif_path_call2 = 0x0000291C,
+		.sceNpDrmGetVersionKeyCall = 0x000025C8,
+		.scePspNpDrm_driver_9A34AC9F_Call = 0x00002A88,
+		.scePopsManLoadModuleCheck = 0x00001A48,
+	},
+	.pops_patch = {
+		.decomp = {
+			{ 0x000CC82C, 0x0000D6B8 }, // 01G
+			{ 0x000CC82C, 0x0000D6B8 }, // 02G
+			{ 0x000CC82C, 0x0000D6B8 }, // 03G
+			{ 0x000CC87C, 0x0000D6FC }, // 04G
+			{ 0x000CE4E8, 0x0000DE08 }, // 05G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+		},
+		.ICON0SizeOffset = {
+			0x0002E440, // 01G
+			0x0002E440, // 02G
+			0x0002E440, // 03G
+			0x0002E488, // 04G
+			0x0002FF50, // 05G
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+		},
+		.manualNameCheck = {
+			0x0001C404, // 01G
+			0x0001C404, // 02G
+			0x0001C404, // 03G
+			0x0001C44C, // 04G
+			0x0001CCC4, // 05G
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // unused
+		},
+		.sceMeAudio_67CD7972_NID = 0xF43E573A,
+	},
+};
+#endif
+
 #ifdef CONFIG_500
 PatchOffset g_500_offsets = {
 	.fw_version = FW_500,
@@ -241,6 +341,18 @@ void setup_patch_offset_table(u32 fw_version)
 #ifdef CONFIG_620
    	if(fw_version == g_620_offsets.fw_version) {
 		g_offs = &g_620_offsets;
+	}
+#endif
+
+#ifdef CONFIG_610
+   	if(fw_version == g_610_offsets.fw_version) {
+		g_offs = &g_610_offsets;
+	}
+#endif
+
+#ifdef CONFIG_600
+   	if(fw_version == g_600_offsets.fw_version) {
+		g_offs = &g_600_offsets;
 	}
 #endif
 

@@ -35,40 +35,19 @@ u32 nid_fix_size = 0;
 
 void setup_nid_resolver(void)
 {
-	if(pops_fw_version == FW_639 && psp_fw_version == FW_620) {
-		nid_fix_size = nid_fix_635_to_620_size;
-		nid_fix = nid_fix_635_to_620;
+	if(psp_fw_version == FW_620) {
+		if(pops_fw_version == FW_635 || pops_fw_version == FW_639) {
+			nid_fix_size = nid_fix_635_to_620_size;
+			nid_fix = nid_fix_635_to_620;
+		}
 	}
 
-	if(pops_fw_version == FW_635 && psp_fw_version == FW_620) {
-		nid_fix_size = nid_fix_635_to_620_size;
-		nid_fix = nid_fix_635_to_620;
+	if(psp_fw_version == FW_635 || psp_fw_version == FW_639) {
+		if(pops_fw_version == FW_600 || pops_fw_version == FW_610 || pops_fw_version == FW_620) {
+			nid_fix_size = nid_fix_620_to_635_size;
+			nid_fix = nid_fix_620_to_635;
+		}
 	}
-
-#if 0
-	if(pops_fw_version == FW_635 && psp_fw_version == FW_639) {
-		nid_fix_size = nid_fix_635_to_639_size;
-		nid_fix = nid_fix_635_to_639;
-	}
-#endif
-
-	if(pops_fw_version == FW_620 && psp_fw_version == FW_639) {
-		nid_fix_size = nid_fix_620_to_635_size;
-		nid_fix = nid_fix_620_to_635;
-	}
-
-	if(pops_fw_version == FW_620 && psp_fw_version == FW_635) {
-		nid_fix_size = nid_fix_620_to_635_size;
-		nid_fix = nid_fix_620_to_635;
-	}
-
-	// try built in NID resolver first
-#if 0
-	if(pops_fw_version == FW_500 && psp_fw_version == FW_639) {
-		nid_fix_size = nid_fix_500_to_635_size;
-		nid_fix = nid_fix_500_to_635;
-	}
-#endif
 }
 
 resolver_config* get_nid_resolver(const char *libname)
