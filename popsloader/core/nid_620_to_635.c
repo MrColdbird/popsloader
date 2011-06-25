@@ -116,9 +116,9 @@ static nid_entry sceCtrl_driver_nid[] = {
 };
 
 static nid_entry scePadSvc_driver_nid[] = {
-	{ 0x1971BAE0, 0x2F9A534A, },
-	{ 0x3B0567D6, 0x773BA62B, },
-	{ 0x79B60777, 0x830FC570, },
+	{ 0x1971BAE0, 0x830FC570, },
+	{ 0x3B0567D6, 0x2F9A534A, },
+	{ 0x79B60777, 0x773BA62B, },
 };
 
 static nid_entry InitForKernel_nid[] = {

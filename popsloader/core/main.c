@@ -128,7 +128,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 			sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			path = newpath;
 		} else if(pops_fw_version == FW_620) {
-			if(psp_model == 3) {
+			if(psp_model == PSP_GO || psp_model == PSP_4000) {
 				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			} else {
 				sprintf(newpath, "%spops.prx", get_module_prefix());
@@ -144,6 +144,10 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 	}
 
 	modid = sceKernelLoadModule(path, flags, option);
+
+	if(modid < 0) {
+		printk("%s: load module -> 0x%08X\n", __func__, modid);
+	}
 
 	return modid;
 }
