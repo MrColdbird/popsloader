@@ -178,6 +178,11 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 
 	if(ret < 0) {
 		printk("%s: unload %s -> 0x%08X\n", __func__, modname, ret);
+
+#ifdef DEBUG
+		sceKernelDelayThread(2000000);
+#endif
+
 		return ret;
 	}
 
@@ -189,7 +194,11 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 
 	if(modid < 0) {
 		printk("%s: load module %s -> 0x%08X\n", __func__, redir_path, modid);
-		sceKernelDelayThread(1000000);
+
+#ifdef DEBUG
+		sceKernelDelayThread(2000000);
+#endif
+
 		return modid;
 	}
 
@@ -219,6 +228,12 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 	}
 	
 	printk("%s: start module %s -> 0x%08X\n", __func__, redir_path, modid);
+
+#ifdef DEBUG
+	if(modid < 0) {
+		sceKernelDelayThread(2000000);
+	}
+#endif
 
 	return modid;
 }
