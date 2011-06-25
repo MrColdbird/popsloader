@@ -44,17 +44,22 @@ u32 pops_fw_version;
 
 static STMOD_HANDLER g_previous = NULL;
 
+static inline int is_ef0(void)
+{
+	return psp_model == PSP_GO && sctrlKernelBootFrom() == 0x50 ? 1 : 0;
+}
+
 void mount_memory_stick(void)
 {
 	int dfd;
 	char *devname = "ms0:/";
 
-	if(psp_model == PSP_GO && sctrlKernelBootFrom() == 0x50) {
+	if(is_ef0()) {
 		devname = "ef0:/";
 	}
 
 	do {
-		dfd = sceIoDopen("ms0:/");
+		dfd = sceIoDopen(devname);
 
 		if(dfd >= 0)
 			break;
@@ -98,13 +103,13 @@ static inline const char *get_module_prefix(void)
 	static char buf[80];
 
 	if(pops_fw_version == FW_639) {
-		sprintf(buf, "%s%s/", MODULE_PATH, "639");
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "639");
 	} else if(pops_fw_version == FW_635) {
-		sprintf(buf, "%s%s/", MODULE_PATH, "635");
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "635");
 	} else if(pops_fw_version == FW_620) {
-		sprintf(buf, "%s%s/", MODULE_PATH, "620");
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "620");
 	} else if(pops_fw_version == FW_500) {
-		sprintf(buf, "%s%s/", MODULE_PATH, "500");
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "500");
 	} else {
 		printk("%s: Unknown version: 0x%08X\n", __func__, pops_fw_version);
 		asm("break");
@@ -266,8 +271,10 @@ int load_config(void)
 {
 	SceUID fd;
 	int type;
+	char path[256];
 
-	fd = sceIoOpen(CFG_PATH, PSP_O_RDONLY, 0777);
+	sprintf(path, "%s%s", is_ef0() ? "ef" : "ms", CFG_PATH);
+	fd = sceIoOpen(path, PSP_O_RDONLY, 0777);
 
 	if(fd < 0) {
 		return fd;

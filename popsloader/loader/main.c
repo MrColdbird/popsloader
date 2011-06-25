@@ -41,6 +41,11 @@ void *module_buffer = NULL;
 u32 module_size = 0;
 STMOD_HANDLER g_previous = NULL;
 
+static inline int is_ef0(void)
+{
+	return psp_model == PSP_GO && sctrlKernelBootFrom() == 0x50 ? 1 : 0;
+}
+
 void mount_memory_stick(void)
 {
 	int dfd;
@@ -101,8 +106,10 @@ static void reboot_vsh_with_error(u32 error)
 int load_popsloader(void)
 {
 	int fd;
+	char path[256];
 
-	fd = sceIoOpen(BASE_PATH "popscore.prx", PSP_O_RDONLY, 0);
+	sprintf(path, "%s%s", is_ef0() ? "ef" : "ms", BASE_PATH "popscore.prx");
+	fd = sceIoOpen(path, PSP_O_RDONLY, 0);
 
 	if (fd < 0) {
 		printk("%s: sceIoOpen@0x%08X\n", __func__, fd);
@@ -131,12 +138,13 @@ int load_popsloader(void)
 int launch_pops(char *path)
 {
 	struct SceKernelLoadExecVSHParam param;
-	int apitype;
+	int apitype, ret;
 	const char *mode;
 
-	// TODO get PSPgo apitype (maybe 0x153)
-	apitype = 0x144;
+	apitype = is_ef0() ? 0x155: 0x144;
 	mode = "pops";
+
+	printk("%s: apitype 0x%X\n", __func__, apitype);
 
 	memset(&param, 0, sizeof(param));
 	param.size = sizeof(param);
@@ -144,7 +152,9 @@ int launch_pops(char *path)
 	param.argp = (char *) path;
 	param.key = mode;
 
-	return sctrlKernelLoadExecVSHWithApitype(apitype, path, &param);
+	ret = sctrlKernelLoadExecVSHWithApitype(apitype, path, &param);
+
+	return ret;
 }
 
 static char g_initfile[256];
@@ -199,8 +209,10 @@ static void get_target(int *type)
 int save_config(int type)
 {
 	SceUID fd;
+	char path[256];
 
-	fd = sceIoOpen(CFG_PATH, PSP_O_WRONLY | PSP_O_CREAT | PSP_O_TRUNC, 0777);
+	sprintf(path, "%s%s", is_ef0() ? "ef" : "ms", CFG_PATH);
+	fd = sceIoOpen(path, PSP_O_WRONLY | PSP_O_CREAT | PSP_O_TRUNC, 0777);
 
 	if(fd < 0) {
 		return fd;
@@ -232,6 +244,11 @@ int loadexec_thread(SceSize args, void *argp)
 	printk("init_file = %s\n", g_initfile);
 	ret = launch_pops(g_initfile);
 	printk("launch_pops -> 0x%08X\n", ret);
+
+	if(ret < 0) {
+		reboot_vsh_with_error(ret);
+	}
+
 	ret = sceKernelStopUnloadSelfModule(0, NULL, &status, NULL);
 
 	return 0;

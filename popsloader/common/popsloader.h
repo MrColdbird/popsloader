@@ -13,7 +13,7 @@ enum {
 	TARGET_639,
 };
 
-#define BASE_PATH "ms0:/seplugins/popsloader/"
+#define BASE_PATH "0:/seplugins/popsloader/"
 #define MODULE_PATH BASE_PATH "modules/"
 #define CFG_PATH BASE_PATH "pops.cfg"
 

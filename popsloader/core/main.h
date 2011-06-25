@@ -26,9 +26,6 @@
 #define printk_init(...)
 #endif
 
-#define BASE_PATH "ms0:/seplugins/popsloader/"
-#define MODULE_PATH BASE_PATH "modules/"
-
 #define UNKNOWNNID 0xDEADBEEF
 #define NID_ENTRY(libname) \
 	{ #libname, NELEMS(libname##_nid), libname##_nid, }
