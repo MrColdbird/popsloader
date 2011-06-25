@@ -35,6 +35,7 @@ static nid_entry SysMemForKernel_nid[] = {
 	{ 0x5339A163, 0xA4AC3934, },
 	{ 0x950BCB31, 0xFEB5C72B, },
 	{ 0xD7E24299, 0xF5780DAA, },
+	{ 0x4803B7F1, 0x02AEA33F, }, // for idmanager.prx
 };
 
 static nid_entry ModuleMgrForKernel_nid[] = {

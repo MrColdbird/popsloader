@@ -196,6 +196,7 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 
 	if(pops_fw_version == FW_500 && 0 == strcmp(modname, "scePops_Manager")) {
 		SceUID modid;
+		SceModule2 *mod_;
 		char path[256];
 
 		sprintf(path, "%sidmanager.prx", get_module_prefix());
@@ -208,6 +209,9 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 		}
 #endif
 
+		mod_ = (SceModule2*) sceKernelFindModuleByUID(modid);
+		fix_nid((SceModule*)mod_);
+		
 		modid = sceKernelStartModule(modid, 0, 0, 0, 0);
 	}
 
