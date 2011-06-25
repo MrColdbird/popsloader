@@ -1,5 +1,5 @@
 TARGET = popsloader
-OBJS = main.o ../common/utils.o ../common/vsnprintf.o
+OBJS = main.o ../common/utils.o ../common/vsnprintf.o ../common/conf.o
 
 #PRO_HOME = d:/PSP/635PRO
 

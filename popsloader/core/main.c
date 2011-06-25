@@ -267,40 +267,6 @@ int test_thread(SceSize args, void *argp)
 	return 0;
 }
 
-int load_config(void)
-{
-	SceUID fd;
-	int type;
-	char path[256];
-
-	sprintf(path, "%s%s", is_ef0() ? "ef" : "ms", CFG_PATH);
-	fd = sceIoOpen(path, PSP_O_RDONLY, 0777);
-
-	if(fd < 0) {
-		return fd;
-	}
-
-	sceIoRead(fd, &type, 4);
-	sceIoClose(fd);
-
-	switch(type) {
-		case TARGET_620:
-			pops_fw_version = FW_620;
-			break;
-		case TARGET_635:
-			pops_fw_version = FW_635;
-			break;
-		case TARGET_639:
-			pops_fw_version = FW_639;
-			break;
-		case TARGET_ORIG:
-			return -1;
-			break;
-	}
-
-	return 0;
-}
-
 int module_start(SceSize args, void* argp)
 {
 	int thid;

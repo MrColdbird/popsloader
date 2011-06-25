@@ -1,5 +1,5 @@
 TARGET = popscore
-OBJS = main.o resolve_nid.o ../common/utils.o ../common/libs.o ../common/vsnprintf.o
+OBJS = main.o resolve_nid.o ../common/utils.o ../common/libs.o ../common/vsnprintf.o ../common/conf.o
 
 OBJS += nid_635_to_620.o \
 		nid_635_to_639.o \

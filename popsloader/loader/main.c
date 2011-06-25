@@ -19,8 +19,6 @@
 #include <pspreg.h>
 #include <stdio.h>
 #include <string.h>
-#include <systemctrl.h>
-#include <systemctrl_se.h>
 #include <pspsysmem_kernel.h>
 #include <pspthreadman_kernel.h>
 #include <pspctrl.h>
@@ -31,6 +29,7 @@
 #include "libs.h"
 #include "strsafe.h"
 #include "systemctrl.h"
+#include "systemctrl_se.h"
 #include "main.h"
 
 PSP_MODULE_INFO("popsloader", 0x1007, 1, 0);
@@ -206,41 +205,22 @@ static void get_target(int *type)
 	}
 }
 
-int save_config(int type)
-{
-	SceUID fd;
-	char path[256];
-
-	sprintf(path, "%s%s", is_ef0() ? "ef" : "ms", CFG_PATH);
-	fd = sceIoOpen(path, PSP_O_WRONLY | PSP_O_CREAT | PSP_O_TRUNC, 0777);
-
-	if(fd < 0) {
-		return fd;
-	}
-
-	sceIoWrite(fd, &type, sizeof(type));
-	sceIoClose(fd);
-
-	return 0;
-}
-
 int loadexec_thread(SceSize args, void *argp)
 {
 	int ret, status;
-	int type;
 
 	printk("%s: started\n", __func__);
 
-	type = TARGET_ORIG;
+	g_conf.target_type = TARGET_ORIG;
 
-	get_target(&type);
+	get_target(&g_conf.target_type);
 	ret = load_popsloader();
 
 	if(ret < 0) {
 		reboot_vsh_with_error(ret);
 	}
 
-	save_config(type);
+	save_config();
 	printk("init_file = %s\n", g_initfile);
 	ret = launch_pops(g_initfile);
 	printk("launch_pops -> 0x%08X\n", ret);
