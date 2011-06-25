@@ -40,12 +40,22 @@ void setup_nid_resolver(void)
 			nid_fix_size = nid_fix_635_to_620_size;
 			nid_fix = nid_fix_635_to_620;
 		}
+
+		if(pops_fw_version == FW_500) {
+			nid_fix_size = nid_fix_500_to_620_size;
+			nid_fix = nid_fix_500_to_620;
+		}
 	}
 
 	if(psp_fw_version == FW_635 || psp_fw_version == FW_639) {
 		if(pops_fw_version == FW_600 || pops_fw_version == FW_610 || pops_fw_version == FW_620) {
 			nid_fix_size = nid_fix_620_to_635_size;
 			nid_fix = nid_fix_620_to_635;
+		}
+
+		if(pops_fw_version == FW_500) {
+			nid_fix_size = nid_fix_500_to_635_size;
+			nid_fix = nid_fix_500_to_635;
 		}
 	}
 }

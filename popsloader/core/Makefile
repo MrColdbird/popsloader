@@ -3,8 +3,9 @@ OBJS = main.o resolve_nid.o ../common/utils.o ../common/libs.o ../common/vsnprin
 
 OBJS += nid_635_to_620.o \
 		nid_635_to_639.o \
-		nid_620_to_635.o
-#		nid_500_to_635.o
+		nid_620_to_635.o \
+		nid_500_to_635.o \
+		nid_500_to_620.o
 
 #PRO_HOME = d:/PSP/635PRO
 

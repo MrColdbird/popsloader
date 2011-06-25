@@ -154,6 +154,10 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 
 	if(modid < 0) {
 		printk("%s: load module -> 0x%08X\n", __func__, modid);
+
+#ifdef DEBUG
+		sceKernelDelayThread(2000000);
+#endif
 	}
 
 	return modid;
@@ -188,6 +192,23 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 
 	if(redir_path == NULL) {
 		return 0;
+	}
+
+	if(pops_fw_version == FW_500 && 0 == strcmp(modname, "scePops_Manager")) {
+		SceUID modid;
+		char path[256];
+
+		sprintf(path, "%sidmanager.prx", get_module_prefix());
+		modid = sceKernelLoadModule(path, 0, NULL);
+
+#ifdef DEBUG
+		if(modid < 0) {
+			printk("%s: load module %s -> 0x%08X\n", __func__, path, modid);
+			sceKernelDelayThread(2000000);
+		}
+#endif
+
+		modid = sceKernelStartModule(modid, 0, 0, 0, 0);
 	}
 
 	modid = sceKernelLoadModule(redir_path, 0, NULL);
@@ -292,6 +313,14 @@ int test_thread(SceSize args, void *argp)
 
 	return 0;
 }
+
+#if 0
+// for those FW required idmanager.prx
+int sceIdMgr_driver_F464F91C(void)
+{
+	return 0;
+}
+#endif
 
 int module_start(SceSize args, void* argp)
 {
