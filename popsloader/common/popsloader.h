@@ -2,7 +2,7 @@
 #define POPSLOADER_H
 
 struct popsloader_config {
-	int pops_fw_version;
+	u32 pops_fw_version;
 };
 
 extern struct popsloader_config g_conf;
