@@ -1,5 +1,5 @@
 TARGET = popsloader
-OBJS = main.o ../common/utils.o ../common/vsnprintf.o ../common/conf.o
+OBJS = main.o ui.o ../common/utils.o ../common/vsnprintf.o ../common/conf.o
 
 #PRO_HOME = d:/PSP/635PRO
 
@@ -10,7 +10,7 @@ CFLAGS += -DDEBUG=1
 endif
 
 LDFLAGS = -mno-crt0 -nostartfiles -L. -L $(PRO_HOME)/libs
-LIBS = -lpspsystemctrl_kernel -lpspkubridge
+LIBS = -lpspsystemctrl_kernel -lpspkubridge -lpsppower_driver
 PSP_FW_VERSION=620
 PRX_EXPORTS = exports.exp
 

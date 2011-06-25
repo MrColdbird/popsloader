@@ -158,53 +158,6 @@ int launch_pops(char *path)
 
 static char g_initfile[256];
 
-static void get_pops_fw_version(int *fw_version)
-{
-	SceCtrlData ctrl_data;
-	int line;
-
-	line = 33 / 2 - 3;
-	pspDebugScreenInit();
-	pspDebugScreenSetXY(68/2 - sizeof("Select Mode:") / 2, line++);
-	pspDebugScreenPrintf("Select Mode:\n\n");
-	line++;
-	pspDebugScreenSetXY(68/2, line++);
-	pspDebugScreenPrintf("X: 6.20\n");
-	pspDebugScreenSetXY(68/2, line++);
-	pspDebugScreenPrintf("O: 6.35\n");
-	pspDebugScreenSetXY(68/2, line++);
-	pspDebugScreenPrintf("Tri: 6.39\n");
-	pspDebugScreenSetXY(68/2, line++);
-	pspDebugScreenPrintf("Sqa: Original\n");
-	pspDebugScreenSetXY(68/2, line++);
-
-	*fw_version = psp_fw_version;
-
-	while(1) {
-		sceCtrlReadBufferPositive(&ctrl_data, 1);
-
-		if(ctrl_data.Buttons & PSP_CTRL_CROSS) {
-			*fw_version = FW_620;
-			break;
-		}
-
-		if(ctrl_data.Buttons & PSP_CTRL_CIRCLE) {
-			*fw_version = FW_635;
-			break;
-		}
-
-		if(ctrl_data.Buttons & PSP_CTRL_TRIANGLE) {
-			*fw_version = FW_639;
-			break;
-		}
-
-		if(ctrl_data.Buttons & PSP_CTRL_SQUARE) {
-			*fw_version = psp_fw_version;
-			break;
-		}
-	}
-}
-
 static void loadexec_pops(void)
 {
 	int ret, status;

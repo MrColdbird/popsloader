@@ -30,4 +30,6 @@ extern u32 psp_fw_version;
 extern u32 psp_model;
 extern u32 pops_fw_version;
 
+int get_pops_fw_version(u32 *fw_version);
+
 #endif
