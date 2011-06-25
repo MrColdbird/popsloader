@@ -198,24 +198,21 @@ int ui_thread(SceSize args, void *argp)
 	return 0;
 }
 
-static SceUID create_launch_thread(void)
+static SceUID create_thread(int is_ui_thread)
 {
 	SceUID thid;
+	char *thread_name;
+	void *fp;
 
-	thid = sceKernelCreateThread("launch_thread", &launch_thread, 0x1A, 0xF00, 0, NULL);
-
-	if(thid >= 0) {
-		sceKernelStartThread(thid, 0, NULL);
+	if(is_ui_thread) {
+		thread_name = "ui_thread";
+		fp = &ui_thread;
+	} else {
+		thread_name = "launch_thread";
+		fp = &launch_thread;
 	}
 
-	return thid;
-}
-
-static SceUID create_ui_thread(void)
-{
-	SceUID thid;
-
-	thid = sceKernelCreateThread("ui_thread", &ui_thread, 0x1A, 0xF00, 0, NULL);
+	thid = sceKernelCreateThread(thread_name, fp, 0x1A, 0xF00, 0, NULL);
 
 	if(thid >= 0) {
 		sceKernelStartThread(thid, 0, NULL);
@@ -231,7 +228,7 @@ int popsloader_patch_chain(SceModule2 *mod)
 	if(0 == strcmp(mod->modname, "pops")) {
 		MAKE_DUMMY_FUNCTION_RETURN_1(mod->entry_addr);
 		sync_cache();
-		create_ui_thread();
+		create_thread(1);
 	}
 
 	if(g_previous)
@@ -264,7 +261,7 @@ int module_start(SceSize args, void* argp)
 	if(ctrl_data.Buttons & PSP_CTRL_RTRIGGER) {
 		g_previous = sctrlHENSetStartModuleHandler(&popsloader_patch_chain);
 	} else if(g_conf.pops_fw_version != psp_fw_version) {
-		create_launch_thread();
+		create_thread(0);
 	}
 	
 	return 0;
