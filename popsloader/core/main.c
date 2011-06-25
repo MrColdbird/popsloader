@@ -134,7 +134,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 		} else if(pops_fw_version == FW_620 || pops_fw_version == FW_610 || pops_fw_version == FW_600) {
 			if(psp_model == PSP_1000 || psp_model == PSP_2000 || psp_model == PSP_3000) {
 				sprintf(newpath, "%spops.prx", get_module_prefix());
-			} else if(psp_model == PSP_GO || psp_model == PSP_4000) {
+			} else if(psp_model == PSP_4000 || psp_model == PSP_GO) {
 				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			} else {
 				// 07g and 09g, try 04g driver
