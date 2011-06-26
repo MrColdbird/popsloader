@@ -961,13 +961,14 @@ int module_start(SceSize args, void* argp)
 	ret = sceIoGetstat(keypath, &stat);
 	g_keys_bin_found = 0;
 
+	sceKernelRegisterGetIdFunc(&get_keys);
+
 	if(ret == 0) {
 		ret = load_key(keypath, g_keys, sizeof(g_keys));
 
 		if(ret == 0) {
 			g_keys_bin_found = 1;
 			printk("keys.bin found\n");
-			sceKernelRegisterGetIdFunc(&get_keys);
 		}
 	}
 
