@@ -190,7 +190,6 @@ int launch_thread(SceSize args, void *argp)
 int ui_thread(SceSize args, void *argp)
 {
 	printk("%s: started\n", __func__);
-	g_conf.pops_fw_version = psp_fw_version;
 	get_pops_fw_version(&g_conf.pops_fw_version);
 	save_config();
 	loadexec_pops();
@@ -260,7 +259,7 @@ int module_start(SceSize args, void* argp)
 
 	if(ctrl_data.Buttons & PSP_CTRL_RTRIGGER) {
 		g_previous = sctrlHENSetStartModuleHandler(&popsloader_patch_chain);
-	} else if(g_conf.pops_fw_version != psp_fw_version) {
+	} else if(g_conf.pops_fw_version != 0) {
 		create_thread(0);
 	}
 	

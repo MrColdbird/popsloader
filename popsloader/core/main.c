@@ -371,7 +371,7 @@ int module_start(SceSize args, void* argp)
 	printk_init();
 	mount_memory_stick();
 
-	if(-1 == load_config() || g_conf.pops_fw_version == psp_fw_version) {
+	if(-1 == load_config() || g_conf.pops_fw_version == 0) {
 		return 1;
 	}
 

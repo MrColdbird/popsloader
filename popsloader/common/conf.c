@@ -89,5 +89,5 @@ int load_config(void)
 
 void def_config(struct popsloader_config *conf)
 {
-	conf->pops_fw_version = psp_fw_version;
+	conf->pops_fw_version = 0;
 }

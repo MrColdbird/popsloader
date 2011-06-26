@@ -184,12 +184,26 @@ struct Menu main_menu = {
 	NELEMS(main_menu_items),
 };
 
+int get_corrspending_fw(u32 fw_version)
+{
+	size_t i;
+
+	for(i=0; i<main_menu.size-1; ++i) {
+		if(main_menu.items[i].pops_fw_version == fw_version)
+			return i;
+	}
+
+	return main_menu.size - 1;
+}
+
 int get_pops_fw_version(u32 *fw_version)
 {
 	int is_done = 0, ret;
 
 	printk("%s: started\n", __func__);
 	pspDebugScreenInit();
+
+	main_menu.cur_sel = get_corrspending_fw(*fw_version);
 
 	while (!is_done) {
 		frame_start();
@@ -201,10 +215,6 @@ int get_pops_fw_version(u32 *fw_version)
 		}
 
 		frame_end();
-	}
-
-	if(main_menu.items[main_menu.cur_sel].pops_fw_version == 0) {
-		main_menu.items[main_menu.cur_sel].pops_fw_version = psp_fw_version;
 	}
 
 	*fw_version = main_menu.items[main_menu.cur_sel].pops_fw_version;
