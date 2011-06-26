@@ -316,7 +316,6 @@ int module_start(SceSize args, void* argp)
 {
 	int thid;
 
-	pops_fw_version = FW_639;
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
 	printk_init();
