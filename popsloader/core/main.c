@@ -194,27 +194,6 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 		return 0;
 	}
 
-	if(pops_fw_version == FW_500 && 0 == strcmp(modname, "scePops_Manager")) {
-		SceUID modid;
-		SceModule2 *mod_;
-		char path[256];
-
-		sprintf(path, "%sidmanager.prx", get_module_prefix());
-		modid = sceKernelLoadModule(path, 0, NULL);
-
-#ifdef DEBUG
-		if(modid < 0) {
-			printk("%s: load module %s -> 0x%08X\n", __func__, path, modid);
-			sceKernelDelayThread(2000000);
-		}
-#endif
-
-		mod_ = (SceModule2*) sceKernelFindModuleByUID(modid);
-		fix_nid((SceModule*)mod_);
-		
-		modid = sceKernelStartModule(modid, 0, 0, 0, 0);
-	}
-
 	modid = sceKernelLoadModule(redir_path, 0, NULL);
 
 	if(modid < 0) {
@@ -275,6 +254,7 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 {
 	int ret, i;
 	char modpath[128];
+	SceModule2 *mod;
 
 	for(i=0; i<NELEMS(g_list); ++i) {
 		sprintf(modpath, "%s%s", get_module_prefix(), g_list[i].path);
@@ -284,6 +264,12 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 		if(ret >= 0) {
 			return ret;
 		}
+	}
+
+	mod = (SceModule2*) sceKernelFindModuleByUID(modid);
+
+	if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
+		fix_nid((SceModule*)mod);
 	}
 
 	return -1;
@@ -318,13 +304,11 @@ int test_thread(SceSize args, void *argp)
 	return 0;
 }
 
-#if 0
 // for those FW required idmanager.prx
 int sceIdMgr_driver_F464F91C(void)
 {
 	return 0;
 }
-#endif
 
 int module_start(SceSize args, void* argp)
 {
@@ -333,7 +317,7 @@ int module_start(SceSize args, void* argp)
 	pops_fw_version = FW_639;
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
-	printk_init();
+	printk_init("ms0:/core.txt");
 	mount_memory_stick();
 
 	if(-1 == load_config() || g_conf.pops_fw_version == psp_fw_version) {

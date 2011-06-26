@@ -37,6 +37,7 @@ struct Hooks {
 };
 
 extern void patch_analog_imports(SceModule *mod);
+extern int sceKernelRegisterGetIdFunc(int (*)(char *path, u8 *key));
 
 SEConfig conf;
 
@@ -931,6 +932,13 @@ static void setup_psx_fw_version(u32 fw_version)
 	_SysMemUserForUser_315AD3A0(fw_version);
 }
 
+static int get_keys(char *filename, u8 *keys)
+{
+	memcpy(keys, g_keys, sizeof(g_keys));
+
+	return 0;
+}
+
 int module_start(SceSize args, void* argp)
 {
 	char keypath[128];
@@ -959,6 +967,7 @@ int module_start(SceSize args, void* argp)
 		if(ret == 0) {
 			g_keys_bin_found = 1;
 			printk("keys.bin found\n");
+			sceKernelRegisterGetIdFunc(&get_keys);
 		}
 	}
 
