@@ -48,9 +48,8 @@ static nid_entry LoadExecForKernel_nid[] = {
 
 static nid_entry sceImpose_driver_nid[] = {
 	{ 0x0BBCA0BF, 0x55864BD7, },
-	{ 0x4B02F047, 0xC94AC8E2, },
 	{ 0xA516434B, 0x4D849B71, },
-	{ 0xDA315C59, 0x25011AAB , },
+	{ 0xDA315C59, 0x25011AAB, },
 };
 
 static nid_entry sceSysreg_driver_nid[] = {
