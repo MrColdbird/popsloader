@@ -112,6 +112,8 @@ static inline const char *get_module_prefix(void)
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "610");
 	} else if(pops_fw_version == FW_600) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "600");
+	} else if(pops_fw_version == FW_550) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "550");
 	} else if(pops_fw_version == FW_500) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "500");
 	} else {
@@ -142,7 +144,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 			}
 
 			path = newpath;
-		} else if(pops_fw_version == FW_500) {
+		} else if(pops_fw_version == FW_500 || pops_fw_version == FW_550) {
 			sprintf(newpath, "%spops.prx", get_module_prefix());
 			path = newpath;
 		} else {
@@ -317,7 +319,7 @@ int module_start(SceSize args, void* argp)
 	pops_fw_version = FW_639;
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
-	printk_init("ms0:/core.txt");
+	printk_init();
 	mount_memory_stick();
 
 	if(-1 == load_config() || g_conf.pops_fw_version == psp_fw_version) {
