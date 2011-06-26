@@ -30,7 +30,6 @@
 #include "strsafe.h"
 #include "systemctrl.h"
 #include "main.h"
-#include "printk.h"
 
 struct ModuleList {
 	char *path;
@@ -222,7 +221,7 @@ static int load_start_module(const char *path)
 	mod = (SceModule2*) sceKernelFindModuleByUID(modid);
 
 	if(mod != NULL) {
-		fix_nid((SceModule2*)mod);
+		fix_nid((SceModule*)mod);
 	}
 
 	modid = sceKernelStartModule(modid, 0, 0, 0, 0);
@@ -447,7 +446,6 @@ int module_start(SceSize args, void* argp)
 
 	psp_fw_version = sceKernelDevkitVersion();
 	psp_model = sceKernelGetModel();
-//	printk_init();
 	printk_init("ms0:/core.txt");
 	mount_memory_stick();
 

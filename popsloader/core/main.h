@@ -18,10 +18,20 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#if 0
+//#define USE_PRINTK 1
+#undef USE_PRINTK
+
+#ifdef USE_PRINTK
+#include "printk.h"
+#else
 #ifdef DEBUG
 #define printk pspDebugScreenPrintf
-#define printk_init pspDebugScreenInit
+
+static inline void printk_init()
+{
+	pspDebugScreenInit();
+}
+
 #else
 #define printk(...)
 #define printk_init(...)
