@@ -284,15 +284,25 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 	if(mod != NULL) {
 		fix_nid((SceModule*)mod);
 
-		if(0 == strcmp(mod->modname, "scePops_Manager")) {
-			// patch sceImpose_driver import flags
-			if(pops_fw_version == FW_400) {
-				PspModuleImport *imp;
+		if(pops_fw_version == FW_400) {
+			PspModuleImport *imp;
 
+			if(0 == strcmp(mod->modname, "scePops_Manager")) {
+				// patch sceImpose_driver import flags
+				// because in 6.xx kernel scePops_Manager loads before sceImpose_driver
 				imp = find_import_lib((SceModule*)mod, "sceImpose_driver");
 				imp->attribute = 0x0009;
 			}
-		} 
+
+#if 0
+			if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
+				// patch sceAudio_driver import flags
+				// because in 4.xx kernel scePops_Manager doesn't have sceAudio_driver exported
+				imp = find_import_lib((SceModule*)mod, "sceAudio_driver");
+				imp->attribute = 0x0009;
+			}
+#endif
+		}
 
 		if(0 == strcmp(mod->modname, "scePaf_Module")) {
 			if(pops_fw_version == FW_400) {
@@ -349,7 +359,7 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 {
 	int ret, i;
 	char modpath[128];
-	SceModule2 *mod;
+//	SceModule2 *mod;
 
 	for(i=0; i<NELEMS(g_list); ++i) {
 		sprintf(modpath, "%s%s", get_module_prefix(), g_list[i].path);
@@ -361,6 +371,16 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 		}
 	}
 
+	if(pops_fw_version == FW_400) {
+		sprintf(modpath, "%s%s", get_module_prefix(), "impose.prx");
+		ret = replace_module(modid, argsize, argp, modstatus, opt, "sceImpose_Driver", modpath);
+
+		if(ret >= 0) {
+			return ret;
+		}
+	}
+
+#if 0
 	mod = (SceModule2*) sceKernelFindModuleByUID(modid);
 
 	if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
@@ -374,6 +394,7 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 			imp->attribute = 0x0009;
 		}
 	}
+#endif
 
 	return -1;
 }
@@ -381,31 +402,32 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 static u32 g_sceImposeGetParamOld_NID[] = {
 	0x4B02F047,
 	0x531C9778,
-	0x6F502C0A,
 };
 
 static int popsloader_patch_chain(SceModule2 *mod)
 {
 	printk("%s: %s\n", __func__, mod->modname);
 
-	if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
-		SceModule2 *mod_;
-		u32 sceImposeGetParam_NID = -1;
-		int i;
+	if(pops_fw_version == FW_500 || pops_fw_version == FW_550) {
+		if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
+			SceModule2 *mod_;
+			u32 sceImposeGetParam_NID = -1;
+			int i;
 
-		if(psp_fw_version == FW_620) {
-			sceImposeGetParam_NID = 0xC94AC8E2;
-		} else if(psp_fw_version == FW_635 || psp_fw_version == FW_639) {
-			sceImposeGetParam_NID = 0x4C4DF719;
-		} else {
-			asm("break");
-		}
+			if(psp_fw_version == FW_620) {
+				sceImposeGetParam_NID = 0xC94AC8E2;
+			} else if(psp_fw_version == FW_635 || psp_fw_version == FW_639) {
+				sceImposeGetParam_NID = 0x4C4DF719;
+			} else {
+				asm("break");
+			}
 
-		sceImposeGetParamNew = (void*)sctrlHENFindFunction("sceImpose_Driver", "sceImpose_driver", sceImposeGetParam_NID);
-		mod_ = (SceModule2*)sceKernelFindModuleByName("scePops_Manager");
+			sceImposeGetParamNew = (void*)sctrlHENFindFunction("sceImpose_Driver", "sceImpose_driver", sceImposeGetParam_NID);
+			mod_ = (SceModule2*)sceKernelFindModuleByName("scePops_Manager");
 
-		for(i=0; i<NELEMS(g_sceImposeGetParamOld_NID); ++i) {
-			hook_import_bynid((SceModule*)mod_, "sceImpose_driver", g_sceImposeGetParamOld_NID[i], _sceImposeGetParamOld, 0);
+			for(i=0; i<NELEMS(g_sceImposeGetParamOld_NID); ++i) {
+				hook_import_bynid((SceModule*)mod_, "sceImpose_driver", g_sceImposeGetParamOld_NID[i], _sceImposeGetParamOld, 0);
+			}
 		}
 	}
 
