@@ -294,7 +294,7 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 				imp->attribute = 0x0009;
 			}
 
-#if 0
+#if 1
 			if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
 				// patch sceAudio_driver import flags
 				// because in 4.xx kernel scePops_Manager doesn't have sceAudio_driver exported
@@ -359,7 +359,7 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 {
 	int ret, i;
 	char modpath[128];
-//	SceModule2 *mod;
+	SceModule2 *mod;
 
 	for(i=0; i<NELEMS(g_list); ++i) {
 		sprintf(modpath, "%s%s", get_module_prefix(), g_list[i].path);
@@ -371,6 +371,9 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 		}
 	}
 
+	(void)(mod);
+
+#if 0
 	if(pops_fw_version == FW_400) {
 		sprintf(modpath, "%s%s", get_module_prefix(), "impose.prx");
 		ret = replace_module(modid, argsize, argp, modstatus, opt, "sceImpose_Driver", modpath);
@@ -379,8 +382,9 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 			return ret;
 		}
 	}
+#endif
 
-#if 0
+#if 1
 	mod = (SceModule2*) sceKernelFindModuleByUID(modid);
 
 	if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
@@ -402,13 +406,14 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 static u32 g_sceImposeGetParamOld_NID[] = {
 	0x4B02F047,
 	0x531C9778,
+	0x6F502C0A,
 };
 
 static int popsloader_patch_chain(SceModule2 *mod)
 {
 	printk("%s: %s\n", __func__, mod->modname);
 
-	if(pops_fw_version == FW_500 || pops_fw_version == FW_550) {
+	if(pops_fw_version == FW_400 || pops_fw_version == FW_500 || pops_fw_version == FW_550) {
 		if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
 			SceModule2 *mod_;
 			u32 sceImposeGetParam_NID = -1;

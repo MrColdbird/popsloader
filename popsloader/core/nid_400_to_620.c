@@ -36,8 +36,8 @@ static nid_entry SysMemForKernel_nid[] = {
 	{ 0x5136926D, 0xFEB5C72B, },
 	{ 0x523E300A, 0xF5780DAA, },
 	// for impose.prx
-	{ 0x4823B9D9, UNKNOWNNID, },
-	{ 0x9CCA041E, UNKNOWNNID, },
+	{ 0x4823B9D9, 0x864EBFD7, },
+	{ 0x9CCA041E, 0x18D7F644, },
 };
 
 static nid_entry ModuleMgrForKernel_nid[] = {
@@ -48,8 +48,8 @@ static nid_entry ModuleMgrForKernel_nid[] = {
 static nid_entry LoadExecForKernel_nid[] = {
 	{ 0x63D88393, 0x29413885, },
 	// for impose.prx
-	{ 0x2EAA8A5A, UNKNOWNNID, },
-	{ 0x6274D0D5, UNKNOWNNID, },
+	{ 0x2EAA8A5A, 0x915A8B44, },
+	{ 0x6274D0D5, 0x2E96EDF8, },
 };
 
 static nid_entry sceImpose_driver_nid[] = {
@@ -59,10 +59,10 @@ static nid_entry sceImpose_driver_nid[] = {
 
 static nid_entry sceCtrl_driver_nid[] = {
 	// for impose.prx
-	{ 0x29A5082C, UNKNOWNNID, },
-	{ 0x591B3F36, UNKNOWNNID, },
-	{ 0xE3870772, UNKNOWNNID, },
-	{ 0xEB97D7AA, UNKNOWNNID, },
+	{ 0x29A5082C, 0xF3132A07, },
+	{ 0x591B3F36, 0x3CA6922B, },
+	{ 0xE3870772, 0x063D8197, },
+	{ 0xEB97D7AA, 0xEB6CDD17, },
 };
 
 static nid_entry sceSysreg_driver_nid[] = {
@@ -100,74 +100,79 @@ static nid_entry sceGe_driver_nid[] = {
 
 static nid_entry sceDisplay_driver_nid[] = {
 	// for impose.prx
-	{ 0x0E20F177, UNKNOWNNID, },
-	{ 0x2E6AA0AB, UNKNOWNNID, },
-	{ 0x390C7E0E, UNKNOWNNID, },
-	{ 0x6E57C773, UNKNOWNNID, },
-	{ 0x96CFAC38, UNKNOWNNID, },
-	{ 0xDB98F049, UNKNOWNNID, },
-	{ 0xDEA197D4, UNKNOWNNID, },
-	{ 0xE55F0D50, UNKNOWNNID, },
-	{ 0xEB6C2BA3, UNKNOWNNID, },
+	{ 0x0E20F177, 0x0E20F177, },
+	{ 0x2E6AA0AB, 0xC7161CF7, },
+	{ 0x390C7E0E, 0xDC68E0EF, },
+	{ 0x6E57C773, 0x6C42016A, },
+	{ 0x96CFAC38, 0x96CFAC38, },
+	{ 0xDB98F049, 0x2A1826A2, },
+	{ 0xDEA197D4, 0xDEA197D4, },
+	{ 0xE55F0D50, 0xE55F0D50, },
+	{ 0xEB6C2BA3, 0xA20A245E, },
 };
 
 static nid_entry sceRtc_driver_nid[] = {
 	// for impose.prx
-	{ 0x1D90BCF2, UNKNOWNNID, },
-	{ 0x8EB1DEAC, UNKNOWNNID, },
+	{ 0x1D90BCF2, 0xA0B3BF0F, },
+	{ 0x8EB1DEAC, 0xCFBE4A68, },
 };
 
 static nid_entry sceCodec_driver_nid[] = {
 	// for impose.prx
-	{ 0x073DE131, UNKNOWNNID, },
-	{ 0x261C6EE8, UNKNOWNNID, },
-	{ 0x856E7487, UNKNOWNNID, },
+	{ 0x073DE131, 0xBCE58DC4, },
+	{ 0x261C6EE8, 0x261C6EE8, },
+	{ 0x856E7487, 0x856E7487, },
 };
 
 static nid_entry scePower_driver_nid[] = {
 	// for impose.prx
-	{ 0x1BA2FCAE, UNKNOWNNID, },
-	{ 0x45BB59FE, UNKNOWNNID, },
-	{ 0x56083981, UNKNOWNNID, },
-	{ 0xAC664491, UNKNOWNNID, },
-	{ 0xC35907C2, UNKNOWNNID, },
-	{ 0xC6D21BB6, UNKNOWNNID, },
-	{ 0xCF0F53E5, UNKNOWNNID, },
-	{ 0xD61C63BD, UNKNOWNNID, },
-	{ 0xFBFD57EB, UNKNOWNNID, },
+	{ 0x1BA2FCAE, 0x1BA2FCAE, },
+	{ 0x45BB59FE, 0x279492B3, },
+	{ 0x56083981, 0x9E09D19B, },
+	{ 0xAC664491, 0xE5F8596E, },
+	{ 0xC35907C2, 0x4084E678, },
+	{ 0xC6D21BB6, 0x7F480684, },
+	{ 0xCF0F53E5, 0xC9885394, },
+	{ 0xD61C63BD, 0x5202A826, },
+	{ 0xFBFD57EB, 0xBC8823E8, },
 };
 
 static nid_entry sceReg_driver_nid[] = {
 	// for impose.prx
-	{ 0x24DDA193, UNKNOWNNID, },
-	{ 0x3273A94B, UNKNOWNNID, },
-	{ 0x636D5C60, UNKNOWNNID, },
-	{ 0x9943E18A, UNKNOWNNID, },
-	{ 0x9C756292, UNKNOWNNID, },
-	{ 0xB8FD8784, UNKNOWNNID, },
-	{ 0xCDC72B4D, UNKNOWNNID, },
-	{ 0xD3CD942D, UNKNOWNNID, },
-	{ 0xE4D4F126, UNKNOWNNID, },
+	{ 0x24DDA193, 0xF3300EBF, },
+	{ 0x3273A94B, 0x31F9DB91, },
+	{ 0x636D5C60, 0x400BB753, },
+	{ 0x9943E18A, 0x0404652C, },
+	{ 0x9C756292, 0x8A0F5133, },
+	{ 0xB8FD8784, 0xDC7EF81C, },
+	{ 0xCDC72B4D, 0x08BEB24C, },
+	{ 0xD3CD942D, 0x21928F15, },
+	{ 0xE4D4F126, 0x873EB4E1, },
 };
 
 static nid_entry sceHprm_driver_nid[] = {
 	// for impose.prx
-	{ 0x1910B327, UNKNOWNNID, },
-	{ 0x3459F450, UNKNOWNNID, },
-	{ 0x3709DC86, UNKNOWNNID, },
-	{ 0x404D9DE4, UNKNOWNNID, },
-	{ 0x71E989F4, UNKNOWNNID, },
-	{ 0xAE42F741, UNKNOWNNID, },
-	{ 0xCA90EB48, UNKNOWNNID, },
-	{ 0xE5AB910C, UNKNOWNNID, },
-	{ 0xF7FA0802, UNKNOWNNID, },
+	{ 0x1910B327, 0x1910B327, },
+	{ 0x3459F450, 0x2E49469C, },
+	{ 0x3709DC86, 0x1EECCA1A, },
+	{ 0x404D9DE4, 0x62CDFB12, },
+	{ 0x71E989F4, 0x732EC325, },
+	{ 0xAE42F741, 0x2F028F97, },
+	{ 0xCA90EB48, 0x8A898B38, },
+	{ 0xE5AB910C, 0xDA01152D, },
+	{ 0xF7FA0802, 0x4C9BEDA4, },
 };
 
 static nid_entry sceDve_driver_nid[] = {
 	// for impose.prx
-	{ 0x738FE169, UNKNOWNNID, },
-	{ 0x89CCB808, UNKNOWNNID, },
-	{ 0xC597DDDD, UNKNOWNNID, },
+	{ 0x738FE169, 0x194FE107, },
+	{ 0x89CCB808, 0x024D7064, },
+	{ 0xC597DDDD, 0x2F863B65, },
+};
+
+static nid_entry KDebugForKernel_nid[] = {
+	// for impose.prx
+	{ 0x59E95C49, 0xD9DB4F02, },
 };
 
 resolver_config nid_fix_400_to_620[] = {
@@ -187,6 +192,7 @@ resolver_config nid_fix_400_to_620[] = {
 	NID_ENTRY(sceReg_driver),
 	NID_ENTRY(sceHprm_driver),
 	NID_ENTRY(sceDve_driver),
+	NID_ENTRY(KDebugForKernel),
 };
 
 u32 nid_fix_400_to_620_size = NELEMS(nid_fix_400_to_620);
