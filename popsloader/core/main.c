@@ -327,10 +327,6 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 				imp = find_import_lib((SceModule*)mod, "sceImpose_driver");
 				imp->attribute = 0x0009;
 			}
-
-			if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
-				sprintf((char*)((SceModule2*)mod)->text_addr + 0x000087B8, "%simpose.rsc", get_module_prefix());
-			}			
 		}
 
 		if(0 == strcmp(mod->modname, "scePaf_Module")) {
@@ -422,6 +418,21 @@ static u32 g_sceImposeGetParamOld_NID[] = {
 	0xC94AC8E2,
 };
 
+static int _sceIoOpen(const char *file, int flag, int mode)
+{
+	int ret;
+	char path[128];
+
+	if(0 == strcmp(file, "flash0:/kd/resource/impose.rsc")) {
+		sprintf(path, "%s%s", get_module_prefix(), "impose.rsc");
+		file = path;
+	}
+
+	ret = sceIoOpen(file, flag, mode);
+
+	return ret;
+}
+
 static int popsloader_patch_chain(SceModule2 *mod)
 {
 	printk("%s: %s\n", __func__, mod->modname);
@@ -446,6 +457,12 @@ static int popsloader_patch_chain(SceModule2 *mod)
 			for(i=0; i<NELEMS(g_sceImposeGetParamOld_NID); ++i) {
 				hook_import_bynid((SceModule*)mod_, "sceImpose_driver", g_sceImposeGetParamOld_NID[i], _sceImposeGetParamOld, 0);
 			}
+		}
+	}
+
+	if(pops_fw_version == FW_400) {
+		if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
+			hook_import_bynid((SceModule*)mod, "IoFileMgrForKernel", 0x109F50BC, _sceIoOpen, 0);
 		}
 	}
 
