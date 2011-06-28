@@ -175,7 +175,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 
 static int (*sceImposeGetParamNew)(int param) = NULL;
 
-int _sceImposeGetParamOld(int param)
+static int _sceImposeGetParamOld(int param)
 {
 	int new_param, ret;
 
@@ -441,6 +441,8 @@ static u32 g_sceImposeGetParamOld_NID[] = {
 	0x4B02F047,
 	0x531C9778,
 	0x6F502C0A,
+	0x4C4DF719,
+	0xC94AC8E2,
 };
 
 static int popsloader_patch_chain(SceModule2 *mod)
