@@ -175,30 +175,58 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 
 static int (*sceImposeGetParamNew)(int param) = NULL;
 
-// sceImpose_driver_4B02F047 -> sceImpose_driver_C94AC8E2
-// TODO resolve all param
 int _sceImposeGetParamOld(int param)
 {
 	int new_param, ret;
 
-	new_param = param;
+	/* 0x00000001 -> 0x00000001 */
+	/* 0x00000002 -> 0x00000002 */
+	/* 0x00000004 -> 0x00000004 */
+	/* 0x00000008 -> 0x00000008 */
+	/* 0x00000010 -> 0x00000010 */
+	/* 0x00000020 -> 0x00000020 */
+	/* 0x00000040 -> 0x00000040 */
+	/* 0x00000080 -> 0x00000080 */
 
-	switch(new_param) {
-		case 512:
+	switch(param) {
+		case 0x00000200:
 			new_param = 0x80000002;
 			break;
-		case 0x20000:
-			new_param = 0x400;
+		case 0x00000400:
+			new_param = 0x80000003;
 			break;
-		case 0x1000:
-			new_param = 0x200;
+		case 0x00000800:
+			new_param = 0x00000100;
 			break;
-		case 0x4000:
+		case 0x00001000:
+			new_param = 0x00000200;
+			break;
+		case 0x00004000:
 			new_param = 0x80000005;
 			break;
+		case 0x00008000:
+			new_param = 0x80000006;
+			break;
+		case 0x00010000:
+			new_param = 0x80000009;
+			break;
+		case 0x00020000:
+			new_param = 0x00000400;
+			break;
+		case 0x00100000:
+			new_param = 0x8000000A;
+			break;
+		case 0x00200000:
+			new_param = 0x8000000B;
+			break;
+		case 0x00400000:
+			new_param = 0x20000000;
+			break;
+		default:
+			new_param = param;
 	}
 
-	ret = sceImposeGetParamNew(new_param);
+	ret = (*sceImposeGetParamNew)(new_param);
 
 	if(ret < 0) {
 		printk("%s: 0x%08X/0x%08X -> 0x%08X\n", __func__, param, new_param, ret);
