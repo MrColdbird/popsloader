@@ -48,8 +48,8 @@ static nid_entry ModuleMgrForKernel_nid[] = {
 static nid_entry LoadExecForKernel_nid[] = {
 	{ 0x63D88393, 0x29413885, },
 	// for impose.prx
-	{ 0x2EAA8A5A, 0x915A8B44, },
-	{ 0x6274D0D5, 0x2E96EDF8, },
+	{ 0x2EAA8A5A, 0x63BB2F2C, },
+	{ 0x6274D0D5, 0xB848CC2C, },
 };
 
 static nid_entry sceImpose_driver_nid[] = {
@@ -175,6 +175,12 @@ static nid_entry KDebugForKernel_nid[] = {
 	{ 0x59E95C49, 0xD9DB4F02, },
 };
 
+static nid_entry InterruptManagerForKernel_nid[] = {
+	// for impose.prx
+	{ 0x169FC5A3, 0xC03C8D51, },
+	{ 0xB940A5BF, 0x3C161DFB, },
+};
+
 resolver_config nid_fix_400_to_620[] = {
 	NID_ENTRY(SysMemForKernel),
 	NID_ENTRY(ModuleMgrForKernel),
@@ -193,6 +199,7 @@ resolver_config nid_fix_400_to_620[] = {
 	NID_ENTRY(sceHprm_driver),
 	NID_ENTRY(sceDve_driver),
 	NID_ENTRY(KDebugForKernel),
+	NID_ENTRY(InterruptManagerForKernel),
 };
 
 u32 nid_fix_400_to_620_size = NELEMS(nid_fix_400_to_620);

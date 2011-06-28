@@ -18,8 +18,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-//#define USE_PRINTK 1
-#undef USE_PRINTK
+#define USE_PRINTK 1
+//#undef USE_PRINTK
 
 #ifdef USE_PRINTK
 #include "printk.h"
