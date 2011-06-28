@@ -41,7 +41,7 @@ void setup_nid_resolver(void)
 			nid_fix = nid_fix_635_to_620;
 		}
 
-		if(pops_fw_version == FW_500 || pops_fw_version == FW_550) {
+		if(pops_fw_version >= FW_500 && pops_fw_version <= FW_551) {
 			nid_fix_size = nid_fix_500_to_620_size;
 			nid_fix = nid_fix_500_to_620;
 		}
@@ -58,7 +58,7 @@ void setup_nid_resolver(void)
 			nid_fix = nid_fix_620_to_635;
 		}
 
-		if(pops_fw_version == FW_500 || pops_fw_version == FW_550) {
+		if(pops_fw_version >= FW_500 && pops_fw_version <= FW_551) {
 			nid_fix_size = nid_fix_500_to_635_size;
 			nid_fix = nid_fix_500_to_635;
 		}

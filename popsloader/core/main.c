@@ -112,8 +112,14 @@ static inline const char *get_module_prefix(void)
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "610");
 	} else if(pops_fw_version == FW_600) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "600");
+	} else if(pops_fw_version == FW_551) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "551");
 	} else if(pops_fw_version == FW_550) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "550");
+	} else if(pops_fw_version == FW_503) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "503");
+	} else if(pops_fw_version == FW_501) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "501");
 	} else if(pops_fw_version == FW_500) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "500");
 	} else if(pops_fw_version == FW_400) {
@@ -146,7 +152,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 			}
 
 			path = newpath;
-		} else if(pops_fw_version <= FW_550) {
+		} else if(pops_fw_version <= FW_551) {
 			sprintf(newpath, "%spops.prx", get_module_prefix());
 			path = newpath;
 		} else {
@@ -413,7 +419,7 @@ static int popsloader_patch_chain(SceModule2 *mod)
 {
 	printk("%s: %s\n", __func__, mod->modname);
 
-	if(pops_fw_version == FW_400 || pops_fw_version == FW_500 || pops_fw_version == FW_550) {
+	if(pops_fw_version <= FW_551) {
 		if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
 			SceModule2 *mod_;
 			u32 sceImposeGetParam_NID = -1;
