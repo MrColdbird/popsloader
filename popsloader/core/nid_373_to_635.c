@@ -167,7 +167,12 @@ static nid_entry KDebugForKernel_nid[] = {
 static nid_entry InterruptManagerForKernel_nid[] = {
 	// for impose.prx
 	{ 0x8A389411, 0x359F6F5C, },
-	{ 0xCA04A2B9, 0xCA04A2B9, },
+	{ 0xCA04A2B9, 0xD06AA711, },
+};
+
+static nid_entry InitForKernel_nid[] = {
+	// for impose.prx
+	{ 0x48348387, 0x2213275D, },
 };
 
 resolver_config nid_fix_373_to_635[] = {
@@ -188,6 +193,7 @@ resolver_config nid_fix_373_to_635[] = {
 	NID_ENTRY(sceDve_driver),
 	NID_ENTRY(KDebugForKernel),
 	NID_ENTRY(InterruptManagerForKernel),
+	NID_ENTRY(InitForKernel),
 };
 
 u32 nid_fix_373_to_635_size = NELEMS(nid_fix_373_to_635);
