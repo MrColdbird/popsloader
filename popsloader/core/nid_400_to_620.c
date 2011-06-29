@@ -176,6 +176,11 @@ static nid_entry InterruptManagerForKernel_nid[] = {
 	{ 0xB940A5BF, 0x3C161DFB, },
 };
 
+static nid_entry InitForKernel_nid[] = {
+	// for impose.prx
+	{ 0x6289D9A1, 0x29DAA63F, }
+};
+
 resolver_config nid_fix_400_to_620[] = {
 	NID_ENTRY(SysMemForKernel),
 	NID_ENTRY(ModuleMgrForKernel),
@@ -194,6 +199,7 @@ resolver_config nid_fix_400_to_620[] = {
 	NID_ENTRY(sceDve_driver),
 	NID_ENTRY(KDebugForKernel),
 	NID_ENTRY(InterruptManagerForKernel),
+	NID_ENTRY(InitForKernel),
 };
 
 u32 nid_fix_400_to_620_size = NELEMS(nid_fix_400_to_620);
