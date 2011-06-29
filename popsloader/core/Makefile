@@ -6,7 +6,8 @@ OBJS += nid_635_to_620.o \
 		nid_620_to_635.o \
 		nid_500_to_635.o \
 		nid_500_to_620.o \
-		nid_400_to_620.o
+		nid_400_to_620.o \
+		nid_400_to_635.o
 
 #PRO_HOME = d:/PSP/635PRO
 
