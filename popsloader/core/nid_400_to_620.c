@@ -52,11 +52,6 @@ static nid_entry LoadExecForKernel_nid[] = {
 	{ 0x6274D0D5, 0xB848CC2C, },
 };
 
-static nid_entry sceImpose_driver_nid[] = {
-	{ 0x869EB4A8, 0x4D849B71, },
-	{ 0xCD1291FD, 0x55864BD7, },
-};
-
 static nid_entry sceCtrl_driver_nid[] = {
 	// for impose.prx
 	{ 0x29A5082C, 0xF3132A07, },
@@ -185,7 +180,6 @@ resolver_config nid_fix_400_to_620[] = {
 	NID_ENTRY(SysMemForKernel),
 	NID_ENTRY(ModuleMgrForKernel),
 	NID_ENTRY(LoadExecForKernel),
-	NID_ENTRY(sceImpose_driver),
 	NID_ENTRY(sceSysreg_driver),
 	NID_ENTRY(sceSyscon_driver),
 	NID_ENTRY(sceClockgen_driver),
