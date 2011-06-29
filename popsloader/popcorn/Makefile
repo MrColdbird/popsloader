@@ -14,6 +14,11 @@ OBJS += $(PRO_HOME)/Common/printk.o
 else
 endif
 
+ifeq ($(CONFIG_351), 1)
+CFLAGS += -DCONFIG_351=1
+PSP_FW_VERSION = 351
+endif
+
 ifeq ($(CONFIG_352), 1)
 CFLAGS += -DCONFIG_352=1
 PSP_FW_VERSION = 352
