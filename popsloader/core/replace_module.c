@@ -136,6 +136,8 @@ const char *get_module_prefix(void)
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "310");
 	} else if(pops_fw_version == FW_303) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "303");
+	} else if(pops_fw_version == FW_302) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "302");
 	} else {
 		printk("%s: Unknown version: 0x%08X\n", __func__, pops_fw_version);
 		asm("break");
