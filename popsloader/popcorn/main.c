@@ -832,7 +832,9 @@ static void patch_icon0_size(u32 text_addr)
 	
 	patch_addr = text_addr + g_offs->pops_patch.ICON0SizeOffset[psp_model];
 
-	if(psp_fw_version <= FW_373) {
+	if(psp_fw_version <= FW_352) {
+		_sw(0x24030000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
+	} else if(psp_fw_version <= FW_373) {
 		_sw(0x24090000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
 	} else {
 		_sw(0x24050000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
@@ -873,8 +875,14 @@ static int popcorn_patch_chain(SceModule2 *mod)
 			patch_icon0_size(text_addr);
 		}
 
-		sceMeAudio_67CD7972 = (void*)sctrlHENFindFunction("scePops_Manager", "sceMeAudio", g_offs->pops_patch.sceMeAudio_67CD7972_NID);
-		hook_import_bynid((SceModule*)mod, "sceMeAudio", g_offs->pops_patch.sceMeAudio_67CD7972_NID, _sceMeAudio_67CD7972, 1);
+		if(psp_fw_version <= FW_352) {
+			sceMeAudio_67CD7972 = (void*)sctrlHENFindFunction("scePops_Manager", "scePopsMan", g_offs->pops_patch.sceMeAudio_67CD7972_NID);
+			hook_import_bynid((SceModule*)mod, "scePopsMan", g_offs->pops_patch.sceMeAudio_67CD7972_NID, _sceMeAudio_67CD7972, 1);
+		} else {
+			sceMeAudio_67CD7972 = (void*)sctrlHENFindFunction("scePops_Manager", "sceMeAudio", g_offs->pops_patch.sceMeAudio_67CD7972_NID);
+			hook_import_bynid((SceModule*)mod, "sceMeAudio", g_offs->pops_patch.sceMeAudio_67CD7972_NID, _sceMeAudio_67CD7972, 1);
+		}
+
 		_sw(0x24020001, text_addr + g_offs->pops_patch.manualNameCheck[psp_model]);
 
 		for(i=0; i<NELEMS(g_io_hooks); ++i) {
