@@ -781,14 +781,24 @@ int decompress_data(u32 destSize, const u8 *src, u8 *dest)
 	ret = sceKernelDeflateDecompress(dest, destSize, src, 0);
 	printk("%s: 0x%08X 0x%08X 0x%08X -> 0x%08X\n", __func__, (uint)destSize, (uint)src, (uint)dest, ret);
 
-	if(psp_fw_version >= FW_400 && ret == 0x9300) {
-		ret = 0x92FF;
+	if(ret >= 0) {
+		if(psp_fw_version >= FW_400) {
+			ret = 0x92FF;
+		} else {
+			ret = 0x9300;
+		}
+
 		printk("%s: [FAKE] -> 0x%08X\n", __func__, ret);
 	}
 
 	pspSdkSetK1(k1);
 
 	return ret;
+}
+
+int decompress_data_371(u8 *dest, u32 destSize, const u8 *src)
+{
+	return decompress_data(destSize, src, dest);
 }
 
 static int patch_decompress_data(u32 text_addr)
@@ -798,7 +808,12 @@ static int patch_decompress_data(u32 text_addr)
 
 	stub_addr = (void*)(text_addr + g_offs->pops_patch.decomp[psp_model].stub_offset);
 	patch_addr = (void*)(text_addr + g_offs->pops_patch.decomp[psp_model].patch_offset);
-	ret = place_syscall_stub(decompress_data, stub_addr);
+
+	if(psp_fw_version <= FW_371) {
+		ret = place_syscall_stub(decompress_data_371, stub_addr);
+	} else {
+		ret = place_syscall_stub(decompress_data, stub_addr);
+	}
 
 	if (ret != 0) {
 		printk("%s: place_syscall_stub -> 0x%08X\n", __func__, ret);
@@ -817,7 +832,7 @@ static void patch_icon0_size(u32 text_addr)
 	
 	patch_addr = text_addr + g_offs->pops_patch.ICON0SizeOffset[psp_model];
 
-	if(psp_fw_version == FW_373) {
+	if(psp_fw_version <= FW_373) {
 		_sw(0x24090000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
 	} else {
 		_sw(0x24050000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
