@@ -402,6 +402,7 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 
 	if(pops_fw_version <= FW_400) {
 		sprintf(modpath, "%s%s", get_module_prefix(), "impose.prx");
+		sctrlKernelSetNidResolver("sceImpose_driver", 0);
 		ret = replace_module(modid, argsize, argp, modstatus, opt, "sceImpose_Driver", modpath);
 
 		if(ret >= 0) {
