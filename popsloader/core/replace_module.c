@@ -134,6 +134,8 @@ const char *get_module_prefix(void)
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "311");
 	} else if(pops_fw_version == FW_310) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "310");
+	} else if(pops_fw_version == FW_303) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "303");
 	} else {
 		printk("%s: Unknown version: 0x%08X\n", __func__, pops_fw_version);
 		asm("break");
@@ -354,6 +356,11 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 		ret = replace_module(modid, argsize, argp, modstatus, opt, "sceImpose_Driver", modpath);
 
 		if(ret >= 0) {
+			if(pops_fw_version <= FW_303) {
+				sprintf(modpath, "%smeaudio.prx", get_module_prefix());
+				load_start_module(modpath);
+			}
+			
 			return ret;
 		}
 	}

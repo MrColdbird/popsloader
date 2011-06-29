@@ -883,7 +883,9 @@ static int popcorn_patch_chain(SceModule2 *mod)
 			hook_import_bynid((SceModule*)mod, "sceMeAudio", g_offs->pops_patch.sceMeAudio_67CD7972_NID, _sceMeAudio_67CD7972, 1);
 		}
 
-		_sw(0x24020001, text_addr + g_offs->pops_patch.manualNameCheck[psp_model]);
+		if(g_offs->pops_patch.manualNameCheck[psp_model] != 0xDEADBEEF) {
+			_sw(0x24020001, text_addr + g_offs->pops_patch.manualNameCheck[psp_model]);
+		}
 
 		for(i=0; i<NELEMS(g_io_hooks); ++i) {
 			hook_import_bynid((SceModule*)mod, "IoFileMgrForUser", g_io_hooks[i].nid, g_io_hooks[i].fp, 1);
