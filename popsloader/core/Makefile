@@ -1,5 +1,5 @@
 TARGET = popscore
-OBJS = main.o resolve_nid.o ../common/libs.o ../common/conf.o
+OBJS = main.o resolve_nid.o impose_patch.o replace_module.o ../common/libs.o ../common/conf.o
 
 OBJS += nid_635_to_620.o \
 		nid_635_to_639.o \

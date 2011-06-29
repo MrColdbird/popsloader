@@ -79,4 +79,10 @@ extern u32 psp_fw_version;
 extern u32 psp_model;
 extern u32 pops_fw_version;
 
+void patch_sceImposeGetParam(void);
+int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, SceKernelSMOption *opt);
+int is_ef0(void);
+const char *get_module_prefix(void);
+void mount_memory_stick(void);
+
 #endif
