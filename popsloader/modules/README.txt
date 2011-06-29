@@ -8,6 +8,6 @@ Here are the file list you need to run popsloader:
 /vsh/module/heaparea2.prx(<=4.00)
 /vsh/module/common_util.prx
 /vsh/module/pafmini.prx
-/vsh/module/libpspvmc.prx
+/vsh/module/libpspvmc.prx(>=3.40)
 
 Dump them with new_psardumper. Then copy them into the corrspending direcotry like 635 for 6.35 pops.

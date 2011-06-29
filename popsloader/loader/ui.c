@@ -167,6 +167,7 @@ int menu_ctrl(struct Menu *menu)
 }
 
 struct MenuItem main_menu_items[] = {
+	{ "3.30 pops", FW_330, },
 	{ "3.40 pops", FW_340, },
 	{ "3.50 pops", FW_350, },
 	{ "3.51 pops", FW_351, },
