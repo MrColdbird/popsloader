@@ -50,6 +50,11 @@ void setup_nid_resolver(void)
 			nid_fix_size = nid_fix_400_to_620_size;
 			nid_fix = nid_fix_400_to_620;
 		}
+
+		if(pops_fw_version == FW_373) {
+			nid_fix_size = nid_fix_373_to_620_size;
+			nid_fix = nid_fix_373_to_620;
+		}
 	}
 
 	if(psp_fw_version == FW_635 || psp_fw_version == FW_639) {
@@ -66,6 +71,11 @@ void setup_nid_resolver(void)
 		if(pops_fw_version == FW_400) {
 			nid_fix_size = nid_fix_400_to_635_size;
 			nid_fix = nid_fix_400_to_635;
+		}
+
+		if(pops_fw_version == FW_373) {
+			nid_fix_size = nid_fix_373_to_635_size;
+			nid_fix = nid_fix_373_to_635;
 		}
 	}
 }

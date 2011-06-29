@@ -31,48 +31,48 @@
 #include "main.h"
 
 static nid_entry SysMemForKernel_nid[] = {
-	{ 0x9D9A5BA1, UNKNOWNNID, },
-	{ 0xCDA3A2F7, UNKNOWNNID, },
-	{ 0xCF4DE78C, UNKNOWNNID, },
-	{ 0xFC114573, UNKNOWNNID, },
+	{ 0x9D9A5BA1, 0xFEB5C72B, },
+	{ 0xCDA3A2F7, 0xA4AC3934, },
+	{ 0xCF4DE78C, 0xF5780DAA, },
+	{ 0xFC114573, 0xB9796F69, },
 	// for impose.prx
-	{ 0x2F808748, UNKNOWNNID, },
-	{ 0x6373995D, UNKNOWNNID, },
+	{ 0x2F808748, 0x8D34BBDA, },
+	{ 0x6373995D, 0x864EBFD7, },
 };
 
 static nid_entry ModuleMgrForKernel_nid[] = {
-	{ 0x50F0C1EC, UNKNOWNNID, },
-	{ 0x977DE386, UNKNOWNNID, },
+	{ 0x50F0C1EC, 0xDF8FFFAB, },
+	{ 0x977DE386, 0xE3CCC6EA, },
 };
 
 static nid_entry LoadExecForKernel_nid[] = {
-	{ 0x6D302D3D, UNKNOWNNID, },
+	{ 0x6D302D3D, 0x29413885, },
 	// for impose.prx
-	{ 0x62A27008, UNKNOWNNID, },
-	{ 0x659188E1, UNKNOWNNID, },
+	{ 0x62A27008, 0x63BB2F2C, },
+	{ 0x659188E1, 0xB848CC2C, },
 };
 
 static nid_entry sceCtrl_driver_nid[] = {
 	// for impose.prx
 	{ 0x0B7AC633, UNKNOWNNID, },
-	{ 0xC4AAD55F, UNKNOWNNID, },
+	{ 0xC4AAD55F, 0x3CA6922B, },
 	{ 0xDB3CD94C, UNKNOWNNID, },
 	{ 0xDB6F93CB, UNKNOWNNID, },
 };
 
 static nid_entry sceSysreg_driver_nid[] = {
-	{ 0x07881A0B, UNKNOWNNID, },
+	{ 0x07881A0B, 0x774775CA, },
 	{ 0x0C7E4512, UNKNOWNNID, },
 	{ 0x1CD747DC, UNKNOWNNID, },
 	{ 0x27C0A714, UNKNOWNNID, },
-	{ 0x3199CF1C, UNKNOWNNID, },
+	{ 0x3199CF1C, 0x2B3BE2C8, },
 	{ 0x38CD3AB5, UNKNOWNNID, },
 	{ 0x545CE0A8, UNKNOWNNID, },
 	{ 0x595C27FB, UNKNOWNNID, },
 	{ 0x6C305CB3, UNKNOWNNID, },
-	{ 0x76220E94, UNKNOWNNID, },
+	{ 0x76220E94, 0x2D858336, },
 	{ 0xA57CBE53, UNKNOWNNID, },
-	{ 0xA9997109, UNKNOWNNID, },
+	{ 0xA9997109, 0x97EA6913, },
 	{ 0xB2C9B019, UNKNOWNNID, },
 	{ 0xE5B3D348, UNKNOWNNID, },
 };
@@ -146,7 +146,7 @@ static nid_entry sceReg_driver_nid[] = {
 static nid_entry sceHprm_driver_nid[] = {
 	// for impose.prx
 	{ 0x103DF40C, UNKNOWNNID, },
-	{ 0x1528D408, UNKNOWNNID, },
+	{ 0x1528D408, 0x61650073, },
 	{ 0x1910B327, UNKNOWNNID, },
 	{ 0x7CC2B27E, UNKNOWNNID, },
 	{ 0xCFF04390, UNKNOWNNID, },
@@ -154,20 +154,20 @@ static nid_entry sceHprm_driver_nid[] = {
 
 static nid_entry sceDve_driver_nid[] = {
 	// for impose.prx
-	{ 0x0B85524C, UNKNOWNNID, },
-	{ 0x93828323, UNKNOWNNID, },
-	{ 0xA265B504, UNKNOWNNID, },
+	{ 0x0B85524C, 0x194FE107, },
+	{ 0x93828323, 0x2F863B65, },
+	{ 0xA265B504, 0x024D7064, },
 };
 
 static nid_entry KDebugForKernel_nid[] = {
 	// for impose.prx
-	{ 0xA216AE06, UNKNOWNNID, },
+	{ 0xA216AE06, 0xD9DB4F02, },
 };
 
 static nid_entry InterruptManagerForKernel_nid[] = {
 	// for impose.prx
-	{ 0x8A389411, UNKNOWNNID, },
-	{ 0xFB8E22EC, UNKNOWNNID, },
+	{ 0x8A389411, 0xC03C8D51, },
+	{ 0xCA04A2B9, 0x3C161DFB, },
 };
 
 resolver_config nid_fix_373_to_620[] = {
