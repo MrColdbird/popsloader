@@ -141,9 +141,9 @@ PatchOffset g_620_offsets = {
 			{ 0x000DA630, 0x0000DE1C }, // 04G
 			{ 0x000DC5CC, 0x0000E534 }, // 05G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000DA630, 0x0000DE1C }, // unused
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000DA630, 0x0000DE1C }, // unused
 		},
 		.ICON0SizeOffset = {
 			0x0003BCD0, // 01G
@@ -152,9 +152,9 @@ PatchOffset g_620_offsets = {
 			0x0003BCFC, // 04G
 			0x0003DAE4, // 05G
 			0xDEADBEEF, // unused
+			0x0003BCFC, // unused
 			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
+			0x0003BCFC, // unused
 		},
 		.manualNameCheck = {
 			0x00029710, // 01G
@@ -163,9 +163,9 @@ PatchOffset g_620_offsets = {
 			0x0002973C, // 04G
 			0x00029FD0, // 05G
 			0xDEADBEEF, // unused
+			0x0002973C, // unused
 			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
+			0x0002973C, // unused
 		},
 		.sceMeAudio_67CD7972_NID = 0xF43E573A,
 	},
@@ -191,9 +191,9 @@ PatchOffset g_610_offsets = {
 			{ 0x000CC88C, 0x0000D6FC }, // 04G
 			{ 0x000CE4E8, 0x0000DE08 }, // 05G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CC88C, 0x0000D6FC }, // unused
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CC88C, 0x0000D6FC }, // unused
 		},
 		.ICON0SizeOffset = {
 			0x0002E454, // 01G
@@ -202,9 +202,9 @@ PatchOffset g_610_offsets = {
 			0x0002E49C, // 04G
 			0x0002FF50, // 05G
 			0xDEADBEEF, // unused
+			0x0002E49C, // unused
 			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
+			0x0002E49C, // unused
 		},
 		.manualNameCheck = {
 			0x0001C418, // 01G
@@ -213,9 +213,9 @@ PatchOffset g_610_offsets = {
 			0x0001C460, // 04G
 			0x0001CCC4, // 05G
 			0xDEADBEEF, // unused
+			0x0001C460, // unused
 			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
+			0x0001C460, // unused
 		},
 		.sceMeAudio_67CD7972_NID = 0xF43E573A,
 	},
@@ -241,9 +241,9 @@ PatchOffset g_600_offsets = {
 			{ 0x000CC87C, 0x0000D6FC }, // 04G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // 05G TODO
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CC87C, 0x000CC87C }, // unused
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CC87C, 0x000CC87C }, // unused
 		},
 		.ICON0SizeOffset = {
 			0x0002E440, // 01G
@@ -252,9 +252,9 @@ PatchOffset g_600_offsets = {
 			0x0002E488, // 04G
 			0xDEADBEEF, // 05G TODO
 			0xDEADBEEF, // unused
+			0x0002E488, // unused
 			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
+			0x0002E488, // unused
 		},
 		.manualNameCheck = {
 			0x0001C404, // 01G
@@ -263,9 +263,9 @@ PatchOffset g_600_offsets = {
 			0x0001C44C, // 04G
 			0xDEADBEEF, // 05G TODO
 			0xDEADBEEF, // unused
+			0x0001C44C, // unused
 			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
+			0x0001C44C, // unused
 		},
 		.sceMeAudio_67CD7972_NID = 0xF43E573A,
 	},
