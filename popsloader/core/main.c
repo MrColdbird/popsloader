@@ -332,6 +332,8 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 		}
 
 		if(0 == strcmp(mod->modname, "scePaf_Module")) {
+			sctrlKernelSetNidResolver("scePaf", 0);
+
 			if(pops_fw_version <= FW_400) {
 				char path[128];
 
