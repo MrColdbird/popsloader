@@ -781,7 +781,7 @@ int decompress_data(u32 destSize, const u8 *src, u8 *dest)
 	ret = sceKernelDeflateDecompress(dest, destSize, src, 0);
 	printk("%s: 0x%08X 0x%08X 0x%08X -> 0x%08X\n", __func__, (uint)destSize, (uint)src, (uint)dest, ret);
 
-	if (ret == 0x9300) {
+	if(psp_fw_version >= FW_400 && ret == 0x9300) {
 		ret = 0x92FF;
 		printk("%s: [FAKE] -> 0x%08X\n", __func__, ret);
 	}
@@ -816,7 +816,12 @@ static void patch_icon0_size(u32 text_addr)
 	u32 patch_addr;
 	
 	patch_addr = text_addr + g_offs->pops_patch.ICON0SizeOffset[psp_model];
-	_sw(0x24050000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
+
+	if(psp_fw_version == FW_373) {
+		_sw(0x24090000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
+	} else {
+		_sw(0x24050000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
+	}
 }
 
 static int (*sceMeAudio_67CD7972)(void *buf, int size);

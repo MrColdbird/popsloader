@@ -18,7 +18,7 @@
 #include <pspsdk.h>
 #include "popcorn_patch_offset.h"
 
-#if !defined(CONFIG_635) && !defined(CONFIG_620) && !defined(CONFIG_639) && !defined(CONFIG_610) && !defined(CONFIG_600) && !defined(CONFIG_551) && !defined(CONFIG_550) && !defined(CONFIG_503) && !defined(CONFIG_501) && !defined(CONFIG_500) && !defined(CONFIG_400)
+#if !defined(CONFIG_635) && !defined(CONFIG_620) && !defined(CONFIG_639) && !defined(CONFIG_610) && !defined(CONFIG_600) && !defined(CONFIG_551) && !defined(CONFIG_550) && !defined(CONFIG_503) && !defined(CONFIG_501) && !defined(CONFIG_500) && !defined(CONFIG_400) && !defined(CONFIG_373)
 #error You have to define one of CONFIG_FW_VERSION
 #endif
 
@@ -572,6 +572,56 @@ PatchOffset g_400_offsets = {
 };
 #endif
 
+#ifdef CONFIG_373
+PatchOffset g_373_offsets = {
+	.fw_version = FW_373,
+	.popsman_patch = {
+		.get_rif_path = 0xDEADBEEF,
+		.get_rif_path_call1 = 0xDEADBEEF,
+		.get_rif_path_call2 = 0xDEADBEEF,
+		.sceNpDrmGetVersionKeyCall = 0xDEADBEEF,
+		.scePspNpDrm_driver_9A34AC9F_Call = 0x00000138,
+		.scePopsManLoadModuleCheck = 0x000014B8,
+	},
+	.pops_patch = {
+		.decomp = {
+			{ 0x0002D480, 0x00013D6C }, // 01G
+			{ 0x0002D480, 0x00013D6C }, // 02G
+			{ 0x0002D480, 0x00013D6C }, // 03G
+			{ 0x0002D480, 0x00013D6C }, // 04G
+			{ 0x0002D480, 0x00013D6C }, // 05G
+			{ 0x0002D480, 0x00013D6C }, // unused
+			{ 0x0002D480, 0x00013D6C }, // unused
+			{ 0x0002D480, 0x00013D6C }, // unused
+			{ 0x0002D480, 0x00013D6C }, // unused
+		},
+		.ICON0SizeOffset = {
+			0x000294F8, // 01G
+			0x000294F8, // 02G
+			0x000294F8, // 03G
+			0x000294F8, // 04G
+			0x000294F8, // 05G
+			0x000294F8, // unused
+			0x000294F8, // unused
+			0x000294F8, // unused
+			0x000294F8, // unused
+		},
+		.manualNameCheck = {
+			0x0001D9FC, // 01G
+			0x0001D9FC, // 02G
+			0x0001D9FC, // 03G
+			0x0001D9FC, // 04G
+			0x0001D9FC, // 05G
+			0x0001D9FC, // unused
+			0x0001D9FC, // unused
+			0x0001D9FC, // unused
+			0x0001D9FC, // unused
+		},
+		.sceMeAudio_67CD7972_NID = 0x902F30D8,
+	},
+};
+#endif
+
 PatchOffset *g_offs = NULL;
 
 void setup_patch_offset_table(u32 fw_version)
@@ -639,6 +689,12 @@ void setup_patch_offset_table(u32 fw_version)
 #ifdef CONFIG_400
    	if(fw_version == g_400_offsets.fw_version) {
 		g_offs = &g_400_offsets;
+	}
+#endif
+
+#ifdef CONFIG_373
+   	if(fw_version == g_373_offsets.fw_version) {
+		g_offs = &g_373_offsets;
 	}
 #endif
 }
