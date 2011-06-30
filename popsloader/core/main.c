@@ -45,7 +45,7 @@ static int _sceIoOpen(const char *file, int flag, int mode)
 	char path[128];
 
 	if(0 == strcmp(file, "flash0:/kd/resource/impose.rsc")) {
-		sprintf(path, "%s%s", get_module_prefix(), "impose.rsc");
+		sprintf(path, "%s%s%s", is_ef0() ? "ef" : "ms", MODULE_PATH, "impose.rsc");
 		file = path;
 	}
 
