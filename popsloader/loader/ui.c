@@ -182,7 +182,7 @@ struct MenuItem main_menu_items[] = {
 	{ "3.90 pops", FW_390, },
 	{ "3.93 pops", FW_393, },
 	{ "3.96 pops", FW_396, },
-	{ "4.00 pops", FW_401, },
+	{ "4.01 pops", FW_401, },
 	{ "5.00 pops", FW_500, },
 	{ "5.01 pops", FW_501, },
 	{ "5.03 pops", FW_503, },
