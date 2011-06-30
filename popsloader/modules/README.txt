@@ -5,7 +5,6 @@ Here are the file list you need to run popsloader:
 /kd/pops_0*g.prx(>= 6.00) or /kd/pops.prx(<= 5.51)
 /kd/impose.prx(<=4.00)
 /kd/resource/impose.rsc(<=4.00)
-/vsh/module/heaparea2.prx(<=4.00)
 /vsh/module/common_util.prx
 /vsh/module/pafmini.prx
 /vsh/module/libpspvmc.prx(>=3.40)

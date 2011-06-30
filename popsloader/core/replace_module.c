@@ -295,7 +295,7 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 			if(pops_fw_version <= FW_400) {
 				char path[128];
 
-				sprintf(path, "%sheaparea2.prx", get_module_prefix());
+				sprintf(path, "%s%sproheaparea.prx", is_ef0() ? "ef" : "ms", MODULE_PATH);
 				load_start_module(path);
 			}
 		}
