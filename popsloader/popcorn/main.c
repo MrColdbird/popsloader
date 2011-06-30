@@ -834,7 +834,7 @@ static void patch_icon0_size(u32 text_addr)
 
 	if(psp_fw_version <= FW_352) {
 		_sw(0x24030000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
-	} else if(psp_fw_version <= FW_373) {
+	} else if(psp_fw_version <= FW_372) {
 		_sw(0x24090000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);
 	} else {
 		_sw(0x24050000 | (sizeof(g_icon_png) & 0xFFFF), patch_addr);

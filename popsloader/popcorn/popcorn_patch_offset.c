@@ -18,7 +18,7 @@
 #include <pspsdk.h>
 #include "popcorn_patch_offset.h"
 
-#if !defined(CONFIG_635) && !defined(CONFIG_620) && !defined(CONFIG_639) && !defined(CONFIG_610) && !defined(CONFIG_600) && !defined(CONFIG_551) && !defined(CONFIG_550) && !defined(CONFIG_503) && !defined(CONFIG_501) && !defined(CONFIG_500) && !defined(CONFIG_400) && !defined(CONFIG_396) && !defined(CONFIG_393) && !defined(CONFIG_390) && !defined(CONFIG_380) && !defined(CONFIG_373) && !defined(CONFIG_371) && !defined(CONFIG_352) && !defined(CONFIG_351) && !defined(CONFIG_350) && !defined(CONFIG_340) && !defined(CONFIG_330) && !defined(CONFIG_311) && !defined(CONFIG_310)  && !defined(CONFIG_303) && !defined(CONFIG_302)
+#if !defined(CONFIG_635) && !defined(CONFIG_620) && !defined(CONFIG_639) && !defined(CONFIG_610) && !defined(CONFIG_600) && !defined(CONFIG_551) && !defined(CONFIG_550) && !defined(CONFIG_503) && !defined(CONFIG_501) && !defined(CONFIG_500) && !defined(CONFIG_401) && !defined(CONFIG_396) && !defined(CONFIG_393) && !defined(CONFIG_390) && !defined(CONFIG_380) && !defined(CONFIG_372) && !defined(CONFIG_371) && !defined(CONFIG_352) && !defined(CONFIG_351) && !defined(CONFIG_350) && !defined(CONFIG_340) && !defined(CONFIG_330) && !defined(CONFIG_311) && !defined(CONFIG_310)  && !defined(CONFIG_303) && !defined(CONFIG_302)
 #error You have to define one of CONFIG_FW_VERSION
 #endif
 
@@ -522,9 +522,9 @@ PatchOffset g_500_offsets = {
 };
 #endif
 
-#ifdef CONFIG_400
-PatchOffset g_400_offsets = {
-	.fw_version = FW_400,
+#ifdef CONFIG_401
+PatchOffset g_401_offsets = {
+	.fw_version = FW_401,
 	.popsman_patch = {
 		.get_rif_path = 0xDEADBEEF,
 		.get_rif_path_call1 = 0xDEADBEEF,
@@ -772,9 +772,9 @@ PatchOffset g_380_offsets = {
 };
 #endif
 
-#ifdef CONFIG_373
-PatchOffset g_373_offsets = {
-	.fw_version = FW_373,
+#ifdef CONFIG_372
+PatchOffset g_372_offsets = {
+	.fw_version = FW_372,
 	.popsman_patch = {
 		.get_rif_path = 0xDEADBEEF,
 		.get_rif_path_call1 = 0xDEADBEEF,
@@ -1386,9 +1386,9 @@ void setup_patch_offset_table(u32 fw_version)
 	}
 #endif
 
-#ifdef CONFIG_400
-   	if(fw_version == g_400_offsets.fw_version) {
-		g_offs = &g_400_offsets;
+#ifdef CONFIG_401
+   	if(fw_version == g_401_offsets.fw_version) {
+		g_offs = &g_401_offsets;
 	}
 #endif
 
@@ -1416,9 +1416,9 @@ void setup_patch_offset_table(u32 fw_version)
 	}
 #endif
 
-#ifdef CONFIG_373
-   	if(fw_version == g_373_offsets.fw_version) {
-		g_offs = &g_373_offsets;
+#ifdef CONFIG_372
+   	if(fw_version == g_372_offsets.fw_version) {
+		g_offs = &g_372_offsets;
 	}
 #endif
 

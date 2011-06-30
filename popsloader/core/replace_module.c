@@ -114,8 +114,8 @@ const char *get_module_prefix(void)
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "501");
 	} else if(pops_fw_version == FW_500) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "500");
-	} else if(pops_fw_version == FW_400) {
-		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "400");
+	} else if(pops_fw_version == FW_401) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "401");
 	} else if(pops_fw_version == FW_396) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "396");
 	} else if(pops_fw_version == FW_393) {
@@ -124,8 +124,8 @@ const char *get_module_prefix(void)
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "390");
 	} else if(pops_fw_version == FW_380) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "380");
-	} else if(pops_fw_version == FW_373) {
-		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "373");
+	} else if(pops_fw_version == FW_372) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "372");
 	} else if(pops_fw_version == FW_371) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "371");
 	} else if(pops_fw_version == FW_352) {
@@ -278,7 +278,7 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 	if(mod != NULL) {
 		fix_nid((SceModule*)mod);
 
-		if(pops_fw_version <= FW_400) {
+		if(pops_fw_version <= FW_401) {
 			PspModuleImport *imp;
 
 			if(0 == strcmp(mod->modname, "scePops_Manager")) {
@@ -292,7 +292,7 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 		if(0 == strcmp(mod->modname, "scePaf_Module")) {
 			sctrlKernelSetNidResolver("scePaf", 0);
 
-			if(pops_fw_version <= FW_400) {
+			if(pops_fw_version <= FW_401) {
 				char path[128];
 
 				sprintf(path, "%s%sproheaparea.prx", is_ef0() ? "ef" : "ms", MODULE_PATH);
@@ -360,7 +360,7 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 
 	(void)(mod);
 
-	if(pops_fw_version <= FW_400) {
+	if(pops_fw_version <= FW_401) {
 		sprintf(modpath, "%s%s", get_module_prefix(), "impose.prx");
 		sctrlKernelSetNidResolver("sceImpose_driver", 0);
 		ret = replace_module(modid, argsize, argp, modstatus, opt, "sceImpose_Driver", modpath);

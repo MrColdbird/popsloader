@@ -64,7 +64,7 @@ static int popsloader_patch_chain(SceModule2 *mod)
 		}
 	}
 
-	if(pops_fw_version <= FW_400) {
+	if(pops_fw_version <= FW_401) {
 		if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
 			hook_import_bynid((SceModule*)mod, "IoFileMgrForKernel", 0x109F50BC, _sceIoOpen, 0);
 		}
