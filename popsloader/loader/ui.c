@@ -8,6 +8,7 @@
 #include <psppower.h>
 #include "utils.h"
 #include "main.h"
+#include "popsloader.h"
 
 struct MenuItem {
 	char *name;
@@ -124,6 +125,8 @@ void menu_draw(struct Menu *menu)
 
 	set_screen_xy((MAX_SCREEN_X - strlen(menu->banner)) / 2, 2);
 	printf("%s\n", menu->banner);
+	set_screen_xy((MAX_SCREEN_X - strlen(POPSLOADER_VERSION_STR)) / 2, 3);
+	printf("%s\n", POPSLOADER_VERSION_STR);
 
 	for(i=0; i<menu->size; ++i) {
 		set_screen_xy((MAX_SCREEN_X - strlen(menu->items[i].name)) / 2, 5 + i);
