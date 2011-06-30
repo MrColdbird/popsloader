@@ -35,9 +35,6 @@ static nid_entry SysMemForKernel_nid[] = {
 	{ 0xCDA3A2F7, 0xA4AC3934, },
 	{ 0xCF4DE78C, 0xF5780DAA, },
 	{ 0xFC114573, 0xB9796F69, },
-	// for impose.prx
-	{ 0x2F808748, 0x8D34BBDA, },
-	{ 0x6373995D, 0x864EBFD7, },
 };
 
 static nid_entry ModuleMgrForKernel_nid[] = {
@@ -47,17 +44,6 @@ static nid_entry ModuleMgrForKernel_nid[] = {
 
 static nid_entry LoadExecForKernel_nid[] = {
 	{ 0x6D302D3D, 0x29413885, },
-	// for impose.prx
-	{ 0x62A27008, 0x63BB2F2C, },
-	{ 0x659188E1, 0xB848CC2C, },
-};
-
-static nid_entry sceCtrl_driver_nid[] = {
-	// for impose.prx
-	{ 0x0B7AC633, UNKNOWNNID, },
-	{ 0xC4AAD55F, 0x3CA6922B, },
-	{ 0xDB3CD94C, UNKNOWNNID, },
-	{ 0xDB6F93CB, UNKNOWNNID, },
 };
 
 static nid_entry sceSysreg_driver_nid[] = {
@@ -92,87 +78,11 @@ static nid_entry sceGe_driver_nid[] = {
 	{ 0xBA035FC8, UNKNOWNNID, },
 };
 
-static nid_entry sceDisplay_driver_nid[] = {
-	// for impose.prx
-	{ 0x0E20F177, UNKNOWNNID, },
-	{ 0x32B67781, UNKNOWNNID, },
-	{ 0x643F3841, UNKNOWNNID, },
-	{ 0x906281D5, UNKNOWNNID, },
-	{ 0x946155FD, UNKNOWNNID, },
-	{ 0x96CFAC38, UNKNOWNNID, },
-	{ 0xDEA197D4, UNKNOWNNID, },
-	{ 0xE55F0D50, UNKNOWNNID, },
-};
-
-static nid_entry sceRtc_driver_nid[] = {
-	// for impose.prx
-	{ 0x4DD19EAE, UNKNOWNNID, },
-	{ 0x6A06446A, UNKNOWNNID, },
-};
-
-static nid_entry sceCodec_driver_nid[] = {
-	// for impose.prx
-	{ 0x1E4CC4C3, UNKNOWNNID, },
-	{ 0x261C6EE8, UNKNOWNNID, },
-	{ 0x856E7487, UNKNOWNNID, },
-};
-
-static nid_entry scePower_driver_nid[] = {
-	// for impose.prx
-	{ 0x1BA2FCAE, UNKNOWNNID, },
-	{ 0x3C5E45D8, UNKNOWNNID, },
-	{ 0x54A35829, UNKNOWNNID, },
-	{ 0x78EC8DC9, UNKNOWNNID, },
-	{ 0x86795186, UNKNOWNNID, },
-	{ 0x9C98446E, UNKNOWNNID, },
-	{ 0xA8D09A9A, UNKNOWNNID, },
-	{ 0xC87DEC73, UNKNOWNNID, },
-	{ 0xE7A7ACE1, UNKNOWNNID, },
-};
-
-static nid_entry sceReg_driver_nid[] = {
-	// for impose.prx
-	{ 0x0627AD6B, UNKNOWNNID, },
-	{ 0x1349B1B1, UNKNOWNNID, },
-	{ 0x1D4E8BC4, UNKNOWNNID, },
-	{ 0x53CB4B85, UNKNOWNNID, },
-	{ 0x8B5C6948, UNKNOWNNID, },
-	{ 0xA7C7B18E, UNKNOWNNID, },
-	{ 0xCA3CEDE6, UNKNOWNNID, },
-	{ 0xFC518070, UNKNOWNNID, },
-	{ 0xFDD753D1, UNKNOWNNID, },
-};
-
-static nid_entry sceHprm_driver_nid[] = {
-	// for impose.prx
-	{ 0x103DF40C, UNKNOWNNID, },
-	{ 0x1528D408, 0x61650073, },
-	{ 0x1910B327, UNKNOWNNID, },
-	{ 0x7CC2B27E, UNKNOWNNID, },
-	{ 0xCFF04390, UNKNOWNNID, },
-};
-
-static nid_entry sceDve_driver_nid[] = {
-	// for impose.prx
-	{ 0x0B85524C, 0x194FE107, },
-	{ 0x93828323, 0x2F863B65, },
-	{ 0xA265B504, 0x024D7064, },
-};
-
-static nid_entry KDebugForKernel_nid[] = {
-	// for impose.prx
-	{ 0xA216AE06, 0xD9DB4F02, },
-};
-
-static nid_entry InterruptManagerForKernel_nid[] = {
-	// for impose.prx
-	{ 0x8A389411, 0xC03C8D51, },
-	{ 0xCA04A2B9, 0x3C161DFB, },
-};
-
-static nid_entry InitForKernel_nid[] = {
-	// for impose.prx
-	{ 0x48348387, 0x29DAA63F, },
+// for 4.01 impose.prx 
+static nid_entry sceImpose_driver_nid[] = {
+	{ 0x531C9778, 0x6F502C0A, },
+	{ 0x8C943191, 0x869EB4A8, },
+	{ 0xB415FC59, 0xCD1291FD, },
 };
 
 resolver_config nid_fix_373_to_620[] = {
@@ -183,17 +93,7 @@ resolver_config nid_fix_373_to_620[] = {
 	NID_ENTRY(sceSyscon_driver),
 	NID_ENTRY(sceClockgen_driver),
 	NID_ENTRY(sceGe_driver),
-	NID_ENTRY(sceCtrl_driver),
-	NID_ENTRY(sceDisplay_driver),
-	NID_ENTRY(sceRtc_driver),
-	NID_ENTRY(sceCodec_driver),
-	NID_ENTRY(scePower_driver),
-	NID_ENTRY(sceReg_driver),
-	NID_ENTRY(sceHprm_driver),
-	NID_ENTRY(sceDve_driver),
-	NID_ENTRY(KDebugForKernel),
-	NID_ENTRY(InterruptManagerForKernel),
-	NID_ENTRY(InitForKernel),
+	NID_ENTRY(sceImpose_driver),
 };
 
 u32 nid_fix_373_to_620_size = NELEMS(nid_fix_373_to_620);

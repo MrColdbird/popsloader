@@ -116,6 +116,7 @@ int module_start(SceSize args, void* argp)
 
 	pops_fw_version = g_conf.pops_fw_version;
 	setup_nid_resolver();
+	setup_nid_resolver_impose();
 	sctrlSetCustomStartModule(&custom_start_module);
 	g_previous = sctrlHENSetStartModuleHandler(&popsloader_patch_chain);
 

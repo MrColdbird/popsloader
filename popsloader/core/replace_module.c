@@ -276,6 +276,10 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 	mod = (SceModule2*) sceKernelFindModuleByUID(modid);
 
 	if(mod != NULL) {
+		if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
+			fix_nid_impose((SceModule*)mod);
+		}
+
 		fix_nid((SceModule*)mod);
 
 		if(pops_fw_version <= FW_401) {
@@ -361,7 +365,7 @@ int custom_start_module(int modid, SceSize argsize, void *argp, int *modstatus, 
 	(void)(mod);
 
 	if(pops_fw_version <= FW_401) {
-		sprintf(modpath, "%s%s", get_module_prefix(), "impose.prx");
+		sprintf(modpath, "%s%simpose.prx", is_ef0() ? "ef" : "ms", MODULE_PATH);
 		sctrlKernelSetNidResolver("sceImpose_driver", 0);
 		ret = replace_module(modid, argsize, argp, modstatus, opt, "sceImpose_Driver", modpath);
 

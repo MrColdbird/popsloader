@@ -75,9 +75,15 @@ extern resolver_config nid_fix_393_to_620[];
 extern u32 nid_fix_393_to_620_size;
 extern resolver_config nid_fix_393_to_635[];
 extern u32 nid_fix_393_to_635_size;
+extern resolver_config nid_impose_fix_400_to_620[];
+extern u32 nid_impose_fix_400_to_620_size;
+extern resolver_config nid_impose_fix_400_to_635[];
+extern u32 nid_impose_fix_400_to_635_size;
 
 void fix_nid(SceModule* mod);
+void fix_nid_impose(SceModule* mod);
 void setup_nid_resolver(void);
+void setup_nid_resolver_impose(void);
 
 extern u32 psp_fw_version;
 extern u32 psp_model;

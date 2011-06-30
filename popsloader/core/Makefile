@@ -1,5 +1,5 @@
 TARGET = popscore
-OBJS = main.o resolve_nid.o impose_patch.o replace_module.o ../common/libs.o ../common/conf.o
+OBJS = main.o resolve_nid.o resolve_nid_impose.o impose_patch.o replace_module.o ../common/libs.o ../common/conf.o
 
 OBJS += nid_635_to_620.o \
 		nid_635_to_639.o \
@@ -11,7 +11,9 @@ OBJS += nid_635_to_620.o \
 		nid_373_to_620.o \
 		nid_373_to_635.o \
 		nid_393_to_620.o \
-		nid_393_to_635.o
+		nid_393_to_635.o \
+		nid_impose_400_to_620.o \
+		nid_impose_400_to_635.o
 
 #PRO_HOME = d:/PSP/635PRO
 
