@@ -45,6 +45,12 @@ all:
 	make $(EXTRA_OPTIONS) CONFIG_373=1 -C popcorn
 	@cp -f popcorn/popcorn.prx dist/modules/373/
 	make $(EXTRA_OPTIONS) clean -C popcorn
+	make $(EXTRA_OPTIONS) CONFIG_380=1 -C popcorn
+	@cp -f popcorn/popcorn.prx dist/modules/380/
+	make $(EXTRA_OPTIONS) clean -C popcorn
+	make $(EXTRA_OPTIONS) CONFIG_390=1 -C popcorn
+	@cp -f popcorn/popcorn.prx dist/modules/390/
+	make $(EXTRA_OPTIONS) clean -C popcorn
 	make $(EXTRA_OPTIONS) CONFIG_393=1 -C popcorn
 	@cp -f popcorn/popcorn.prx dist/modules/393/
 	make $(EXTRA_OPTIONS) clean -C popcorn
