@@ -114,6 +114,8 @@ const char *get_module_prefix(void)
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "501");
 	} else if(pops_fw_version == FW_500) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "500");
+	} else if(pops_fw_version == FW_396) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "396");
 	} else if(pops_fw_version == FW_400) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "400");
 	} else if(pops_fw_version == FW_373) {

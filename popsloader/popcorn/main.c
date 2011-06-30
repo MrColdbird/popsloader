@@ -782,7 +782,7 @@ int decompress_data(u32 destSize, const u8 *src, u8 *dest)
 	printk("%s: 0x%08X 0x%08X 0x%08X -> 0x%08X\n", __func__, (uint)destSize, (uint)src, (uint)dest, ret);
 
 	if(ret >= 0) {
-		if(psp_fw_version >= FW_400) {
+		if(psp_fw_version >= FW_390) {
 			ret = 0x92FF;
 		} else {
 			ret = 0x9300;
