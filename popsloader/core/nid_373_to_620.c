@@ -48,34 +48,34 @@ static nid_entry LoadExecForKernel_nid[] = {
 
 static nid_entry sceSysreg_driver_nid[] = {
 	{ 0x07881A0B, 0x774775CA, },
-	{ 0x0C7E4512, UNKNOWNNID, },
-	{ 0x1CD747DC, UNKNOWNNID, },
-	{ 0x27C0A714, UNKNOWNNID, },
+	{ 0x0C7E4512, 0x9EBB3C43, },
+	{ 0x1CD747DC, 0x34EED467, },
+	{ 0x27C0A714, 0xB733A263, },
 	{ 0x3199CF1C, 0x2B3BE2C8, },
-	{ 0x38CD3AB5, UNKNOWNNID, },
-	{ 0x545CE0A8, UNKNOWNNID, },
-	{ 0x595C27FB, UNKNOWNNID, },
-	{ 0x6C305CB3, UNKNOWNNID, },
+	{ 0x38CD3AB5, 0x5D3DD0B3, },
+	{ 0x545CE0A8, 0x94914740, },
+	{ 0x595C27FB, 0xE7849809, },
+	{ 0x6C305CB3, 0x47966D28, },
 	{ 0x76220E94, 0x2D858336, },
-	{ 0xA57CBE53, UNKNOWNNID, },
+	{ 0xA57CBE53, 0x4643F826, },
 	{ 0xA9997109, 0x97EA6913, },
-	{ 0xB2C9B019, UNKNOWNNID, },
-	{ 0xE5B3D348, UNKNOWNNID, },
+	{ 0xB2C9B019, 0x314A489C, },
+	{ 0xE5B3D348, 0x119647A7, },
 };
 
 static nid_entry sceSyscon_driver_nid[] = {
-	{ 0x4E5C5F26, UNKNOWNNID, },
+	{ 0x4E5C5F26, 0xF7E9487A, },
 };
 
 static nid_entry sceClockgen_driver_nid[] = {
-	{ 0xD4F6990D, UNKNOWNNID, },
+	{ 0xD4F6990D, 0xACC30ECE, },
 };
 
 static nid_entry sceGe_driver_nid[] = {
-	{ 0x264E8BED, UNKNOWNNID, },
-	{ 0x2FA58122, UNKNOWNNID, },
-	{ 0x58C59880, UNKNOWNNID, },
-	{ 0xBA035FC8, UNKNOWNNID, },
+	{ 0x264E8BED, 0x23E9F5FA, },
+	{ 0x2FA58122, 0x862248FD, },
+	{ 0x58C59880, 0xD4D665C9, },
+	{ 0xBA035FC8, 0xF489E74B, },
 };
 
 // for 4.01 impose.prx 
