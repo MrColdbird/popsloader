@@ -54,6 +54,21 @@ static int _sceIoOpen(const char *file, int flag, int mode)
 	return ret;
 }
 
+static int _sceKernelGetModel(void)
+{
+	if(pops_fw_version <= FW_401) {
+		if(psp_model >= PSP_3000) {
+			return PSP_2000;
+		}
+	} else if(pops_fw_version <= FW_551) {
+		if(psp_model >= PSP_4000) {
+			return PSP_3000;
+		}
+	}
+
+	return psp_model;
+}
+
 static int popsloader_patch_chain(SceModule2 *mod)
 {
 	printk("%s: %s\n", __func__, mod->modname);
@@ -66,7 +81,11 @@ static int popsloader_patch_chain(SceModule2 *mod)
 
 	if(pops_fw_version <= FW_401) {
 		if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
+			u32 sceKernelGetModel_nid;
+
+			sceKernelGetModel_nid = psp_fw_version == FW_620 ? 0x864EBDF7 : 0x458A70B5;
 			hook_import_bynid((SceModule*)mod, "IoFileMgrForKernel", 0x109F50BC, _sceIoOpen, 0);
+			hook_import_bynid((SceModule*)mod, "SysMemForKernel", sceKernelGetModel_nid, _sceKernelGetModel, 0);
 		}
 	}
 
