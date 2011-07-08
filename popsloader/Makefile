@@ -9,6 +9,32 @@ all:
 	make $(EXTRA_OPTIONS) -C loader 
 	make $(EXTRA_OPTIONS) -C core
 	@mkdir dist || true
+	@mkdir modules/302 2> /dev/null || true
+	@mkdir modules/303 2> /dev/null || true
+	@mkdir modules/310 2> /dev/null || true
+	@mkdir modules/311 2> /dev/null || true
+	@mkdir modules/330 2> /dev/null || true
+	@mkdir modules/340 2> /dev/null || true
+	@mkdir modules/350 2> /dev/null || true
+	@mkdir modules/351 2> /dev/null || true
+	@mkdir modules/352 2> /dev/null || true
+	@mkdir modules/371 2> /dev/null || true
+	@mkdir modules/372 2> /dev/null || true
+	@mkdir modules/380 2> /dev/null || true
+	@mkdir modules/390 2> /dev/null || true
+	@mkdir modules/393 2> /dev/null || true
+	@mkdir modules/396 2> /dev/null || true
+	@mkdir modules/401 2> /dev/null || true
+	@mkdir modules/500 2> /dev/null || true
+	@mkdir modules/501 2> /dev/null || true
+	@mkdir modules/503 2> /dev/null || true
+	@mkdir modules/550 2> /dev/null || true
+	@mkdir modules/551 2> /dev/null || true
+	@mkdir modules/600 2> /dev/null || true
+	@mkdir modules/610 2> /dev/null || true
+	@mkdir modules/620 2> /dev/null || true
+	@mkdir modules/635 2> /dev/null || true
+	@mkdir modules/639 2> /dev/null || true
 	@cp -f loader/popsloader.prx dist
 	@cp -f core/popscore.prx dist
 	@cp -rf modules dist
