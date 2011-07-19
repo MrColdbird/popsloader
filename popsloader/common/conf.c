@@ -102,11 +102,11 @@ static int _load_config(void)
 	if(fd < 0) {
 		return fd;
 	}
-	
+
 	while((size = sceIoRead(fd, config, sizeof(CONFIG) * 32))  > 0) {
 		int cnt = size / sizeof(CONFIG);		
 
-		if(cnt > 0) {	
+		if(cnt > 0) {
 			int i;
 
 			for(i=0; i<cnt; i++) {
@@ -137,6 +137,7 @@ int load_config(void)
 
 	if(ret < 0) {
 		def_config(&g_conf);
+		save_config();
 	}
 
 	return 0;
