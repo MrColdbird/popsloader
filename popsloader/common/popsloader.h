@@ -1,7 +1,7 @@
 #ifndef POPSLOADER_H
 #define POPSLOADER_H
 
-#define POPSLOADER_VERSION_STR "New popsloader v1"
+#define POPSLOADER_VERSION_STR "New popsloader v2"
 
 struct popsloader_config {
 	u32 pops_fw_version;
