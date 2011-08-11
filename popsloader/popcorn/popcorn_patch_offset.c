@@ -18,8 +18,58 @@
 #include <pspsdk.h>
 #include "popcorn_patch_offset.h"
 
-#if !defined(CONFIG_635) && !defined(CONFIG_620) && !defined(CONFIG_639) && !defined(CONFIG_610) && !defined(CONFIG_600) && !defined(CONFIG_551) && !defined(CONFIG_550) && !defined(CONFIG_503) && !defined(CONFIG_501) && !defined(CONFIG_500) && !defined(CONFIG_401) && !defined(CONFIG_396) && !defined(CONFIG_393) && !defined(CONFIG_390) && !defined(CONFIG_380) && !defined(CONFIG_372) && !defined(CONFIG_371) && !defined(CONFIG_352) && !defined(CONFIG_351) && !defined(CONFIG_350) && !defined(CONFIG_340) && !defined(CONFIG_330) && !defined(CONFIG_311) && !defined(CONFIG_310)  && !defined(CONFIG_303) && !defined(CONFIG_302)
+#if !defined(CONFIG_660) && !defined(CONFIG_635) && !defined(CONFIG_620) && !defined(CONFIG_639) && !defined(CONFIG_610) && !defined(CONFIG_600) && !defined(CONFIG_551) && !defined(CONFIG_550) && !defined(CONFIG_503) && !defined(CONFIG_501) && !defined(CONFIG_500) && !defined(CONFIG_401) && !defined(CONFIG_396) && !defined(CONFIG_393) && !defined(CONFIG_390) && !defined(CONFIG_380) && !defined(CONFIG_372) && !defined(CONFIG_371) && !defined(CONFIG_352) && !defined(CONFIG_351) && !defined(CONFIG_350) && !defined(CONFIG_340) && !defined(CONFIG_330) && !defined(CONFIG_311) && !defined(CONFIG_310)  && !defined(CONFIG_303) && !defined(CONFIG_302)
 #error You have to define one of CONFIG_FW_VERSION
+#endif
+
+#ifdef CONFIG_660
+PatchOffset g_660_offsets = {
+	.fw_version = FW_660,
+	.popsman_patch = {
+		.get_rif_path = 0x00000190,
+		.get_rif_path_call1 = 0x00002798,
+		.get_rif_path_call2 = 0x00002C58,
+		.sceNpDrmGetVersionKeyCall = 0x000029C4,
+		.scePspNpDrm_driver_9A34AC9F_Call = 0x00002DA8,
+		.scePopsManLoadModuleCheck = 0x00001E80,
+	},
+	.pops_patch = {
+		.decomp = {
+			{ 0x000D5424, 0x0000DB78 }, // 01G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // 02G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // 03G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // 04G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // 05G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // 09G
+		},
+		.ICON0SizeOffset = {
+			0x00036D50, // 01G
+			0xDEADBEEF, // 02G
+			0xDEADBEEF, // 03G
+			0xDEADBEEF, // 04G
+			0xDEADBEEF, // 05G
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // 07G
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // 09G
+		},
+		.manualNameCheck = {
+			0x00025248, // 01G
+			0xDEADBEEF, // 02G
+			0xDEADBEEF, // 03G
+			0xDEADBEEF, // 04G
+			0xDEADBEEF, // 05G
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // 07G
+			0xDEADBEEF, // unused
+			0xDEADBEEF, // 09G
+		},
+		.sceMeAudio_67CD7972_NID = 0x2AB4FE43,
+	},
+};
 #endif
 
 #ifdef CONFIG_639
@@ -1326,6 +1376,12 @@ PatchOffset *g_offs = NULL;
 
 void setup_patch_offset_table(u32 fw_version)
 {
+#ifdef CONFIG_660
+	if(fw_version == g_660_offsets.fw_version) {
+		g_offs = &g_660_offsets;
+	}
+#endif
+
 #ifdef CONFIG_639
 	if(fw_version == g_639_offsets.fw_version) {
 		g_offs = &g_639_offsets;
