@@ -40,7 +40,7 @@ void *module_buffer = NULL;
 u32 module_size = 0;
 STMOD_HANDLER g_previous = NULL;
 
-static inline int is_ef0(void)
+int is_ef0(void)
 {
 	return psp_model == PSP_GO && sctrlKernelBootFrom() == 0x50 ? 1 : 0;
 }

@@ -56,11 +56,6 @@ static int get_disc_id()
 	return 0;
 }
 
-static inline int is_ef0(void)
-{
-	return psp_model == PSP_GO && sctrlKernelBootFrom() == 0x50 ? 1 : 0;
-}
-
 int save_config(void)
 {
 	SceUID fd;
