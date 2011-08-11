@@ -196,6 +196,7 @@ struct MenuItem main_menu_items[] = {
 	{ "6.20 pops", FW_620, },
 	{ "6.35 pops", FW_635, },
 	{ "6.39 pops", FW_639, },
+	{ "6.60 pops", FW_660, },
 	{ "Original from flash", 0, },
 };
 

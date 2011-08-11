@@ -94,7 +94,9 @@ const char *get_module_prefix(void)
 {
 	static char buf[80];
 
-	if(pops_fw_version == FW_639) {
+	if(pops_fw_version == FW_660) {
+		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "660");
+	} else if(pops_fw_version == FW_639) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "639");
 	} else if(pops_fw_version == FW_635) {
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "635");
@@ -160,7 +162,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 	char newpath[128];
 	
 	if(is_pops(path)) {
-		if(pops_fw_version == FW_635 || pops_fw_version == FW_639) {
+		if(pops_fw_version == FW_635 || pops_fw_version == FW_639 || pops_fw_version == FW_660) {
 			sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			path = newpath;
 		} else if(pops_fw_version == FW_620 || pops_fw_version == FW_610 || pops_fw_version == FW_600) {
