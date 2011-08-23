@@ -218,8 +218,23 @@ The structure of popsloader direcotry must be like this:
 │   │   ├── pops_02g.prx
 │   │   ├── pops_03g.prx
 │   │   ├── pops_04g.prx
+│   │   ├── pops_05g.prx
 │   │   ├── pops_07g.prx
 │   │   ├── pops_09g.prx
+│   │   └── popsman.prx
+│   ├── 660
+│   │   ├── common_util.prx
+│   │   ├── libpspvmc.prx
+│   │   ├── pafmini.prx
+│   │   ├── popcorn.prx
+│   │   ├── pops_01g.prx
+│   │   ├── pops_02g.prx
+│   │   ├── pops_03g.prx
+│   │   ├── pops_04g.prx
+│   │   ├── pops_05g.prx
+│   │   ├── pops_07g.prx
+│   │   ├── pops_09g.prx
+│   │   ├── pops_11g.prx
 │   │   └── popsman.prx
 │   ├── impose.rsc
 │   ├── impose.prx
