@@ -100,6 +100,11 @@ void setup_nid_resolver(void)
 	}
 
 	if(psp_fw_version == FW_660) {
+		if(pops_fw_version >= FW_635 && pops_fw_version <= FW_639) {
+			nid_fix_size = nid_fix_635_to_660_size;
+			nid_fix = nid_fix_635_to_660;
+		}
+
 		if(pops_fw_version >= FW_600 && pops_fw_version <= FW_620) {
 			nid_fix_size = nid_fix_620_to_660_size;
 			nid_fix = nid_fix_620_to_660;
