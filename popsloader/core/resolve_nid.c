@@ -98,6 +98,33 @@ void setup_nid_resolver(void)
 			nid_fix = nid_fix_373_to_635;
 		}
 	}
+
+	if(psp_fw_version == FW_660) {
+		if(pops_fw_version >= FW_600 && pops_fw_version <= FW_620) {
+			nid_fix_size = nid_fix_620_to_660_size;
+			nid_fix = nid_fix_620_to_660;
+		}
+
+		if(pops_fw_version >= FW_500 && pops_fw_version <= FW_551) {
+			nid_fix_size = nid_fix_500_to_660_size;
+			nid_fix = nid_fix_500_to_660;
+		}
+
+		if(pops_fw_version >= FW_380 && pops_fw_version <= FW_393) {
+			nid_fix_size = nid_fix_393_to_660_size;
+			nid_fix = nid_fix_393_to_660;
+		}
+
+		if(pops_fw_version >= FW_395 && pops_fw_version <= FW_401) {
+			nid_fix_size = nid_fix_400_to_660_size;
+			nid_fix = nid_fix_400_to_660;
+		}
+
+		if(pops_fw_version <= FW_372) {
+			nid_fix_size = nid_fix_373_to_660_size;
+			nid_fix = nid_fix_373_to_660;
+		}
+	}
 }
 
 resolver_config* get_nid_resolver(const char *libname)

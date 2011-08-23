@@ -316,7 +316,9 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 			u32 load_module_nid = -1;
 
 			// use host nid, because fix_nid already fixed the load_module_nid into host one
-			if(psp_fw_version == FW_635 || psp_fw_version == FW_639) {
+			if(psp_fw_version == FW_660) {
+				load_module_nid = 0x939E4270;
+			} else if(psp_fw_version == FW_635 || psp_fw_version == FW_639) {
 				load_module_nid = 0xFFB9B760;
 			} else if(psp_fw_version == FW_620) {
 				load_module_nid = 0xE3CCC6EA;

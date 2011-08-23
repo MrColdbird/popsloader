@@ -31,105 +31,78 @@
 #include "main.h"
 
 static nid_entry SysMemForKernel_nid[] = {
-	{ 0x02AEA33F, 0x25A760F0, },
-	{ 0x864EBFD7, 0x458A70B5, },
-	{ 0xA4AC3934, 0xF2FEAFD5, },
-	{ 0xB9796F69, 0xF0E0AB7A, },
-	{ 0xF5780DAA, 0x208F4820, },
-	{ 0xFEB5C72B, 0x52B54B93, },
+	{ 0x2CFF6F90, 0xB4F00CB5, },
+	{ 0x5339A163, 0xFDC97D28, },
+	{ 0x950BCB31, 0xF12A62F7, },
+	{ 0xD7E24299, 0x9F205D3E, },
 };
 
 static nid_entry ModuleMgrForKernel_nid[] = {
-	{ 0xDF8FFFAB, 0xE6BF3960, },
-	{ 0xE3CCC6EA, 0xFFB9B760, },
+	{ 0xBB8C8FDF, 0x3FF74DF1, },
+	{ 0xC5A281C5, 0x939E4270, },
 };
 
 static nid_entry LoadExecForKernel_nid[] = {
-	{ 0x29413885, 0xFCD765C9, },
-};
-
-static nid_entry sceRtc_driver_nid[] = {
-	{ 0x2F20DAF0, 0xFF530D9F, },
-	{ 0x43F38ED8, 0x99037763, },
+	{ 0x9C9BB2D8, 0xC3474C2A, },
 };
 
 static nid_entry sceImpose_driver_nid[] = {
-	{ 0x25011AAB, 0x027F21C6, },
-	{ 0x4D849B71, 0xEBC850AC, },
-	{ 0x5314204F, 0x3BD9E51B, },
-	{ 0x55864BD7, 0x44F17A7A, },
-	{ 0x8F1AC24D, 0x3FE74F52, },
-	{ 0xC94AC8E2, 0x4C4DF719, },
+	{ 0x0BBCA0BF, 0x0F067E16, },
+	{ 0xA516434B, 0x5557F4E2, },
+	{ 0xDA315C59, 0x28B97035, },
 };
 
 static nid_entry sceSysreg_driver_nid[] = {
-	{ 0x119647A7, 0x86FFE348, },
-	{ 0x2B3BE2C8, 0xD74D9041, },
-	{ 0x2D858336, 0xE2606FCB, },
-	{ 0x314A489C, 0x0CFD5A8A, },
-	{ 0x4643F826, 0x45596E3F, },
-	{ 0x47966D28, 0x9E80B4E2, },
-	{ 0x5D3DD0B3, 0xD1999F94, },
-	{ 0x94914740, 0x9984A972, },
-	{ 0x97EA6913, 0xB70793D7, },
-	{ 0x9EBB3C43, 0x3A98CABB, },
-	{ 0xB733A263, 0x8E9E76AE, },
-	{ 0xE7849809, 0x789597AB, },
+	{ 0x08E0EE7E, 0x38527743, },
+	{ 0x0E6301D0, 0xDB97C70E, },
+	{ 0x20C9E2C4, 0x457FEBA9, },
+	{ 0x410C74F7, 0x4634C9DC, },
+	{ 0x461B8077, 0x0143E8A8, },
+	{ 0x48869494, 0x41B0337B, },
+	{ 0x5F190A4E, 0x48F1C4AD, },
+	{ 0x663D5471, 0x0AE8E549, },
+	{ 0x7A154A45, 0xBE03D832, },
+	{ 0x823FFD7A, 0xB1751B06, },
+	{ 0x923509A1, 0xC36775AD, },
+	{ 0xC7FC7669, 0x8B1DD83A, },
+	{ 0xE46A0890, 0x4B4CCE80, },
 };
 
 static nid_entry sceSyscon_driver_nid[] = {
-	{ 0xB757C11D, 0x741110C5, },
-	{ 0xF7E9487A, 0xC4931159, },
+	{ 0x48728250, 0x9BC5E33B, },
 };
 
 static nid_entry sceClockgen_driver_nid[] = {
-	{ 0xACC30ECE, 0xA02BB1D3, },
+	{ 0xD1A8E10E, 0xDAB6E612, },
 };
 
 static nid_entry sceGe_driver_nid[] = {
-	{ 0x23E9F5FA, 0xFEEC36F7, },
-	{ 0x7E2381D2, 0xD8A53104, },
-	{ 0xD4D665C9, 0x2444EC4D, },
-	{ 0xF489E74B, 0x670F15ED, },
+	{ 0x0C9C3686, 0xAFE6C9EF, },
+	{ 0x1F226BA9, 0xD8633888, },
+	{ 0x6663F1BD, 0x5D28A52B, },
+	{ 0x6849A0B0, 0x4B9554EB, },
 };
 
 static nid_entry sceDisplay_driver_nid[] = {
-	{ 0x0F82D90A, 0x3E4B1B28, },
-	{ 0xAAC50D73, 0x3DABE438, },
-	{ 0xF4B7B531, 0x8930B3A9, },
+	{ 0x10B1710B, 0xE97E9718, },
 };
 
 static nid_entry sceHprm_driver_nid[] = {
-	{ 0x62CDFB12, 0xADE4B1F4, },
+	{ 0xF5DBC7AA, 0xB2BEADB8, },
 };
 
 static nid_entry sceDve_driver_nid[] = {
-	{ 0xA1401BA2, 0xAA085C2A, },
+	{ 0x0CC96C20, 0x48005974, },
 };
 
 static nid_entry sceCodec_driver_nid[] = {
-	{ 0x794EE731, 0xB2EF6B19, },
+	{ 0xA48DE786, 0x376399B6, },
 };
 
-static nid_entry sceCtrl_driver_nid[] = {
-	{ 0x7A6436DE, 0xDEFAD580, },
-};
-
-static nid_entry scePadSvc_driver_nid[] = {
-	{ 0x1971BAE0, 0x830FC570, },
-	{ 0x3B0567D6, 0x2F9A534A, },
-	{ 0x79B60777, 0x773BA62B, },
-};
-
-static nid_entry InitForKernel_nid[] = {
-	{ 0x977A0F90, 0xEE67E450, },
-};
-
-resolver_config nid_fix_620_to_635[] = {
+resolver_config nid_fix_500_to_660[] = {
 	NID_ENTRY(SysMemForKernel),
 	NID_ENTRY(ModuleMgrForKernel),
 	NID_ENTRY(LoadExecForKernel),
-	NID_ENTRY(sceRtc_driver),
 	NID_ENTRY(sceImpose_driver),
 	NID_ENTRY(sceSysreg_driver),
 	NID_ENTRY(sceSyscon_driver),
@@ -139,9 +112,6 @@ resolver_config nid_fix_620_to_635[] = {
 	NID_ENTRY(sceHprm_driver),
 	NID_ENTRY(sceDve_driver),
 	NID_ENTRY(sceCodec_driver),
-	NID_ENTRY(sceCtrl_driver),
-	NID_ENTRY(scePadSvc_driver),
-	NID_ENTRY(InitForKernel),
 };
 
-u32 nid_fix_620_to_635_size = NELEMS(nid_fix_620_to_635);
+u32 nid_fix_500_to_660_size = NELEMS(nid_fix_500_to_660);

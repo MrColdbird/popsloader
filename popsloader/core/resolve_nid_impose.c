@@ -44,6 +44,11 @@ void setup_nid_resolver_impose(void)
 		nid_impose_fix_size = nid_impose_fix_400_to_635_size;
 		nid_impose_fix = nid_impose_fix_400_to_635;
 	}
+
+	if(psp_fw_version == FW_660) {
+		nid_impose_fix_size = nid_impose_fix_400_to_660_size;
+		nid_impose_fix = nid_impose_fix_400_to_660;
+	}
 }
 
 resolver_config* get_nid_resolver_impose(const char *libname)

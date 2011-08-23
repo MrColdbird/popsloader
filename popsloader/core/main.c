@@ -81,9 +81,18 @@ static int popsloader_patch_chain(SceModule2 *mod)
 
 	if(pops_fw_version <= FW_401) {
 		if(0 == strcmp(mod->modname, "sceImpose_Driver")) {
-			u32 sceKernelGetModel_nid;
+			u32 sceKernelGetModel_nid = -1;
 
-			sceKernelGetModel_nid = psp_fw_version == FW_620 ? 0x864EBFD7 : 0x458A70B5;
+			if(psp_fw_version == FW_660) {
+				sceKernelGetModel_nid = 0x07C586A1;
+			} else if (psp_fw_version >= FW_635 && psp_fw_version <= FW_639) {
+				sceKernelGetModel_nid = 0x458A70B5;
+			} else if (psp_fw_version == FW_620) {
+				sceKernelGetModel_nid = 0x864EBFD7;
+			} else {
+				asm("break");
+			}
+
 			hook_import_bynid((SceModule*)mod, "IoFileMgrForKernel", 0x109F50BC, _sceIoOpen, 0);
 			hook_import_bynid((SceModule*)mod, "SysMemForKernel", sceKernelGetModel_nid, _sceKernelGetModel, 0);
 		}

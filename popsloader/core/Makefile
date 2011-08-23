@@ -4,18 +4,24 @@ OBJS = main.o resolve_nid.o resolve_nid_impose.o impose_patch.o replace_module.o
 OBJS += nid_660_to_620.o \
 		nid_660_to_635.o \
 		nid_635_to_620.o \
-		nid_635_to_639.o \
+		nid_635_to_660.o \
 		nid_620_to_635.o \
-		nid_500_to_635.o \
+		nid_620_to_660.o \
 		nid_500_to_620.o \
+		nid_500_to_635.o \
+		nid_500_to_660.o \
 		nid_400_to_620.o \
 		nid_400_to_635.o \
+		nid_400_to_660.o \
 		nid_373_to_620.o \
 		nid_373_to_635.o \
+		nid_373_to_660.o \
 		nid_393_to_620.o \
 		nid_393_to_635.o \
+		nid_393_to_660.o \
 		nid_impose_400_to_620.o \
-		nid_impose_400_to_635.o
+		nid_impose_400_to_635.o \
+		nid_impose_400_to_660.o
 
 #PRO_HOME = d:/PSP/635PRO
 

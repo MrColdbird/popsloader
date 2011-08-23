@@ -31,101 +31,100 @@
 #include "main.h"
 
 static nid_entry SysMemForKernel_nid[] = {
-	{ 0x02AEA33F, 0x25A760F0, },
-	{ 0x864EBFD7, 0x458A70B5, },
-	{ 0xA4AC3934, 0xF2FEAFD5, },
-	{ 0xB9796F69, 0xF0E0AB7A, },
-	{ 0xF5780DAA, 0x208F4820, },
-	{ 0xFEB5C72B, 0x52B54B93, },
-};
-
-static nid_entry ModuleMgrForKernel_nid[] = {
-	{ 0xDF8FFFAB, 0xE6BF3960, },
-	{ 0xE3CCC6EA, 0xFFB9B760, },
+	{ 0x25A760F0, 0x310802A9, },
+	{ 0x2CFE3B22, 0x8AE776AF, },
+	{ 0x3DE3C6DF, 0xC90B0992, },
+	{ 0x458A70B5, 0x07C586A1, },
+	{ 0x52B54B93, 0xF12A62F7, },
+	{ 0xF0E0AB7A, 0xB4F00CB5, },
+	{ 0xF2FEAFD5, 0xFDC97D28, },
 };
 
 static nid_entry LoadExecForKernel_nid[] = {
-	{ 0x29413885, 0xFCD765C9, },
+	{ 0xFCD765C9, 0xC3474C2A, },
+};
+
+static nid_entry ModuleMgrForKernel_nid[] = {
+	{ 0xE6BF3960, 0x3FF74DF1, },
+	{ 0xFFB9B760, 0x939E4270, },
 };
 
 static nid_entry sceRtc_driver_nid[] = {
-	{ 0x2F20DAF0, 0xFF530D9F, },
-	{ 0x43F38ED8, 0x99037763, },
+	{ 0x99037763, 0xE7B3ABF4, },
+	{ 0xFF530D9F, 0x4E267E02, },
 };
 
 static nid_entry sceImpose_driver_nid[] = {
-	{ 0x25011AAB, 0x027F21C6, },
-	{ 0x4D849B71, 0xEBC850AC, },
-	{ 0x5314204F, 0x3BD9E51B, },
-	{ 0x55864BD7, 0x44F17A7A, },
-	{ 0x8F1AC24D, 0x3FE74F52, },
-	{ 0xC94AC8E2, 0x4C4DF719, },
+	{ 0x027F21C6, 0x28B97035, },
+	{ 0x3BD9E51B, 0x133DB99A, },
+	{ 0x3FE74F52, 0xB497314D, },
+	{ 0x44F17A7A, 0x0F067E16, },
+	{ 0x4C4DF719, 0xDC3BECFF, },
+	{ 0xEBC850AC, 0x5557F4E2, },
 };
 
 static nid_entry sceSysreg_driver_nid[] = {
-	{ 0x119647A7, 0x86FFE348, },
-	{ 0x2B3BE2C8, 0xD74D9041, },
-	{ 0x2D858336, 0xE2606FCB, },
-	{ 0x314A489C, 0x0CFD5A8A, },
-	{ 0x4643F826, 0x45596E3F, },
-	{ 0x47966D28, 0x9E80B4E2, },
-	{ 0x5D3DD0B3, 0xD1999F94, },
-	{ 0x94914740, 0x9984A972, },
-	{ 0x97EA6913, 0xB70793D7, },
-	{ 0x9EBB3C43, 0x3A98CABB, },
-	{ 0xB733A263, 0x8E9E76AE, },
-	{ 0xE7849809, 0x789597AB, },
+	{ 0x3A98CABB, 0xC36775AD, },
+	{ 0x789597AB, 0x8B1DD83A, },
+	{ 0x86FFE348, 0x0AE8E549, },
+	{ 0x8E9E76AE, 0xB1751B06, },
+	{ 0x9984A972, 0x4B4CCE80, },
+	{ 0x9E80B4E2, 0x41B0337B, },
+	{ 0xB70793D7, 0x457FEBA9, },
+	{ 0xD1999F94, 0x4634C9DC, },
+	{ 0xD74D9041, 0x38527743, },
+	{ 0xE2606FCB, 0x48F1C4AD, },
 };
 
 static nid_entry sceSyscon_driver_nid[] = {
-	{ 0xB757C11D, 0x741110C5, },
-	{ 0xF7E9487A, 0xC4931159, },
+	{ 0x741110C5, 0x48448373, },
+	{ 0xC4931159, 0x9BC5E33B, },
 };
 
 static nid_entry sceClockgen_driver_nid[] = {
-	{ 0xACC30ECE, 0xA02BB1D3, },
+	{ 0xA02BB1D3, 0xDAB6E612, },
 };
 
 static nid_entry sceGe_driver_nid[] = {
-	{ 0x23E9F5FA, 0xFEEC36F7, },
-	{ 0x7E2381D2, 0xD8A53104, },
-	{ 0xD4D665C9, 0x2444EC4D, },
-	{ 0xF489E74B, 0x670F15ED, },
+	{ 0xFEEC36F7, 0x4B9554EB, },
+	{ 0xD8A53104, 0xAFE6C9EF, },
+	{ 0x2444EC4D, 0xD8633888, },
+	{ 0x670F15ED, 0x5D28A52B, },
 };
 
 static nid_entry sceDisplay_driver_nid[] = {
-	{ 0x0F82D90A, 0x3E4B1B28, },
-	{ 0xAAC50D73, 0x3DABE438, },
-	{ 0xF4B7B531, 0x8930B3A9, },
+	{ 0x3E4B1B28, 0xE38CA615, },
+	{ 0x3DABE438, 0x03F16FD4, },
+	{ 0x8930B3A9, 0xE97E9718, },
 };
 
 static nid_entry sceHprm_driver_nid[] = {
-	{ 0x62CDFB12, 0xADE4B1F4, },
+	{ 0xADE4B1F4, 0xB2BEADB8, },
 };
 
 static nid_entry sceDve_driver_nid[] = {
-	{ 0xA1401BA2, 0xAA085C2A, },
+	{ 0xAA085C2A, 0x48005974, },
 };
 
 static nid_entry sceCodec_driver_nid[] = {
-	{ 0x794EE731, 0xB2EF6B19, },
+	{ 0xB2EF6B19, 0x376399B6, },
 };
 
 static nid_entry sceCtrl_driver_nid[] = {
-	{ 0x7A6436DE, 0xDEFAD580, },
+	{ 0xDEFAD580, 0x6C86AF22, },
 };
 
 static nid_entry scePadSvc_driver_nid[] = {
-	{ 0x1971BAE0, 0x830FC570, },
-	{ 0x3B0567D6, 0x2F9A534A, },
-	{ 0x79B60777, 0x773BA62B, },
+	{ 0x2F9A534A, 0x0B3E6FD3, },
+	{ 0x773BA62B, 0x05C9C803, },
+	{ 0x830FC570, 0x7CAB5A3D, },
 };
 
 static nid_entry InitForKernel_nid[] = {
-	{ 0x977A0F90, 0xEE67E450, },
+	{ 0xEE67E450, 0x9D33A110, },
 };
 
-resolver_config nid_fix_620_to_635[] = {
+resolver_config nid_fix_635_to_660[] = {
 	NID_ENTRY(SysMemForKernel),
 	NID_ENTRY(ModuleMgrForKernel),
 	NID_ENTRY(LoadExecForKernel),
@@ -144,4 +143,4 @@ resolver_config nid_fix_620_to_635[] = {
 	NID_ENTRY(InitForKernel),
 };
 
-u32 nid_fix_620_to_635_size = NELEMS(nid_fix_620_to_635);
+u32 nid_fix_635_to_660_size = NELEMS(nid_fix_635_to_660);

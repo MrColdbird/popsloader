@@ -31,7 +31,7 @@
 #include "systemctrl.h"
 #include "main.h"
 
-static u32 g_sceImposeGetParamOld_NID[] = {
+static u32 g_sceImposeGetParamOld_nid[] = {
 	0x4B02F047,
 	0x531C9778,
 	0x6F502C0A,
@@ -104,21 +104,23 @@ static int _sceImposeGetParamOld(int param)
 void patch_sceImposeGetParam(void)
 {
 	SceModule2 *mod;
-	u32 sceImposeGetParam_NID = -1;
+	u32 sceImposeGetParam_nid = -1;
 	int i;
 
-	if(psp_fw_version == FW_620) {
-		sceImposeGetParam_NID = 0xC94AC8E2;
+	if(psp_fw_version == FW_660) {
+		sceImposeGetParam_nid = 0xDC3BECFF;
 	} else if(psp_fw_version == FW_635 || psp_fw_version == FW_639) {
-		sceImposeGetParam_NID = 0x4C4DF719;
+		sceImposeGetParam_nid = 0x4C4DF719;
+	} else if(psp_fw_version == FW_620) {
+		sceImposeGetParam_nid = 0xC94AC8E2;
 	} else {
 		asm("break");
 	}
 
-	sceImposeGetParamNew = (void*)sctrlHENFindFunction("sceImpose_Driver", "sceImpose_driver", sceImposeGetParam_NID);
+	sceImposeGetParamNew = (void*)sctrlHENFindFunction("sceImpose_Driver", "sceImpose_driver", sceImposeGetParam_nid);
 	mod = (SceModule2*)sceKernelFindModuleByName("scePops_Manager");
 
-	for(i=0; i<NELEMS(g_sceImposeGetParamOld_NID); ++i) {
-		hook_import_bynid((SceModule*)mod, "sceImpose_driver", g_sceImposeGetParamOld_NID[i], _sceImposeGetParamOld, 0);
+	for(i=0; i<NELEMS(g_sceImposeGetParamOld_nid); ++i) {
+		hook_import_bynid((SceModule*)mod, "sceImpose_driver", g_sceImposeGetParamOld_nid[i], _sceImposeGetParamOld, 0);
 	}
 }
