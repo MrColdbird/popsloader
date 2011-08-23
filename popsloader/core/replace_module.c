@@ -150,6 +150,7 @@ const char *get_module_prefix(void)
 		sprintf(buf, "%s%s%s/", is_ef0() ? "ef" : "ms", MODULE_PATH, "302");
 	} else {
 		printk("%s: Unknown version: 0x%08X\n", __func__, pops_fw_version);
+		printk_sync();
 		asm("break");
 	}
 
@@ -180,6 +181,8 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 			sprintf(newpath, "%spops.prx", get_module_prefix());
 			path = newpath;
 		} else {
+			printk("%s: PANIC unknown pops_fw_version 0x%08X\n", __func__, pops_fw_version);
+			printk_sync();
 			asm("break");
 		}
 	}
@@ -323,7 +326,8 @@ static int replace_module(int modid, SceSize argsize, void *argp, int *modstatus
 			} else if(psp_fw_version == FW_620) {
 				load_module_nid = 0xE3CCC6EA;
 			} else {
-				printk("%s: unknown fw 0x%08X\n", __func__, psp_fw_version);
+				printk("%s: PANIC unknown fw 0x%08X\n", __func__, psp_fw_version);
+				printk_sync();
 				asm("break");
 			}
 

@@ -114,6 +114,8 @@ void patch_sceImposeGetParam(void)
 	} else if(psp_fw_version == FW_620) {
 		sceImposeGetParam_nid = 0xC94AC8E2;
 	} else {
+		printk("%s: PANIC: unknown psp_fw_version 0x%08X\n", __func__, psp_fw_version);
+		printk_sync();
 		asm("break");
 	}
 
