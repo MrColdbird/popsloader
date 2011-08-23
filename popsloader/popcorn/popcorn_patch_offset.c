@@ -44,6 +44,8 @@ PatchOffset g_660_offsets = {
 			{ 0x000D656C, 0x0000DBE8 }, // 07G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
 			{ 0x000D656C, 0x0000DBE8 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000D5494, 0x0000DBE8 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00036D50, // 01G
@@ -55,6 +57,8 @@ PatchOffset g_660_offsets = {
 			0x00037E1C, // 07G
 			0xDEADBEEF, // unused
 			0x00037E1C, // 09G
+			0xDEADBEEF, // unused
+			0x00036DCC, // 11G
 		},
 		.manualNameCheck = {
 			0x00025248, // 01G
@@ -66,6 +70,8 @@ PatchOffset g_660_offsets = {
 			0x000257E4, // 07G
 			0xDEADBEEF, // unused
 			0x000257E4, // 09G
+			0xDEADBEEF, // unused
+			0x000252C4, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x2AB4FE43,
 	},
@@ -94,6 +100,8 @@ PatchOffset g_639_offsets = {
 			{ 0x000D670C, 0x0000DC04 }, // 07G
 			{ 0x00000000, 0x00000000 }, // unused
 			{ 0x000D670C, 0x0000DC04 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000D670C, 0x0000DC04 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00036F54, // 01G
@@ -105,6 +113,8 @@ PatchOffset g_639_offsets = {
 			0x00037F90, // 07G
 			0xDEADBEEF, // unused
 			0x00037F90, // 09G
+			0xDEADBEEF, // unused
+			0x00037F90, // 11G
 		},
 		.manualNameCheck = {
 			0x0002541C, // 01G
@@ -116,6 +126,8 @@ PatchOffset g_639_offsets = {
 			0x00025928, // 07G
 			0xDEADBEEF, // unused
 			0x00025928, // 09G
+			0xDEADBEEF, // unused
+			0x00025928, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x67CD7972,
 	},
@@ -144,6 +156,8 @@ PatchOffset g_635_offsets = {
 			{ 0x000D64FC, 0x0000DB00 }, // 07G
 			{ 0x00000000, 0x00000000 }, // unused
 			{ 0x000D64FC, 0x0000DB00 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000D64FC, 0x0000DB00 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00036CF8, // 01G
@@ -155,6 +169,8 @@ PatchOffset g_635_offsets = {
 			0x00037D74, // 07G
 			0xDEADBEEF, // unused
 			0x00037D74, // 09G
+			0xDEADBEEF, // unused
+			0x00037D74, // 11G
 		},
 		.manualNameCheck = {
 			0x000251C0, // 01G
@@ -166,6 +182,8 @@ PatchOffset g_635_offsets = {
 			0x0002570C, // 07G
 			0xDEADBEEF, // unused
 			0x0002570C, // 09G
+			0xDEADBEEF, // unused
+			0x0002570C, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x67CD7972,
 	},
@@ -191,9 +209,11 @@ PatchOffset g_620_offsets = {
 			{ 0x000DA630, 0x0000DE1C }, // 04G
 			{ 0x000DC5CC, 0x0000E534 }, // 05G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0x000DA630, 0x0000DE1C }, // unused
+			{ 0x000DA630, 0x0000DE1C }, // 07G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0x000DA630, 0x0000DE1C }, // unused
+			{ 0x000DA630, 0x0000DE1C }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000DA630, 0x0000DE1C }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0003BCD0, // 01G
@@ -202,9 +222,11 @@ PatchOffset g_620_offsets = {
 			0x0003BCFC, // 04G
 			0x0003DAE4, // 05G
 			0xDEADBEEF, // unused
-			0x0003BCFC, // unused
+			0x0003BCFC, // 07G
 			0xDEADBEEF, // unused
-			0x0003BCFC, // unused
+			0x0003BCFC, // 09G
+			0xDEADBEEF, // unused
+			0x0003BCFC, // 11G
 		},
 		.manualNameCheck = {
 			0x00029710, // 01G
@@ -213,9 +235,11 @@ PatchOffset g_620_offsets = {
 			0x0002973C, // 04G
 			0x00029FD0, // 05G
 			0xDEADBEEF, // unused
-			0x0002973C, // unused
+			0x0002973C, // 07G
 			0xDEADBEEF, // unused
-			0x0002973C, // unused
+			0x0002973C, // 09G
+			0xDEADBEEF, // unused
+			0x0002973C, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xF43E573A,
 	},
@@ -241,9 +265,11 @@ PatchOffset g_610_offsets = {
 			{ 0x000CC88C, 0x0000D6FC }, // 04G
 			{ 0x000CE4E8, 0x0000DE08 }, // 05G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0x000CC88C, 0x0000D6FC }, // unused
+			{ 0x000CC88C, 0x0000D6FC }, // 07G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0x000CC88C, 0x0000D6FC }, // unused
+			{ 0x000CC88C, 0x0000D6FC }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CC88C, 0x0000D6FC }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0002E454, // 01G
@@ -252,9 +278,11 @@ PatchOffset g_610_offsets = {
 			0x0002E49C, // 04G
 			0x0002FF50, // 05G
 			0xDEADBEEF, // unused
-			0x0002E49C, // unused
+			0x0002E49C, // 07G
 			0xDEADBEEF, // unused
-			0x0002E49C, // unused
+			0x0002E49C, // 09G
+			0xDEADBEEF, // unused
+			0x0002E49C, // 11G
 		},
 		.manualNameCheck = {
 			0x0001C418, // 01G
@@ -263,9 +291,11 @@ PatchOffset g_610_offsets = {
 			0x0001C460, // 04G
 			0x0001CCC4, // 05G
 			0xDEADBEEF, // unused
-			0x0001C460, // unused
+			0x0001C460, // 07G
 			0xDEADBEEF, // unused
-			0x0001C460, // unused
+			0x0001C460, // 09G
+			0xDEADBEEF, // unused
+			0x0001C460, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xF43E573A,
 	},
@@ -291,9 +321,11 @@ PatchOffset g_600_offsets = {
 			{ 0x000CC87C, 0x0000D6FC }, // 04G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // 05G TODO
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0x000CC87C, 0x000CC87C }, // unused
+			{ 0x000CC87C, 0x0000D6FC }, // 07G
 			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
-			{ 0x000CC87C, 0x000CC87C }, // unused
+			{ 0x000CC87C, 0x0000D6FC }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CC87C, 0x0000D6FC }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0002E440, // 01G
@@ -302,9 +334,11 @@ PatchOffset g_600_offsets = {
 			0x0002E488, // 04G
 			0xDEADBEEF, // 05G TODO
 			0xDEADBEEF, // unused
-			0x0002E488, // unused
+			0x0002E488, // 07G
 			0xDEADBEEF, // unused
-			0x0002E488, // unused
+			0x0002E488, // 09G
+			0xDEADBEEF, // unused
+			0x0002E488, // 11G
 		},
 		.manualNameCheck = {
 			0x0001C404, // 01G
@@ -313,9 +347,11 @@ PatchOffset g_600_offsets = {
 			0x0001C44C, // 04G
 			0xDEADBEEF, // 05G TODO
 			0xDEADBEEF, // unused
-			0x0001C44C, // unused
+			0x0001C44C, // 07G
 			0xDEADBEEF, // unused
-			0x0001C44C, // unused
+			0x0001C44C, // 09G
+			0xDEADBEEF, // unused
+			0x0001C44C, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xF43E573A,
 	},
@@ -340,10 +376,12 @@ PatchOffset g_551_offsets = {
 			{ 0x000CEDB8, 0x0000E84C }, // 03G
 			{ 0x000CEDB8, 0x0000E84C }, // 04G
 			{ 0x000CEDB8, 0x0000E84C }, // 05G
-			{ 0x000CEDB8, 0x0000E84C }, // unused
-			{ 0x000CEDB8, 0x0000E84C }, // unused
-			{ 0x000CEDB8, 0x0000E84C }, // unused
-			{ 0x000CEDB8, 0x0000E84C }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CEDB8, 0x0000E84C }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CEDB8, 0x0000E84C }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CEDB8, 0x0000E84C }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00030778, // 01G
@@ -351,10 +389,12 @@ PatchOffset g_551_offsets = {
 			0x00030778, // 03G
 			0x00030778, // 04G
 			0x00030778, // 05G
-			0x00030778, // unused
-			0x00030778, // unused
-			0x00030778, // unused
-			0x00030778, // unused
+			0xDEADBEEF, // unused
+			0x00030778, // 07G
+			0xDEADBEEF, // unused
+			0x00030778, // 09G
+			0xDEADBEEF, // unused
+			0x00030778, // 11G
 		},
 		.manualNameCheck = {
 			0x0001FBD4, // 01G
@@ -362,10 +402,12 @@ PatchOffset g_551_offsets = {
 			0x0001FBD4, // 03G
 			0x0001FBD4, // 04G
 			0x0001FBD4, // 05G
-			0x0001FBD4, // unused
-			0x0001FBD4, // unused
-			0x0001FBD4, // unused
-			0x0001FBD4, // unused
+			0xDEADBEEF, // unused
+			0x0001FBD4, // 07G
+			0xDEADBEEF, // unused
+			0x0001FBD4, // 09G
+			0xDEADBEEF, // unused
+			0x0001FBD4, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x1BDF9405,
 	},
@@ -390,10 +432,12 @@ PatchOffset g_550_offsets = {
 			{ 0x000CEDB8, 0x0000E834 }, // 03G
 			{ 0x000CEDB8, 0x0000E834 }, // 04G
 			{ 0x000CEDB8, 0x0000E834 }, // 05G
-			{ 0x000CEDB8, 0x0000E834 }, // unused
-			{ 0x000CEDB8, 0x0000E834 }, // unused
-			{ 0x000CEDB8, 0x0000E834 }, // unused
-			{ 0x000CEDB8, 0x0000E834 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CEDB8, 0x0000E834 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CEDB8, 0x0000E834 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CEDB8, 0x0000E834 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00030704, // 01G
@@ -401,10 +445,12 @@ PatchOffset g_550_offsets = {
 			0x00030704, // 03G
 			0x00030704, // 04G
 			0x00030704, // 05G
-			0x00030704, // unused
-			0x00030704, // unused
-			0x00030704, // unused
-			0x00030704, // unused
+			0xDEADBEEF, // unused
+			0x00030704, // 07G
+			0xDEADBEEF, // unused
+			0x00030704, // 09G
+			0xDEADBEEF, // unused
+			0x00030704, // 11G
 		},
 		.manualNameCheck = {
 			0x0001FB60, // 01G
@@ -412,10 +458,12 @@ PatchOffset g_550_offsets = {
 			0x0001FB60, // 03G
 			0x0001FB60, // 04G
 			0x0001FB60, // 05G
-			0x0001FB60, // unused
-			0x0001FB60, // unused
-			0x0001FB60, // unused
-			0x0001FB60, // unused
+			0xDEADBEEF, // unused
+			0x0001FB60, // 07G
+			0xDEADBEEF, // unused
+			0x0001FB60, // 09G
+			0xDEADBEEF, // unused
+			0x0001FB60, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x1BDF9405,
 	},
@@ -440,10 +488,12 @@ PatchOffset g_503_offsets = {
 			{ 0x000C588C, 0x0000E958 }, // 03G
 			{ 0x000C588C, 0x0000E958 }, // 04G
 			{ 0x000C588C, 0x0000E958 }, // 05G
-			{ 0x000C588C, 0x0000E958 }, // unused
-			{ 0x000C588C, 0x0000E958 }, // unused
-			{ 0x000C588C, 0x0000E958 }, // unused
-			{ 0x000C588C, 0x0000E958 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C588C, 0x0000E958 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C588C, 0x0000E958 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C588C, 0x0000E958 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x000273A8, // 01G
@@ -451,10 +501,12 @@ PatchOffset g_503_offsets = {
 			0x000273A8, // 03G
 			0x000273A8, // 04G
 			0x000273A8, // 05G
-			0x000273A8, // unused
-			0x000273A8, // unused
-			0x000273A8, // unused
-			0x000273A8, // unused
+			0xDEADBEEF, // unused
+			0x000273A8, // 07G
+			0xDEADBEEF, // unused
+			0x000273A8, // 09G
+			0xDEADBEEF, // unused
+			0x000273A8, // 11G
 		},
 		.manualNameCheck = {
 			0x000190F8, // 01G
@@ -462,10 +514,12 @@ PatchOffset g_503_offsets = {
 			0x000190F8, // 03G
 			0x000190F8, // 04G
 			0x000190F8, // 05G
-			0x000190F8, // unused
-			0x000190F8, // unused
-			0x000190F8, // unused
-			0x000190F8, // unused
+			0xDEADBEEF, // unused
+			0x000190F8, // 07G
+			0xDEADBEEF, // unused
+			0x000190F8, // 09G
+			0xDEADBEEF, // unused
+			0x000190F8, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x1BDF9405,
 	},
@@ -490,10 +544,12 @@ PatchOffset g_501_offsets = {
 			{ 0x000C583C, 0x0000E90C }, // 03G
 			{ 0x000C583C, 0x0000E90C }, // 04G
 			{ 0x000C583C, 0x0000E90C }, // 05G
-			{ 0x000C583C, 0x0000E90C }, // unused
-			{ 0x000C583C, 0x0000E90C }, // unused
-			{ 0x000C583C, 0x0000E90C }, // unused
-			{ 0x000C583C, 0x0000E90C }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C583C, 0x0000E90C }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C583C, 0x0000E90C }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C583C, 0x0000E90C }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00027354, // 01G
@@ -501,10 +557,12 @@ PatchOffset g_501_offsets = {
 			0x00027354, // 03G
 			0x00027354, // 04G
 			0x00027354, // 05G
-			0x00027354, // unused
-			0x00027354, // unused
-			0x00027354, // unused
-			0x00027354, // unused
+			0xDEADBEEF, // unused
+			0x00027354, // 07G
+			0xDEADBEEF, // unused
+			0x00027354, // 09G
+			0xDEADBEEF, // unused
+			0x00027354, // 11G
 		},
 		.manualNameCheck = {
 			0x000190A4, // 01G
@@ -512,10 +570,12 @@ PatchOffset g_501_offsets = {
 			0x000190A4, // 03G
 			0x000190A4, // 04G
 			0x000190A4, // 05G
-			0x000190A4, // unused
-			0x000190A4, // unused
-			0x000190A4, // unused
-			0x000190A4, // unused
+			0xDEADBEEF, // unused
+			0x000190A4, // 07G
+			0xDEADBEEF, // unused
+			0x000190A4, // 09G
+			0xDEADBEEF, // unused
+			0x000190A4, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x1BDF9405,
 	},
@@ -540,10 +600,12 @@ PatchOffset g_500_offsets = {
 			{ 0x000C583C, 0x0000E90C }, // 03G
 			{ 0x000C583C, 0x0000E90C }, // 04G
 			{ 0x000C583C, 0x0000E90C }, // 05G
-			{ 0x000C583C, 0x0000E90C }, // unused
-			{ 0x000C583C, 0x0000E90C }, // unused
-			{ 0x000C583C, 0x0000E90C }, // unused
-			{ 0x000C583C, 0x0000E90C }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C583C, 0x0000E90C }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C583C, 0x0000E90C }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C583C, 0x0000E90C }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0002734C, // 01G
@@ -551,10 +613,12 @@ PatchOffset g_500_offsets = {
 			0x0002734C, // 03G
 			0x0002734C, // 04G
 			0x0002734C, // 05G
-			0x0002734C, // unused
-			0x0002734C, // unused
-			0x0002734C, // unused
-			0x0002734C, // unused
+			0xDEADBEEF, // unused
+			0x0002734C, // 07G
+			0xDEADBEEF, // unused
+			0x0002734C, // 09G
+			0xDEADBEEF, // unused
+			0x0002734C, // 11G
 		},
 		.manualNameCheck = {
 			0x0001909C, // 01G
@@ -562,10 +626,12 @@ PatchOffset g_500_offsets = {
 			0x0001909C, // 03G
 			0x0001909C, // 04G
 			0x0001909C, // 05G
-			0x0001909C, // unused
-			0x0001909C, // unused
-			0x0001909C, // unused
-			0x0001909C, // unused
+			0xDEADBEEF, // unused
+			0x0001909C, // 07G
+			0xDEADBEEF, // unused
+			0x0001909C, // 09G
+			0xDEADBEEF, // unused
+			0x0001909C, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x1BDF9405,
 	},
@@ -590,10 +656,12 @@ PatchOffset g_401_offsets = {
 			{ 0x000CC12C, 0x000119CC }, // 03G
 			{ 0x000CC12C, 0x000119CC }, // 04G
 			{ 0x000CC12C, 0x000119CC }, // 05G
-			{ 0x000CC12C, 0x000119CC }, // unused
-			{ 0x000CC12C, 0x000119CC }, // unused
-			{ 0x000CC12C, 0x000119CC }, // unused
-			{ 0x000CC12C, 0x000119CC }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CC12C, 0x000119CC }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CC12C, 0x000119CC }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000CC12C, 0x000119CC }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0002CF88, // 01G
@@ -601,10 +669,12 @@ PatchOffset g_401_offsets = {
 			0x0002CF88, // 03G
 			0x0002CF88, // 04G
 			0x0002CF88, // 05G
-			0x0002CF88, // unused
-			0x0002CF88, // unused
-			0x0002CF88, // unused
-			0x0002CF88, // unused
+			0xDEADBEEF, // unused
+			0x0002CF88, // 07G
+			0xDEADBEEF, // unused
+			0x0002CF88, // 09G
+			0xDEADBEEF, // unused
+			0x0002CF88, // 11G
 		},
 		.manualNameCheck = {
 			0x0001C044, // 01G
@@ -612,10 +682,12 @@ PatchOffset g_401_offsets = {
 			0x0001C044, // 03G
 			0x0001C044, // 04G
 			0x0001C044, // 05G
-			0x0001C044, // unused
-			0x0001C044, // unused
-			0x0001C044, // unused
-			0x0001C044, // unused
+			0xDEADBEEF, // unused
+			0x0001C044, // 07G
+			0xDEADBEEF, // unused
+			0x0001C044, // 09G
+			0xDEADBEEF, // unused
+			0x0001C044, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xBCC74871,
 	},
@@ -640,10 +712,12 @@ PatchOffset g_396_offsets = {
 			{ 0x000C9BF8, 0x0000FAF0 }, // 03G
 			{ 0x000C9BF8, 0x0000FAF0 }, // 04G
 			{ 0x000C9BF8, 0x0000FAF0 }, // 05G
-			{ 0x000C9BF8, 0x0000FAF0 }, // unused
-			{ 0x000C9BF8, 0x0000FAF0 }, // unused
-			{ 0x000C9BF8, 0x0000FAF0 }, // unused
-			{ 0x000C9BF8, 0x0000FAF0 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C9BF8, 0x0000FAF0 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C9BF8, 0x0000FAF0 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000C9BF8, 0x0000FAF0 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0002AEB4, // 01G
@@ -651,10 +725,12 @@ PatchOffset g_396_offsets = {
 			0x0002AEB4, // 03G
 			0x0002AEB4, // 04G
 			0x0002AEB4, // 05G
-			0x0002AEB4, // unused
-			0x0002AEB4, // unused
-			0x0002AEB4, // unused
-			0x0002AEB4, // unused
+			0xDEADBEEF, // unused
+			0x0002AEB4, // 07G
+			0xDEADBEEF, // unused
+			0x0002AEB4, // 09G
+			0xDEADBEEF, // unused
+			0x0002AEB4, // 11G
 		},
 		.manualNameCheck = {
 			0x0001A00C, // 01G
@@ -662,10 +738,12 @@ PatchOffset g_396_offsets = {
 			0x0001A00C, // 03G
 			0x0001A00C, // 04G
 			0x0001A00C, // 05G
-			0x0001A00C, // unused
-			0x0001A00C, // unused
-			0x0001A00C, // unused
-			0x0001A00C, // unused
+			0xDEADBEEF, // unused
+			0x0001A00C, // 07G
+			0xDEADBEEF, // unused
+			0x0001A00C, // 09G
+			0xDEADBEEF, // unused
+			0x0001A00C, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xBCC74871,
 	},
@@ -690,10 +768,12 @@ PatchOffset g_393_offsets = {
 			{ 0x000B40B4, 0x0000FA7C }, // 03G
 			{ 0x000B40B4, 0x0000FA7C }, // 04G
 			{ 0x000B40B4, 0x0000FA7C }, // 05G
-			{ 0x000B40B4, 0x0000FA7C }, // unused
-			{ 0x000B40B4, 0x0000FA7C }, // unused
-			{ 0x000B40B4, 0x0000FA7C }, // unused
-			{ 0x000B40B4, 0x0000FA7C }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000B40B4, 0x0000FA7C }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000B40B4, 0x0000FA7C }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000B40B4, 0x0000FA7C }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00028574, // 01G
@@ -701,10 +781,12 @@ PatchOffset g_393_offsets = {
 			0x00028574, // 03G
 			0x00028574, // 04G
 			0x00028574, // 05G
-			0x00028574, // unused
-			0x00028574, // unused
-			0x00028574, // unused
-			0x00028574, // unused
+			0xDEADBEEF, // unused
+			0x00028574, // 07G
+			0xDEADBEEF, // unused
+			0x00028574, // 09G
+			0xDEADBEEF, // unused
+			0x00028574, // 11G
 		},
 		.manualNameCheck = {
 			0x00017DD8, // 01G
@@ -712,10 +794,12 @@ PatchOffset g_393_offsets = {
 			0x00017DD8, // 03G
 			0x00017DD8, // 04G
 			0x00017DD8, // 05G
-			0x00017DD8, // unused
-			0x00017DD8, // unused
-			0x00017DD8, // unused
-			0x00017DD8, // unused
+			0xDEADBEEF, // unused
+			0x00017DD8, // 07G
+			0xDEADBEEF, // unused
+			0x00017DD8, // 09G
+			0xDEADBEEF, // unused
+			0x00017DD8, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x79B3E859,
 	},
@@ -740,10 +824,12 @@ PatchOffset g_390_offsets = {
 			{ 0x000B4094, 0x0000FA7C }, // 03G
 			{ 0x000B4094, 0x0000FA7C }, // 04G
 			{ 0x000B4094, 0x0000FA7C }, // 05G
-			{ 0x000B4094, 0x0000FA7C }, // unused
-			{ 0x000B4094, 0x0000FA7C }, // unused
-			{ 0x000B4094, 0x0000FA7C }, // unused
-			{ 0x000B4094, 0x0000FA7C }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000B4094, 0x0000FA7C }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000B4094, 0x0000FA7C }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000B4094, 0x0000FA7C }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00028558, // 01G
@@ -751,10 +837,12 @@ PatchOffset g_390_offsets = {
 			0x00028558, // 03G
 			0x00028558, // 04G
 			0x00028558, // 05G
-			0x00028558, // unused
-			0x00028558, // unused
-			0x00028558, // unused
-			0x00028558, // unused
+			0xDEADBEEF, // unused
+			0x00028558, // 07G
+			0xDEADBEEF, // unused
+			0x00028558, // 09G
+			0xDEADBEEF, // unused
+			0x00028558, // 11G
 		},
 		.manualNameCheck = {
 			0x00017DD0, // 01G
@@ -762,10 +850,12 @@ PatchOffset g_390_offsets = {
 			0x00017DD0, // 03G
 			0x00017DD0, // 04G
 			0x00017DD0, // 05G
-			0x00017DD0, // unused
-			0x00017DD0, // unused
-			0x00017DD0, // unused
-			0x00017DD0, // unused
+			0xDEADBEEF, // unused
+			0x00017DD0, // 07G
+			0xDEADBEEF, // unused
+			0x00017DD0, // 09G
+			0xDEADBEEF, // unused
+			0x00017DD0, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x79B3E859,
 	},
@@ -790,10 +880,12 @@ PatchOffset g_380_offsets = {
 			{ 0x000B3BD8, 0x0000E518 }, // 03G
 			{ 0x000B3BD8, 0x0000E518 }, // 04G
 			{ 0x000B3BD8, 0x0000E518 }, // 05G
-			{ 0x000B3BD8, 0x0000E518 }, // unused
-			{ 0x000B3BD8, 0x0000E518 }, // unused
-			{ 0x000B3BD8, 0x0000E518 }, // unused
-			{ 0x000B3BD8, 0x0000E518 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000B3BD8, 0x0000E518 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000B3BD8, 0x0000E518 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x000B3BD8, 0x0000E518 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0002880C, // 01G
@@ -801,10 +893,12 @@ PatchOffset g_380_offsets = {
 			0x0002880C, // 03G
 			0x0002880C, // 04G
 			0x0002880C, // 05G
-			0x0002880C, // unused
-			0x0002880C, // unused
-			0x0002880C, // unused
-			0x0002880C, // unused
+			0xDEADBEEF, // unused
+			0x0002880C, // 07G
+			0xDEADBEEF, // unused
+			0x0002880C, // 09G
+			0xDEADBEEF, // unused
+			0x0002880C, // 11G
 		},
 		.manualNameCheck = {
 			0x000188B4, // 01G
@@ -812,10 +906,12 @@ PatchOffset g_380_offsets = {
 			0x000188B4, // 03G
 			0x000188B4, // 04G
 			0x000188B4, // 05G
-			0x000188B4, // unused
-			0x000188B4, // unused
-			0x000188B4, // unused
-			0x000188B4, // unused
+			0xDEADBEEF, // unused
+			0x000188B4, // 07G
+			0xDEADBEEF, // unused
+			0x000188B4, // 09G
+			0xDEADBEEF, // unused
+			0x000188B4, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x79B3E859,
 	},
@@ -840,10 +936,12 @@ PatchOffset g_372_offsets = {
 			{ 0x0002D480, 0x00013D6C }, // 03G
 			{ 0x0002D480, 0x00013D6C }, // 04G
 			{ 0x0002D480, 0x00013D6C }, // 05G
-			{ 0x0002D480, 0x00013D6C }, // unused
-			{ 0x0002D480, 0x00013D6C }, // unused
-			{ 0x0002D480, 0x00013D6C }, // unused
-			{ 0x0002D480, 0x00013D6C }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002D480, 0x00013D6C }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002D480, 0x00013D6C }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002D480, 0x00013D6C }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x000294F8, // 01G
@@ -851,10 +949,12 @@ PatchOffset g_372_offsets = {
 			0x000294F8, // 03G
 			0x000294F8, // 04G
 			0x000294F8, // 05G
-			0x000294F8, // unused
-			0x000294F8, // unused
-			0x000294F8, // unused
-			0x000294F8, // unused
+			0xDEADBEEF, // unused
+			0x000294F8, // 07G
+			0xDEADBEEF, // unused
+			0x000294F8, // 09G
+			0xDEADBEEF, // unused
+			0x000294F8, // 11G
 		},
 		.manualNameCheck = {
 			0x0001D9FC, // 01G
@@ -862,10 +962,12 @@ PatchOffset g_372_offsets = {
 			0x0001D9FC, // 03G
 			0x0001D9FC, // 04G
 			0x0001D9FC, // 05G
-			0x0001D9FC, // unused
-			0x0001D9FC, // unused
-			0x0001D9FC, // unused
-			0x0001D9FC, // unused
+			0xDEADBEEF, // unused
+			0x0001D9FC, // 07G
+			0xDEADBEEF, // unused
+			0x0001D9FC, // 09G
+			0xDEADBEEF, // unused
+			0x0001D9FC, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x902F30D8,
 	},
@@ -890,10 +992,12 @@ PatchOffset g_371_offsets = {
 			{ 0x0002BDA0, 0x00014100 }, // 03G
 			{ 0x0002BDA0, 0x00014100 }, // 04G
 			{ 0x0002BDA0, 0x00014100 }, // 05G
-			{ 0x0002BDA0, 0x00014100 }, // unused
-			{ 0x0002BDA0, 0x00014100 }, // unused
-			{ 0x0002BDA0, 0x00014100 }, // unused
-			{ 0x0002BDA0, 0x00014100 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002BDA0, 0x00014100 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002BDA0, 0x00014100 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002BDA0, 0x00014100 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x000253F4, // 01G
@@ -901,10 +1005,12 @@ PatchOffset g_371_offsets = {
 			0x000253F4, // 03G
 			0x000253F4, // 04G
 			0x000253F4, // 05G
-			0x000253F4, // unused
-			0x000253F4, // unused
-			0x000253F4, // unused
-			0x000253F4, // unused
+			0xDEADBEEF, // unused
+			0x000253F4, // 07G
+			0xDEADBEEF, // unused
+			0x000253F4, // 09G
+			0xDEADBEEF, // unused
+			0x000253F4, // 11G
 		},
 		.manualNameCheck = {
 			0x0001B044, // 01G
@@ -912,10 +1018,12 @@ PatchOffset g_371_offsets = {
 			0x0001B044, // 03G
 			0x0001B044, // 04G
 			0x0001B044, // 05G
-			0x0001B044, // unused
-			0x0001B044, // unused
-			0x0001B044, // unused
-			0x0001B044, // unused
+			0xDEADBEEF, // unused
+			0x0001B044, // 07G
+			0xDEADBEEF, // unused
+			0x0001B044, // 09G
+			0xDEADBEEF, // unused
+			0x0001B044, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0x902F30D8,
 	},
@@ -940,10 +1048,12 @@ PatchOffset g_352_offsets = {
 			{ 0x0002BD20, 0x00013E50 }, // 03G
 			{ 0x0002BD20, 0x00013E50 }, // 04G
 			{ 0x0002BD20, 0x00013E50 }, // 05G
-			{ 0x0002BD20, 0x00013E50 }, // unused
-			{ 0x0002BD20, 0x00013E50 }, // unused
-			{ 0x0002BD20, 0x00013E50 }, // unused
-			{ 0x0002BD20, 0x00013E50 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002BD20, 0x00013E50 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002BD20, 0x00013E50 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002BD20, 0x00013E50 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00025080, // 01G
@@ -951,10 +1061,12 @@ PatchOffset g_352_offsets = {
 			0x00025080, // 03G
 			0x00025080, // 04G
 			0x00025080, // 05G
-			0x00025080, // unused
-			0x00025080, // unused
-			0x00025080, // unused
-			0x00025080, // unused
+			0xDEADBEEF, // unused
+			0x00025080, // 07G
+			0xDEADBEEF, // unused
+			0x00025080, // 09G
+			0xDEADBEEF, // unused
+			0x00025080, // 11G
 		},
 		.manualNameCheck = {
 			0x0001AF18, // 01G
@@ -962,10 +1074,12 @@ PatchOffset g_352_offsets = {
 			0x0001AF18, // 03G
 			0x0001AF18, // 04G
 			0x0001AF18, // 05G
-			0x0001AF18, // unused
-			0x0001AF18, // unused
-			0x0001AF18, // unused
-			0x0001AF18, // unused
+			0xDEADBEEF, // unused
+			0x0001AF18, // 07G
+			0xDEADBEEF, // unused
+			0x0001AF18, // 09G
+			0xDEADBEEF, // unused
+			0x0001AF18, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xFC56480E,
 	},
@@ -990,10 +1104,12 @@ PatchOffset g_351_offsets = {
 			{ 0x0002B240, 0x00013C64 }, // 03G
 			{ 0x0002B240, 0x00013C64 }, // 04G
 			{ 0x0002B240, 0x00013C64 }, // 05G
-			{ 0x0002B240, 0x00013C64 }, // unused
-			{ 0x0002B240, 0x00013C64 }, // unused
-			{ 0x0002B240, 0x00013C64 }, // unused
-			{ 0x0002B240, 0x00013C64 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002B240, 0x00013C64 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002B240, 0x00013C64 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002B240, 0x00013C64 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0001B030, // 01G
@@ -1001,10 +1117,12 @@ PatchOffset g_351_offsets = {
 			0x0001B030, // 03G
 			0x0001B030, // 04G
 			0x0001B030, // 05G
-			0x0001B030, // unused
-			0x0001B030, // unused
-			0x0001B030, // unused
-			0x0001B030, // unused
+			0xDEADBEEF, // unused
+			0x0001B030, // 07G
+			0xDEADBEEF, // unused
+			0x0001B030, // 09G
+			0xDEADBEEF, // unused
+			0x0001B030, // 11G
 		},
 		.manualNameCheck = {
 			0x0001C474, // 01G
@@ -1012,10 +1130,12 @@ PatchOffset g_351_offsets = {
 			0x0001C474, // 03G
 			0x0001C474, // 04G
 			0x0001C474, // 05G
-			0x0001C474, // unused
-			0x0001C474, // unused
-			0x0001C474, // unused
-			0x0001C474, // unused
+			0xDEADBEEF, // unused
+			0x0001C474, // 07G
+			0xDEADBEEF, // unused
+			0x0001C474, // 09G
+			0xDEADBEEF, // unused
+			0x0001C474, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xFC56480E,
 	},
@@ -1040,10 +1160,12 @@ PatchOffset g_350_offsets = {
 			{ 0x0002B240, 0x00013C64 }, // 03G
 			{ 0x0002B240, 0x00013C64 }, // 04G
 			{ 0x0002B240, 0x00013C64 }, // 05G
-			{ 0x0002B240, 0x00013C64 }, // unused
-			{ 0x0002B240, 0x00013C64 }, // unused
-			{ 0x0002B240, 0x00013C64 }, // unused
-			{ 0x0002B240, 0x00013C64 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002B240, 0x00013C64 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002B240, 0x00013C64 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002B240, 0x00013C64 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0001B030, // 01G
@@ -1051,10 +1173,12 @@ PatchOffset g_350_offsets = {
 			0x0001B030, // 03G
 			0x0001B030, // 04G
 			0x0001B030, // 05G
-			0x0001B030, // unused
-			0x0001B030, // unused
-			0x0001B030, // unused
-			0x0001B030, // unused
+			0xDEADBEEF, // unused
+			0x0001B030, // 07G
+			0xDEADBEEF, // unused
+			0x0001B030, // 09G
+			0xDEADBEEF, // unused
+			0x0001B030, // 11G
 		},
 		.manualNameCheck = {
 			0x0001C474, // 01G
@@ -1062,10 +1186,12 @@ PatchOffset g_350_offsets = {
 			0x0001C474, // 03G
 			0x0001C474, // 04G
 			0x0001C474, // 05G
-			0x0001C474, // unused
-			0x0001C474, // unused
-			0x0001C474, // unused
-			0x0001C474, // unused
+			0xDEADBEEF, // unused
+			0x0001C474, // 07G
+			0xDEADBEEF, // unused
+			0x0001C474, // 09G
+			0xDEADBEEF, // unused
+			0x0001C474, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xFC56480E,
 	},
@@ -1090,10 +1216,12 @@ PatchOffset g_340_offsets = {
 			{ 0x0002A880, 0x00013850 }, // 03G
 			{ 0x0002A880, 0x00013850 }, // 04G
 			{ 0x0002A880, 0x00013850 }, // 05G
-			{ 0x0002A880, 0x00013850 }, // unused
-			{ 0x0002A880, 0x00013850 }, // unused
-			{ 0x0002A880, 0x00013850 }, // unused
-			{ 0x0002A880, 0x00013850 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002A880, 0x00013850 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002A880, 0x00013850 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002A880, 0x00013850 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0001A45C, // 01G
@@ -1101,10 +1229,12 @@ PatchOffset g_340_offsets = {
 			0x0001A45C, // 03G
 			0x0001A45C, // 04G
 			0x0001A45C, // 05G
-			0x0001A45C, // unused
-			0x0001A45C, // unused
-			0x0001A45C, // unused
-			0x0001A45C, // unused
+			0xDEADBEEF, // unused
+			0x0001A45C, // 07G
+			0xDEADBEEF, // unused
+			0x0001A45C, // 09G
+			0xDEADBEEF, // unused
+			0x0001A45C, // 11G
 		},
 		.manualNameCheck = {
 			0x0001B8BC, // 01G
@@ -1112,10 +1242,12 @@ PatchOffset g_340_offsets = {
 			0x0001B8BC, // 03G
 			0x0001B8BC, // 04G
 			0x0001B8BC, // 05G
-			0x0001B8BC, // unused
-			0x0001B8BC, // unused
-			0x0001B8BC, // unused
-			0x0001B8BC, // unused
+			0xDEADBEEF, // unused
+			0x0001B8BC, // 07G
+			0xDEADBEEF, // unused
+			0x0001B8BC, // 09G
+			0xDEADBEEF, // unused
+			0x0001B8BC, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xFC56480E,
 	},
@@ -1140,10 +1272,12 @@ PatchOffset g_330_offsets = {
 			{ 0x0002A000, 0x00013788 }, // 03G
 			{ 0x0002A000, 0x00013788 }, // 04G
 			{ 0x0002A000, 0x00013788 }, // 05G
-			{ 0x0002A000, 0x00013788 }, // unused
-			{ 0x0002A000, 0x00013788 }, // unused
-			{ 0x0002A000, 0x00013788 }, // unused
-			{ 0x0002A000, 0x00013788 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002A000, 0x00013788 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002A000, 0x00013788 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0002A000, 0x00013788 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0001A0D4, // 01G
@@ -1151,10 +1285,12 @@ PatchOffset g_330_offsets = {
 			0x0001A0D4, // 03G
 			0x0001A0D4, // 04G
 			0x0001A0D4, // 05G
-			0x0001A0D4, // unused
-			0x0001A0D4, // unused
-			0x0001A0D4, // unused
-			0x0001A0D4, // unused
+			0xDEADBEEF, // unused
+			0x0001A0D4, // 07G
+			0xDEADBEEF, // unused
+			0x0001A0D4, // 09G
+			0xDEADBEEF, // unused
+			0x0001A0D4, // 11G
 		},
 		.manualNameCheck = {
 			0x0001B46C, // 01G
@@ -1162,10 +1298,12 @@ PatchOffset g_330_offsets = {
 			0x0001B46C, // 03G
 			0x0001B46C, // 04G
 			0x0001B46C, // 05G
-			0x0001B46C, // unused
-			0x0001B46C, // unused
-			0x0001B46C, // unused
-			0x0001B46C, // unused
+			0xDEADBEEF, // unused
+			0x0001B46C, // 07G
+			0xDEADBEEF, // unused
+			0x0001B46C, // 09G
+			0xDEADBEEF, // unused
+			0x0001B46C, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xFC56480E,
 	},
@@ -1190,10 +1328,12 @@ PatchOffset g_311_offsets = {
 			{ 0x00031D1C, 0x00010794 }, // 03G
 			{ 0x00031D1C, 0x00010794 }, // 04G
 			{ 0x00031D1C, 0x00010794 }, // 05G
-			{ 0x00031D1C, 0x00010794 }, // unused
-			{ 0x00031D1C, 0x00010794 }, // unused
-			{ 0x00031D1C, 0x00010794 }, // unused
-			{ 0x00031D1C, 0x00010794 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x00031D1C, 0x00010794 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x00031D1C, 0x00010794 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x00031D1C, 0x00010794 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0002A640, // 01G
@@ -1201,10 +1341,12 @@ PatchOffset g_311_offsets = {
 			0x0002A640, // 03G
 			0x0002A640, // 04G
 			0x0002A640, // 05G
-			0x0002A640, // unused
-			0x0002A640, // unused
-			0x0002A640, // unused
-			0x0002A640, // unused
+			0xDEADBEEF, // unused
+			0x0002A640, // 07G
+			0xDEADBEEF, // unused
+			0x0002A640, // 09G
+			0xDEADBEEF, // unused
+			0x0002A640, // 11G
 		},
 		.manualNameCheck = {
 			0x0001C0C0, // 01G
@@ -1212,10 +1354,12 @@ PatchOffset g_311_offsets = {
 			0x0001C0C0, // 03G
 			0x0001C0C0, // 04G
 			0x0001C0C0, // 05G
-			0x0001C0C0, // unused
-			0x0001C0C0, // unused
-			0x0001C0C0, // unused
-			0x0001C0C0, // unused
+			0xDEADBEEF, // unused
+			0x0001C0C0, // 07G
+			0xDEADBEEF, // unused
+			0x0001C0C0, // 09G
+			0xDEADBEEF, // unused
+			0x0001C0C0, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xFC56480E,
 	},
@@ -1240,10 +1384,12 @@ PatchOffset g_310_offsets = {
 			{ 0x00031B9C, 0x000105F0 }, // 03G
 			{ 0x00031B9C, 0x000105F0 }, // 04G
 			{ 0x00031B9C, 0x000105F0 }, // 05G
-			{ 0x00031B9C, 0x000105F0 }, // unused
-			{ 0x00031B9C, 0x000105F0 }, // unused
-			{ 0x00031B9C, 0x000105F0 }, // unused
-			{ 0x00031B9C, 0x000105F0 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x00031B9C, 0x000105F0 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x00031B9C, 0x000105F0 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x00031B9C, 0x000105F0 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x0002A498, // 01G
@@ -1251,10 +1397,12 @@ PatchOffset g_310_offsets = {
 			0x0002A498, // 03G
 			0x0002A498, // 04G
 			0x0002A498, // 05G
-			0x0002A498, // unused
-			0x0002A498, // unused
-			0x0002A498, // unused
-			0x0002A498, // unused
+			0xDEADBEEF, // unused
+			0x0002A498, // 07G
+			0xDEADBEEF, // unused
+			0x0002A498, // 09G
+			0xDEADBEEF, // unused
+			0x0002A498, // 11G
 		},
 		.manualNameCheck = {
 			0x0001C0FC, // 01G
@@ -1262,10 +1410,12 @@ PatchOffset g_310_offsets = {
 			0x0001C0FC, // 03G
 			0x0001C0FC, // 04G
 			0x0001C0FC, // 05G
-			0x0001C0FC, // unused
-			0x0001C0FC, // unused
-			0x0001C0FC, // unused
-			0x0001C0FC, // unused
+			0xDEADBEEF, // unused
+			0x0001C0FC, // 07G
+			0xDEADBEEF, // unused
+			0x0001C0FC, // 09G
+			0xDEADBEEF, // unused
+			0x0001C0FC, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xFC56480E,
 	},
@@ -1290,10 +1440,12 @@ PatchOffset g_303_offsets = {
 			{ 0x0003A08C, 0x00012A60 }, // 03G
 			{ 0x0003A08C, 0x00012A60 }, // 04G
 			{ 0x0003A08C, 0x00012A60 }, // 05G
-			{ 0x0003A08C, 0x00012A60 }, // unused
-			{ 0x0003A08C, 0x00012A60 }, // unused
-			{ 0x0003A08C, 0x00012A60 }, // unused
-			{ 0x0003A08C, 0x00012A60 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0003A08C, 0x00012A60 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0003A08C, 0x00012A60 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0003A08C, 0x00012A60 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x00032E40, // 01G
@@ -1301,10 +1453,12 @@ PatchOffset g_303_offsets = {
 			0x00032E40, // 03G
 			0x00032E40, // 04G
 			0x00032E40, // 05G
-			0x00032E40, // unused
-			0x00032E40, // unused
-			0x00032E40, // unused
-			0x00032E40, // unused
+			0xDEADBEEF, // unused
+			0x00032E40, // 07G
+			0xDEADBEEF, // unused
+			0x00032E40, // 09G
+			0xDEADBEEF, // unused
+			0x00032E40, // 11G
 		},
 		.manualNameCheck = {
 			0xDEADBEEF, // 01G
@@ -1313,9 +1467,11 @@ PatchOffset g_303_offsets = {
 			0xDEADBEEF, // 04G
 			0xDEADBEEF, // 05G
 			0xDEADBEEF, // unused
+			0xDEADBEEF, // 07G
 			0xDEADBEEF, // unused
+			0xDEADBEEF, // 09G
 			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
+			0xDEADBEEF, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xFC56480E,
 	},
@@ -1340,10 +1496,12 @@ PatchOffset g_302_offsets = {
 			{ 0x0003900C, 0x00012314 }, // 03G
 			{ 0x0003900C, 0x00012314 }, // 04G
 			{ 0x0003900C, 0x00012314 }, // 05G
-			{ 0x0003900C, 0x00012314 }, // unused
-			{ 0x0003900C, 0x00012314 }, // unused
-			{ 0x0003900C, 0x00012314 }, // unused
-			{ 0x0003900C, 0x00012314 }, // unused
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0003900C, 0x00012314 }, // 07G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0003900C, 0x00012314 }, // 09G
+			{ 0xDEADBEEF, 0xDEADBEEF }, // unused
+			{ 0x0003900C, 0x00012314 }, // 11G
 		},
 		.ICON0SizeOffset = {
 			0x000315CC, // 01G
@@ -1351,10 +1509,12 @@ PatchOffset g_302_offsets = {
 			0x000315CC, // 03G
 			0x000315CC, // 04G
 			0x000315CC, // 05G
-			0x000315CC, // unused
-			0x000315CC, // unused
-			0x000315CC, // unused
-			0x000315CC, // unused
+			0xDEADBEEF, // unused
+			0x000315CC, // 07G
+			0xDEADBEEF, // unused
+			0x000315CC, // 09G
+			0xDEADBEEF, // unused
+			0x000315CC, // 11G
 		},
 		.manualNameCheck = {
 			0xDEADBEEF, // 01G
@@ -1363,9 +1523,11 @@ PatchOffset g_302_offsets = {
 			0xDEADBEEF, // 04G
 			0xDEADBEEF, // 05G
 			0xDEADBEEF, // unused
+			0xDEADBEEF, // 07G
 			0xDEADBEEF, // unused
+			0xDEADBEEF, // 09G
 			0xDEADBEEF, // unused
-			0xDEADBEEF, // unused
+			0xDEADBEEF, // 11G
 		},
 		.sceMeAudio_67CD7972_NID = 0xFC56480E,
 	},
