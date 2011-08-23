@@ -122,7 +122,7 @@ static nid_entry InterruptManagerForKernel_nid[] = {
 };
 
 static nid_entry InitForKernel_nid[] = {
-	{ 0x6289D9A1, 0x2213275D, }
+	{ 0x6289D9A1, 0x2213275D, },
 };
 
 resolver_config nid_impose_fix_400_to_635[] = {

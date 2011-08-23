@@ -34,7 +34,7 @@ static nid_entry SysMemForKernel_nid[] = {
 	{ 0x12720EDA, 0xB4F00CB5, },
 	{ 0x3EEE43C5, 0xFDC97D28, },
 	{ 0x5136926D, 0xF12A62F7, },
-	{ 0x523E300A, 0xC90B0992 , },
+	{ 0x523E300A, 0xC90B0992, },
 };
 
 static nid_entry ModuleMgrForKernel_nid[] = {

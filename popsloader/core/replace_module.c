@@ -172,7 +172,7 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 			} else if(psp_model == PSP_4000 || psp_model == PSP_GO) {
 				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			} else {
-				// 07g and 09g, try 04g driver
+				// 07/09/11G, try 04g driver
 				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), 4);
 			}
 
