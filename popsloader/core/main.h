@@ -59,6 +59,8 @@ extern resolver_config nid_fix_660_to_635[];
 extern u32 nid_fix_660_to_635_size;
 extern resolver_config nid_fix_635_to_620[];
 extern u32 nid_fix_635_to_620_size;
+extern resolver_config nid_fix_635_to_660[];
+extern u32 nid_fix_635_to_660_size;
 extern resolver_config nid_fix_620_to_635[];
 extern u32 nid_fix_620_to_635_size;
 extern resolver_config nid_fix_620_to_660[];
