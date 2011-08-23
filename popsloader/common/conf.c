@@ -31,6 +31,8 @@
 #include "systemctrl.h"
 #include "main.h"
 
+int is_ef0(void);
+
 typedef struct _CONFIG {
 	char disc_id[12];
 	u32 version;

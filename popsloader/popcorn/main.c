@@ -259,6 +259,7 @@ static int check_file_is_decrypted(const char *filename)
 	u32 k1;
 	int result = 0, ret;
 	u8 buf[16] __attribute__((aligned(64)));
+	u32 *p = (u32*)buf;
 
 	if(!g_is_custom_ps1 && is_eboot_pbp_path(filename)) {
 		goto exit;
@@ -277,7 +278,7 @@ static int check_file_is_decrypted(const char *filename)
 		goto exit;
 	}
 
-	if (*(u32*)buf == 0x44475000) { // PGD
+	if (*p == 0x44475000) { // PGD
 		goto exit;
 	}
 
@@ -659,6 +660,7 @@ static u32 is_custom_ps1(void)
 	int result, ret;
 	u32 psar_offset, pgd_offset;
 	u8 header[40] __attribute__((aligned(64)));
+	u32 *p = (u32*)header;
 
 	filename = sceKernelInitFileName();
 	result = 0;
@@ -712,7 +714,7 @@ static u32 is_custom_ps1(void)
 	}
 
 	// PGD offset
-	if(*(u32*)header != 0x44475000) {
+	if(*p != 0x44475000) {
 		printk("%s: custom pops found\n", __func__);
 		result = 1;
 	}
