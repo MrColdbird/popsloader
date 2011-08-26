@@ -181,8 +181,16 @@ static void loadexec_pops(void)
 
 int launch_thread(SceSize args, void *argp)
 {
+	int status;
+
 	printk("%s: started\n", __func__);
-	loadexec_pops();
+	load_config();
+
+	if(g_conf.pops_fw_version != 0) {
+		loadexec_pops();
+	}
+
+	sceKernelStopUnloadSelfModule(0, NULL, &status, NULL);
 
 	return 0;
 }
@@ -190,6 +198,8 @@ int launch_thread(SceSize args, void *argp)
 int ui_thread(SceSize args, void *argp)
 {
 	printk("%s: started\n", __func__);
+
+	load_config();
 	get_pops_fw_version(&g_conf.pops_fw_version);
 	save_config();
 	loadexec_pops();
@@ -253,13 +263,12 @@ int module_start(SceSize args, void* argp)
 	psp_model = sceKernelGetModel();
 	printk_init();
 	mount_memory_stick();
-	load_config();
 
 	sceCtrlReadBufferPositive(&ctrl_data, 1);
 
 	if(ctrl_data.Buttons & PSP_CTRL_RTRIGGER) {
 		g_previous = sctrlHENSetStartModuleHandler(&popsloader_patch_chain);
-	} else if(g_conf.pops_fw_version != 0) {
+	} else {
 		create_thread(0);
 	}
 	

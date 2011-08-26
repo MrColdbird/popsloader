@@ -43,16 +43,26 @@ struct popsloader_config g_conf;
 static char disc_id[16];
 static int config_offset = -1;
 
+#define MAX_FAIL 100
+
 static int get_disc_id()
 {
 	void* (*sceKernelGetGameInfo_k)();
+	int failed = 0;
 
+retry:
 	memset(disc_id, 0, sizeof(disc_id));
 	sceKernelGetGameInfo_k = (void *)sctrlHENFindFunction("sceSystemMemoryManager", "SysMemForKernel", 0xCD617A94); 
 
 	if(sceKernelGetGameInfo_k != NULL) {
 		char *info_buff = sceKernelGetGameInfo_k();
 		memcpy(disc_id, info_buff + 0x44, 9);
+	}
+
+	if (*disc_id == '\0' && failed < MAX_FAIL) {
+		sceKernelDelayThread(10000);
+		failed++;
+		goto retry;
 	}
 
 	return 0;
