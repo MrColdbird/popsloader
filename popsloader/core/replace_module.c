@@ -165,6 +165,12 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 	if(is_pops(path)) {
 		if(pops_fw_version == FW_635 || pops_fw_version == FW_639 || pops_fw_version == FW_660) {
 			sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
+
+			// try 09g driver on 11g
+			if((pops_fw_version == FW_635||pops_fw_version == FW_639) && psp_model == PSP_11000) {
+				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), 9);
+			}
+
 			path = newpath;
 		} else if(pops_fw_version == FW_620 || pops_fw_version == FW_610 || pops_fw_version == FW_600) {
 			if(psp_model == PSP_1000 || psp_model == PSP_2000 || psp_model == PSP_3000) {
@@ -173,6 +179,11 @@ static SceUID _sceKernelLoadModule(const char *path, int flags, SceKernelLMOptio
 				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), (int)(psp_model + 1));
 			} else {
 				// 07/09/11G, try 04g driver
+				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), 4);
+			}
+
+			// try 04g driver on 6.00 05g
+			if(pops_fw_version == FW_600 && psp_model == PSP_GO) {
 				sprintf(newpath, "%spops_%02dg.prx", get_module_prefix(), 4);
 			}
 
