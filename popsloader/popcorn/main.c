@@ -258,8 +258,10 @@ static int check_file_is_decrypted(const char *filename)
 	SceUID fd = -1;
 	u32 k1;
 	int result = 0, ret;
-	u8 buf[16] __attribute__((aligned(64)));
-	u32 *p = (u32*)buf;
+	u8 p[16 + 64], *buf;
+	u32 *magic;
+
+	buf = (u8*)((((u32)p) & ~(64-1)) + 64);
 
 	if(!g_is_custom_ps1 && is_eboot_pbp_path(filename)) {
 		goto exit;
@@ -272,13 +274,15 @@ static int check_file_is_decrypted(const char *filename)
 		goto exit;
 	}
 
-	ret = sceIoRead(fd, buf, sizeof(buf));
+	ret = sceIoRead(fd, buf, 16);
 
-	if(ret != sizeof(buf)) {
+	if(ret != 16) {
 		goto exit;
 	}
 
-	if (*p == 0x44475000) { // PGD
+	magic = (u32*)buf;
+
+	if(*magic == 0x44475000) { // PGD
 		goto exit;
 	}
 
@@ -658,10 +662,10 @@ static u32 is_custom_ps1(void)
 	SceUID fd = -1;
 	const char *filename;
 	int result, ret;
-	u32 psar_offset, pgd_offset;
-	u8 header[40] __attribute__((aligned(64)));
-	u32 *p = (u32*)header;
+	u32 psar_offset, pgd_offset, *magic;
+	u8 p[40 + 64], *header;
 
+	header = (u8*)((((u32)p) & ~(64-1)) + 64);
 	filename = sceKernelInitFileName();
 	result = 0;
 
@@ -678,9 +682,9 @@ static u32 is_custom_ps1(void)
 		goto exit;
 	}
 
-	ret = sceIoRead(fd, header, sizeof(header));
+	ret = sceIoRead(fd, header, 40);
 
-	if(ret != sizeof(header)) {
+	if(ret != 40) {
 		printk("%s: sceIoRead -> 0x%08X\n", __func__, ret);
 		result = 0;
 		goto exit;
@@ -688,9 +692,9 @@ static u32 is_custom_ps1(void)
 
 	psar_offset = *(u32*)(header+0x24);
 	sceIoLseek32(fd, psar_offset, PSP_SEEK_SET);
-	ret = sceIoRead(fd, header, sizeof(header));
+	ret = sceIoRead(fd, header, 40);
 
-	if(ret != sizeof(header)) {
+	if(ret != 40) {
 		printk("%s: sceIoRead -> 0x%08X\n", __func__, ret);
 		result = 0;
 		goto exit;
@@ -713,8 +717,10 @@ static u32 is_custom_ps1(void)
 		goto exit;
 	}
 
+	magic = (u32*)header;
+
 	// PGD offset
-	if(*p != 0x44475000) {
+	if(*magic != 0x44475000) {
 		printk("%s: custom pops found\n", __func__);
 		result = 1;
 	}
@@ -912,8 +918,9 @@ static int get_icon0_status(void)
 	int result = ICON0_MISSING;
 	SceUID fd = -1;;
 	const char *filename;
-	u8 header[40] __attribute__((aligned(64)));
+	u8 p[40 + 64], *header;
 	
+	header = (u8*)((((u32)p) & ~(64-1)) + 64);
 	filename = sceKernelInitFileName();
 
 	if(filename == NULL) {
@@ -927,10 +934,10 @@ static int get_icon0_status(void)
 		goto exit;
 	}
 	
-	sceIoRead(fd, header, sizeof(header));
+	sceIoRead(fd, header, 40);
 	icon0_offset = *(u32*)(header+0x0c);
 	sceIoLseek32(fd, icon0_offset, PSP_SEEK_SET);
-	sceIoRead(fd, header, sizeof(header));
+	sceIoRead(fd, header, 40);
 
 	if(*(u32*)(header+4) == 0xA1A0A0D) {
 		if ( *(u32*)(header+0xc) == 0x52444849 && // IHDR
